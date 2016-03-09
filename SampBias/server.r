@@ -30,7 +30,7 @@ shinyServer(function(input, output) {
                                (1-mean(dataset()$prob))/input$sampsize), 3)))
       
       print(p)
-    }
+    
     })   
   })
   
