@@ -15,7 +15,7 @@ shinyServer(function(input, output) {
   #   }
   # })
   output$plot1 <- renderPlot({
-    plot(x = rnorm(input$sampsize), y = rnorm(input$sampsize))
+    p <- plot(x = rnorm(input$sampsize), y = rnorm(input$sampsize))
   
   # output$plot <- renderPlot({
   #   input$goButton
