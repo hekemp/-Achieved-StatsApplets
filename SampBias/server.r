@@ -15,12 +15,28 @@ shinyServer(function(input, output) {
     }
   })
   
-  
   output$plot <- renderPlot({
     input$goButton
     isolate({
     rangeC <- max(dataset()$prob) - min(dataset()$prob)
     
+    if(input$normcurve) {
+      
+      dataNorm <- data.frame(norm = rnorm(10000, mean = input$popvalue,
+                  sd = sqrt(((input$popvalue)*1-input$popvalue)/input$numsamp)))
+      # Building histogram of sampling distribution with normal curve
+      p <- ggplot(dataset(), aes(x = prob)) 
+      p <- p + geom_histogram(aes(y = ..density..), fill = "steelblue", 
+                              color = "black", binwidth = rangeC/20) +
+        geom_density(data = dataNorm, aes(x = norm), color = "darkgreen", 
+                     size = 1.25, alpha = 0) +
+        theme_bw(base_size = 24)+ labs(title = paste("Mean = ", round(mean(dataset()$prob), 3), 
+                 "; SE = ", 
+                 round(sqrt(mean(dataset()$prob)*
+                              (1-mean(dataset()$prob))/input$sampsize), 3)))
+      
+      print(p)
+    } else {
       # Building histogram of sampling distribution
       p <- ggplot(dataset(), aes(x = prob)) 
       p <- p + geom_histogram(fill = "steelblue", color = "black", 
@@ -31,8 +47,9 @@ shinyServer(function(input, output) {
                                (1-mean(dataset()$prob))/input$sampsize), 3)))
       
       print(p)
-    
+    }
     })   
   })
   
 })
+                            
