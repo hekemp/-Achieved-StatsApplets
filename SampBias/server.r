@@ -20,15 +20,12 @@ shinyServer(function(input, output) {
     isolate({
     rangeC <- max(dataset()$prob) - min(dataset()$prob)
     
-    p <- ggplot(dataset,aes(x=dataset.Length,y=dataset.Width,))+geom_point()
-      # # Building histogram of sampling distribution
-      # p <- ggplot(dataset(), aes(x = prob)) 
-      # p <- p + geom_histogram(fill = "steelblue", color = "black", 
-      #                         binwidth = rangeC/20) +
-      #   theme_bw(base_size = 24) + labs(title = paste("Mean = ", round(mean(dataset()$prob), 3), 
-      #             "; SE = ", 
-      #             round(sqrt(mean(dataset()$prob)*
-      #                         (1-mean(dataset()$prob))/input$sampsize), 3)))
+      # Building histogram of sampling distribution
+      p <- ggplot(dataset(), aes(x = prob)) 
+      p <- p + geom_point() + labs(title = paste("Mean = ", round(mean(dataset()$prob), 3), 
+                  "; SE = ", 
+                  round(sqrt(mean(dataset()$prob)*
+                              (1-mean(dataset()$prob))/input$sampsize), 3)))
       
       print(p)
     
