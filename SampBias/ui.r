@@ -13,8 +13,8 @@ shinyUI(pageWithSidebar(
     numericInput("sampsize", "Sample Size:", 25),
     numericInput("numsamp", "Number of Samples:", 100),
     numericInput("popvalue", "Estimated Mean:", .45),
-    sliderInput("biasval", "Estimated Bias:", -1.0, 1.0, 0.0, step = NULL, round = FALSE, format = NULL, locale = NULL, ticks = TRUE, animate = FALSE, width = NULL, sep = ",", pre = NULL, post = NULL, timeFormat = NULL, timezone = NULL, dragRange = TRUE)
-    br(),
+    sliderInput("biasval", "Estimated Bias:", -1.0, 1.0, 0.0, step = NULL, round = FALSE, format = NULL, locale = NULL, ticks = TRUE, animate = FALSE, width = NULL, sep = ",", pre = NULL, post = NULL, timeFormat = NULL, timezone = NULL, dragRange = TRUE),
+    #br(),
     
     actionButton("goButton", "Go!")),
   
