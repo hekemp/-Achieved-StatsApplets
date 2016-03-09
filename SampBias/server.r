@@ -14,7 +14,7 @@ shinyServer(function(input, output) {
   #                   prob = input$popvalue)/input$sampsize)
   #   }
   # })
-  output$plot1 <- renderPlot({
+  output$plot <- renderPlot({
     p <- plot(x = rnorm(input$sampsize), y = rnorm(input$sampsize))
   
   # output$plot <- renderPlot({
