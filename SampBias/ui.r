@@ -14,8 +14,8 @@ shinyUI(pageWithSidebar(
     numericInput("popsd", "Population SD:", 1),
     numericInput("sampsize", "Sample Size:", 25),
     numericInput("numsamp", "Number of Samples:", 100),
-    sliderInput("biasval", "Estimated Bias:", -1.0, 1.0, 0.0, step = .01, round = FALSE, format = NULL, locale = NULL, ticks = TRUE, animate = FALSE, width = NULL, sep = ",", pre = NULL, post = NULL, timeFormat = NULL, timezone = NULL, dragRange = TRUE),
-    
+    sliderInput("biasval", "Percent of Estimated Bias:", -1.0, 1.0, 0.0, step = .01, round = FALSE, format = NULL, locale = NULL, ticks = TRUE, animate = FALSE, width = NULL, sep = ",", pre = NULL, post = NULL, timeFormat = NULL, timezone = NULL, dragRange = TRUE),
+    helpText("The following value is used only for debug purposes"),
     numericInput("popvalue", "DefaultParameter:", .45),
     br(),
     
