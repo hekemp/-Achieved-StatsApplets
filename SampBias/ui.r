@@ -12,10 +12,10 @@ shinyUI(pageWithSidebar(
 
     numericInput("sampsize", "Sample Size:", 25),
     numericInput("numsamp", "Number of Samples:", 100),
-    numericInput("popvalue", "Parameter:", .45),
+    numericInput("popvalue", "Estimated Mean:", .45),
+    numericInput("biasval", "Estimated Bias:", 0),
+    print("Note: Bias value should be between -1.0 and 1.0. A negative percentage will remove the lower values while a higher percentage will remove higher values. A value of zero will remove nothing."
     br(),
-    
-    checkboxInput("normcurve", "Draw Normal Curve", FALSE),
     
     actionButton("goButton", "Go!")),
   
