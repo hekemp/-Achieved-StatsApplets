@@ -16,23 +16,42 @@ shinyServer(function(input, output) {
   })
   
   output$plot <- renderPlot({
-    input$goButton
-    isolate({
-    rangeC <- max(dataset()$prob) - min(dataset()$prob)
-
-      # Building histogram of sampling distribution
-      p <- ggplot(dataset(), aes(x = prob)) 
-      p <- p + geom_histogram(fill = "steelblue", color = "black", 
-                              binwidth = rangeC/20) +
-        theme_bw(base_size = 24) + labs(title = paste("Mean = ", round(mean(dataset()$prob), 3), 
-                  "; SE = ", 
-                  round(sqrt(mean(dataset()$prob)*
-                               (1-mean(dataset()$prob))/input$sampsize), 3)))
-      
-      print(p)
-    
-    })   
+    plot(dataset$supp, dataset$len)
   })
+
+  # # Print the name of the x value
+  # output$x_value <- renderPrint({
+  #   if (is.null(input$plot1_click$x)) return()
+
+  #   lvls <- levels(ToothGrowth$supp)
+  #   lvls[round(input$plot1_click$x)]
+  # })
+  
+  # # Print the rows of the data frame which match the x value
+  # output$selected_rows <- renderPrint({
+  #   if (is.null(input$plot1_click$x)) return()
+    
+  #   keeprows <- round(input$plot1_click$x) == as.numeric(ToothGrowth$supp)
+  #   ToothGrowth[keeprows, ]
+  
+  # output$plot <- renderPlot({
+  #   input$goButton
+  #   isolate({
+  #   rangeC <- max(dataset()$prob) - min(dataset()$prob)
+
+  #     # Building histogram of sampling distribution
+  #     p <- ggplot(dataset(), aes(x = prob)) 
+  #     p <- p + geom_histogram(fill = "steelblue", color = "black", 
+  #                             binwidth = rangeC/20) +
+  #       theme_bw(base_size = 24) + labs(title = paste("Mean = ", round(mean(dataset()$prob), 3), 
+  #                 "; SE = ", 
+  #                 round(sqrt(mean(dataset()$prob)*
+  #                             (1-mean(dataset()$prob))/input$sampsize), 3)))
+      
+  #     print(p)
+    
+  #   })   
+  # })
   
 })
                             
