@@ -22,7 +22,7 @@ shinyServer(function(input, output) {
     rangeC <- max(dataset()$prob) - min(dataset()$prob)
     
       # Building histogram of sampling distribution
-      p <- ggplot(dataset(), aes(x = dataset(), y = dataset()$length)) 
+      p <- ggplot(dataset(), aes(x = dataset(), y = dataset$length)) 
       p <- p + geom_point() + labs(title = paste("Mean = ", round(mean(dataset()$prob), 3), 
                   "; SE = ", 
                   round(sqrt(mean(dataset()$prob)*
