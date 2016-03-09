@@ -24,7 +24,11 @@ shinyServer(function(input, output) {
 
       # Building histogram of sampling distribution
       p <- plot(dataset(), aes(x = prob)) 
-      p <- p + labs(title = paste("Mean = ", round(mean(dataset()$prob), 3), 
+      p <- p + geom_histogram(aes(y = ..density..), fill = "steelblue", 
+                              color = "black", binwidth = rangeC/20) +
+        geom_density(data = dataNorm, aes(x = norm), color = "darkgreen", 
+                     size = 1.25, alpha = 0) +
+        theme_bw(base_size = 24)+ labs(title = paste("Mean = ", round(mean(dataset()$prob), 3), 
                   "; SE = ", 
                   round(sqrt(mean(dataset()$prob)*
                               (1-mean(dataset()$prob))/input$sampsize), 3)))
