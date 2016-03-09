@@ -16,6 +16,9 @@ shinyUI(pageWithSidebar(
     numericInput("numsamp", "Number of Samples:", 100),
     sliderInput("biasval", "Estimated Bias:", -1.0, 1.0, 0.0, step = .01, round = FALSE, format = NULL, locale = NULL, ticks = TRUE, animate = FALSE, width = NULL, sep = ",", pre = NULL, post = NULL, timeFormat = NULL, timezone = NULL, dragRange = TRUE),
     
+    numericInput("popvalue", "DefaultParameter:", .45),
+    br(),
+    
     actionButton("goButton", "Go!")),
   
   mainPanel(
