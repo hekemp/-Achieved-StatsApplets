@@ -21,7 +21,7 @@ shinyServer(function(input, output) {
               rnorm(n = input$sampsize, mean = input$popmean, sd = input$popsd))
     }
   })
-  output$dataset <- dataset
+  output$dataset <- renderText({dataset)}
 
   
     output$plot <- renderPlot({
