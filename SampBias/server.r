@@ -5,52 +5,41 @@
 library(shiny)
 library(ggplot2)
 
-shinyServer(function(input, output) {
-  
-  # # Computing proportion of orange candies
-  # dataset <- reactive({
-  #   if(input$goButton > 0 | TRUE) {
-  #   data.frame(prob = rbinom(n = input$numsamp, size = input$sampsize, 
-  #                   prob = input$popvalue)/input$sampsize)
-  #   }
-  # })
-    # Computing proportion of orange candies
-  # dataset <- reactive({
-  #   if(input$goButton > 0 | TRUE) {
-  #   replicate(input$numsamp, 
-  #             rnorm(n = input$sampsize, mean = input$popmean, sd = input$popsd))
-  #   }
-  # })
-  # output$dataset <- renderDataTable({dataset)}
+shinyServer(function(input, output) {# For storing which rows have been excluded
+  vals <- reactiveValues(
+    keeprows = rep(TRUE, nrow(mtcars))
+  )
 
-
-  
-    # output$plot <- renderPlot({
-    # input$goButton
-    # # compute means and sd for data
-    # isolate({
-    # confnums <- data.frame(means = apply(dataset(), 2, mean),
-    #                       se = apply(dataset(), 2, sd)/sqrt(input$sampsize))
-  
-  output$plot <- renderPlot({
-    input$goButton
-    isolate({
-#    rangeC <- max(dataset()$prob) - min(dataset()$prob)
+  output$plot1 <- renderPlot({
+    # Plot the kept and excluded points as two separate data sets
+    keep    <- mtcars[ vals$keeprows, , drop = FALSE]
+    exclude <- mtcars[!vals$keeprows, , drop = FALSE]
     
-      # Building histogram of sampling distributionoutput$plot1 <- renderPlot({
-      p <- plot(x = ToothGrowth$supp, y = ToothGrowth$len)
-    #  p <- ggplot(msleep, aes(x = msleep[5], y = msleep[10])) 
-      # p <- p + geom_histogram(fill = "steelblue", color = "black", 
-      #                         binwidth = rangeC/20) +
-      #   theme_bw(base_size = 24) + labs(title = paste("Mean = ", round(mean(dataset()$prob), 3), 
-      #             "; SE = ", 
-      #             round(sqrt(mean(dataset()$prob)*
-      #                         (1-mean(dataset()$prob))/input$sampsize), 3)))
-      
-      print(p)
-    
-    })   
+    ggplot(keep, aes(wt, mpg)) + geom_point() +
+      geom_smooth(method = lm, fullrange = TRUE, shape = 21, color = "black") +
+      geom_point(data = exclude, shape = 21, fill = NA, color = "black", alpha = 0.25) +
+      coord_cartesian(xlim = c(1.5, 5.5), ylim = c(5,35))
   })
-  
-})
+
+  # Toggle points that are clicked
+  observeEvent(input$plot1_click, {
+    res <- nearPoints(mtcars, input$plot1_click, allRows = TRUE)
+
+    vals$keeprows <- xor(vals$keeprows, res$selected_)
+  })
+
+  # Toggle points that are brushed, when button is clicked
+  observeEvent(input$exclude_toggle, {
+    res <- brushedPoints(mtcars, input$plot1_brush, allRows = TRUE)
+
+    vals$keeprows <- xor(vals$keeprows, res$selected_)
+  })
+
+  # Reset all points
+  observeEvent(input$exclude_reset, {
+    vals$keeprows <- rep(TRUE, nrow(mtcars))
+  })
+
+}
+
                             
