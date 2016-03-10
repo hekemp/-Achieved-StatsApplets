@@ -41,6 +41,6 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     vals$keeprows <- rep(TRUE, nrow(mtcars))
   })
 
-}
+})
 
                             
