@@ -3,7 +3,6 @@
 # to a shiny app.
 
 library(shiny)
-library(Cairo)
 
 shinyUI(pageWithSidebar(
   
