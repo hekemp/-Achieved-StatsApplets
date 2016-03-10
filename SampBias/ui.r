@@ -23,7 +23,7 @@ shinyUI(pageWithSidebar(
     actionButton("goButton", "Go!")),
   
   mainPanel(
-    plotOutput("plot1", height = 350,
+      plotOutput("plot1", height = 350,
         click = "plot1_click",
         brush = brushOpts(
           id = "plot1_brush"
@@ -31,5 +31,7 @@ shinyUI(pageWithSidebar(
       ),
       actionButton("exclude_toggle", "Toggle points"),
       actionButton("exclude_reset", "Reset")
-  )  
-))
+    )
+  )
+)
+    
