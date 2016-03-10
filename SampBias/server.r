@@ -4,6 +4,7 @@
 
 library(shiny)
 library(ggplot2)
+library(Cairo)
 
 shinyServer(function(input, output) {# For storing which rows have been excluded
   vals <- reactiveValues(
