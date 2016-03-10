@@ -23,6 +23,5 @@ shinyUI(pageWithSidebar(
   
   mainPanel(
     plotOutput("plot", height="600px")
-    dataTableOutput("dataset")
   )  
 ))
