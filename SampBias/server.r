@@ -38,7 +38,7 @@ shinyServer(function(input, output) {
 #    rangeC <- max(dataset()$prob) - min(dataset()$prob)
     
       # Building histogram of sampling distributionoutput$plot1 <- renderPlot({
-      p <- ggplot(x = ToothGrowth$supp, y = ToothGrowth$len)
+      p <- plot(x = ToothGrowth$supp, y = ToothGrowth$len)
     #  p <- ggplot(msleep, aes(x = msleep[5], y = msleep[10])) 
       # p <- p + geom_histogram(fill = "steelblue", color = "black", 
       #                         binwidth = rangeC/20) +
