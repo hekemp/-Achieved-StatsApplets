@@ -10,14 +10,12 @@ shinyUI(pageWithSidebar(
   
   sidebarPanel(
   
+    helpText("Currently the graph is running on pre-set data, so all of these fields aren't activate at the moment. To see the effects of bias just click the point that will be removed."),
     numericInput("popmean", "Population Mean:", 0),
     numericInput("popsd", "Population SD:", 1),
     numericInput("sampsize", "Sample Size:", 25),
     numericInput("numsamp", "Number of Samples:", 100),
     sliderInput("biasval", "Percent of Estimated Bias:", -1.0, 1.0, 0.0, step = .01, round = FALSE, format = NULL, locale = NULL, ticks = TRUE, animate = FALSE, width = NULL, sep = ",", pre = NULL, post = NULL, timeFormat = NULL, timezone = NULL, dragRange = TRUE),
-    helpText("The following value is used only for debug purposes"),
-    numericInput("popvalue", "DefaultParameter:", .45),
-    br(),
     
     actionButton("goButton", "Go!")),
   
