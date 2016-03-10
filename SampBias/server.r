@@ -21,6 +21,7 @@ shinyServer(function(input, output) {
               rnorm(n = input$sampsize, mean = input$popmean, sd = input$popsd))
     }
   })
+  print(dataset)
   
     output$plot <- renderPlot({
     input$goButton
