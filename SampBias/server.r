@@ -21,7 +21,7 @@ shinyServer(function(input, output) {
               rnorm(n = input$sampsize, mean = input$popmean, sd = input$popsd))
     }
   })
-  print(dataset)
+
   
     output$plot <- renderPlot({
     input$goButton
@@ -45,6 +45,7 @@ shinyServer(function(input, output) {
   #                             (1-mean(dataset()$prob))/input$sampsize), 3)))
       
       print(p)
+      print(dataset)
     
     })   
   })
