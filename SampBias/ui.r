@@ -14,7 +14,7 @@ shinyUI(pageWithSidebar(
     helpText("To use toggle points, highlight the area of points in question and then hit toggle points. This will invert the selected points' statuses."),
     numericInput("sampsize", "Sample Size:", 25),
 
-    actionButton("goButton", "Go!")),
+#    actionButton("goButton", "Go!")),
   
   mainPanel(
       textOutput("meansd1"),
