@@ -21,7 +21,7 @@ shinyUI(pageWithSidebar(
     actionButton("goButton", "Go!")),
   
   mainPanel(
-#      textOutput("meansd1"),
+      textOutput("meansd1"),
       plotOutput("plot1", height = 350,
         click = "plot1_click",
         brush = brushOpts(
