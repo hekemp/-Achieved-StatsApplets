@@ -41,7 +41,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   
   getTitle <- function() {
     mpgdata <- mtcars$mpg
-    return("Mean = " + mean(mpgdata) + " SD = " + sd(mpgdata))
+#    return("Mean = " + mean(mpgdata) + " SD = " + sd(mpgdata))
 #    meanval <- mean(mpgdata)
 #    sdval <- sd(mpgdata)
 #    result0 <- "Mean = " + meanval + " SD = " + sdval
