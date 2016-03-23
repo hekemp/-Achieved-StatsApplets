@@ -8,7 +8,12 @@ library(ggplot2)
 meanvals <- mtcars$mpg
 meannum <- mean(meanvals)
 
-getGraph <- function(){renderPlot({
+shinyServer(function(input, output) {# For storing which rows have been excluded
+  vals <- reactiveValues(
+    keeprows = rep(TRUE, nrow(mtcars))
+  )
+  
+  getGraph <- function(){renderPlot({
     # Plot the kept and excluded points as two separate data sets
     keep    <- mtcars[ vals$keeprows, , drop = FALSE]
     exclude <- mtcars[!vals$keeprows, , drop = FALSE]
@@ -20,12 +25,6 @@ getGraph <- function(){renderPlot({
       print(p)
       #+ labs(title = "Mean = "#paste("Mean = ", round(mean(mtcars), 3), "; SE = ", round(sqrt(mean(mtcars)* (1-mean(mtcars))/input$sampsize), 3)))
   })}
-
-
-shinyServer(function(input, output) {# For storing which rows have been excluded
-  vals <- reactiveValues(
-    keeprows = rep(TRUE, nrow(mtcars))
-  )
 
   output$plot1 <- getGraph()#renderPlot({
     # Plot the kept and excluded points as two separate data sets
