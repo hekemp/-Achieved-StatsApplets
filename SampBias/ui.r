@@ -29,7 +29,7 @@ shinyUI(pageWithSidebar(
            brush = brushOpts(
            id = "plot1_brush"
         )
-      )),
+      ))),
           column(12, plotOutput("plot2"))
          ))
 #      textOutput("meansd1"),
