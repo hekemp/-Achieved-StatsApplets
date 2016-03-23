@@ -15,10 +15,11 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     keep    <- mtcars[ vals$keeprows, , drop = FALSE]
     exclude <- mtcars[!vals$keeprows, , drop = FALSE]
     
-    ggplot(keep, aes(wt, mpg)) + geom_point() +
+    p <- ggplot(keep, aes(wt, mpg)) + geom_point() +
        geom_point(data = exclude, fill = NA, color = "black", alpha = 0.25) +
       coord_cartesian(xlim = c(1.5, 5.5), ylim = c(5,35))
-      + ggtitle("Mean = ... SD = ")
+      p <- p + ggtitle("Mean = ... SD = ")
+      print(p)
       #+ labs(title = "Mean = "#paste("Mean = ", round(mean(mtcars), 3), "; SE = ", round(sqrt(mean(mtcars)* (1-mean(mtcars))/input$sampsize), 3)))
   })
 
