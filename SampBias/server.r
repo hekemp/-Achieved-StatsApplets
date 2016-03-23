@@ -41,8 +41,12 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   
   output$meansd1 <- renderText({
   mpgdata <- mtcars$mpg
-  result <- "Mean = " + mean(mpgdata) + " SD = " + round(sqrt(mean(mpgdata)* (1-mean(mpgdata))/nrow(mtcars), 3))
-  print(result)
+  meanval <- mean(mpgdata)
+  sdval <- sqrt(mean(mpgdata)* (1-mean(mpgdata))/nrow(mtcars))
+#  result <- "Mean = " + mean(mpgdata) + " SD = " + round(sqrt(mean(mpgdata)* (1-mean(mpgdata))/nrow(mtcars), 3))
+ # print(result)
+ print(meanval)
+ print(sdval)
   })
 
 })
