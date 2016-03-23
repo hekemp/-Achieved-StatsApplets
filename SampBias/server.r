@@ -52,7 +52,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   keep2 <- mtcars[vals$keeprows, , drop = FALSE]
   dataTableCars <- data.table(keep2)
   samSet <- dataTableCars[sample(.N, input$sampsize)]
-  return samSet}
+  return(samSet)}
   
   
 #  output$plot2 <- renderPlot({
