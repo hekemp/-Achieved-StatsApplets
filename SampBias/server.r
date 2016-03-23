@@ -4,6 +4,7 @@
 
 library(shiny)
 library(ggplot2)
+library(data.table)
 
 shinyServer(function(input, output) {# For storing which rows have been excluded
   vals <- reactiveValues(
@@ -47,13 +48,16 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     getTitle1()
   })
   
-  output$plot2 <- renderPlot({
-    keeper2 <- mtcars[ vals$keeprows, , drop = FALSE]
-    ransam <- sample(keeper2, input$sampsize, replace = TRUE)
-    
-    ggplot(ransam, aes(wt, mpg)) + geom_point() +
-      coord_cartesian(xlim = c(1.5, 5.5), ylim = c(5,35))
-  })
+#  getSample <- function(){
+#  keepVals <- mtcars[vals$keeprows, ,drop=FALSE]
+#  sampleSet <- keepVals[sample(1:ncol(mtcars[vals$keeprows, , drop=FALSE]), input$sampsize,replace=TRUE),]
+#  return sampleSet}
+  
+#  output$plot2 <- renderPlot({
+#    ransam <- getSample()
+#    ggplot(ransam, aes(wt, mpg)) + geom_point() +
+#      coord_cartesian(xlim = c(1.5, 5.5), ylim = c(5,35))
+#  })
   
 #  getTitle2 <- function() {
 #     paste("Sample Mean = ", mean(newSam$mpg), " | Sample SD = ", sd(newSam$mpg))
