@@ -44,6 +44,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     res <- nearPoints(mtcars, input$plot1_click, allRows = TRUE)
 
     vals$keeprows <- xor(vals$keeprows, res$selected_)
+    getGraph()
   })
 
   # Toggle points that are brushed, when button is clicked
@@ -51,11 +52,13 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     res <- brushedPoints(mtcars, input$plot1_brush, allRows = TRUE)
 
     vals$keeprows <- xor(vals$keeprows, res$selected_)
+    getGraph()
   })
 
   # Reset all points
   observeEvent(input$exclude_reset, {
     vals$keeprows <- rep(TRUE, nrow(mtcars))
+    getGraph()
   })
 })
 
