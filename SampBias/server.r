@@ -8,12 +8,7 @@ library(ggplot2)
 meanvals <- mtcars$mpg
 meannum <- mean(meanvals)
 
-shinyServer(function(input, output) {# For storing which rows have been excluded
-  vals <- reactiveValues(
-    keeprows = rep(TRUE, nrow(mtcars))
-  )
-
-  output$plot1 <- renderPlot({
+getGraph <- function(){renderPlot({
     # Plot the kept and excluded points as two separate data sets
     keep    <- mtcars[ vals$keeprows, , drop = FALSE]
     exclude <- mtcars[!vals$keeprows, , drop = FALSE]
@@ -24,7 +19,26 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
       p <- p + ggtitle(paste("Mean = ", meannum, " SD = "))
       print(p)
       #+ labs(title = "Mean = "#paste("Mean = ", round(mean(mtcars), 3), "; SE = ", round(sqrt(mean(mtcars)* (1-mean(mtcars))/input$sampsize), 3)))
-  })
+  })}
+
+
+shinyServer(function(input, output) {# For storing which rows have been excluded
+  vals <- reactiveValues(
+    keeprows = rep(TRUE, nrow(mtcars))
+  )
+
+  output$plot1 <- getGraph()#renderPlot({
+    # Plot the kept and excluded points as two separate data sets
+#    keep    <- mtcars[ vals$keeprows, , drop = FALSE]
+#    exclude <- mtcars[!vals$keeprows, , drop = FALSE]
+#    
+#    p <- ggplot(keep, aes(wt, mpg)) + geom_point() +
+#       geom_point(data = exclude, fill = NA, color = "black", alpha = 0.25) +
+#      coord_cartesian(xlim = c(1.5, 5.5), ylim = c(5,35))
+#      p <- p + ggtitle(paste("Mean = ", meannum, " SD = "))
+#      print(p)
+#      #+ labs(title = "Mean = "#paste("Mean = ", round(mean(mtcars), 3), "; SE = ", round(sqrt(mean(mtcars)* (1-mean(mtcars))/input$sampsize), 3)))
+#  })
 
   # Toggle points that are clicked
   observeEvent(input$plot1_click, {
