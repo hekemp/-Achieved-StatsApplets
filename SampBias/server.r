@@ -59,8 +59,11 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
 
   output$plot2 <- renderPlot({
   randSam <- getSample()
-  pl <- ggplot(randSam, aes(wt, mpg)) #+ geom_point() +  coord_cartesian(xlim = c(1.5, 5.5), ylim = c(5,35))
-  pl <- pl+ ggtitle(getTitleVar(randSam$mpg))})
+  pl <- ggplot(randSam, aes(wt, mpg)) + geom_point() +  coord_cartesian(xlim = c(1.5, 5.5), ylim = c(5,35))
+  pl <- pl+ ggtitle(getTitleVar(randSam$mpg))
+  print(pl)
+  
+  })
   
 
 })
