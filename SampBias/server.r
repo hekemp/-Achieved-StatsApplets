@@ -39,8 +39,15 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     vals$keeprows <- rep(TRUE, nrow(mtcars))
   })
   
+  
+  mpgdata <- mtcars$mpg
+  meanval <- mean(mpgdata)
+  sdval <- sd(mpgdata)
+  result0 <- "Mean = " + meanval + " SD = " + sdval
+  
   output$meansd1 <- renderText({
-    mpgdata <- mtcars$mpg
+  result0
+   # mpgdata <- mtcars$mpg
   #  meanval <- mean(mpgdata)
   #  sdval <- sd(mpgdata)
       #  result <- "Mean = " + mean(mpgdata) + " SD = " + round(sqrt(mean(mpgdata)* (1-mean(mpgdata))/nrow(mtcars), 3))
