@@ -19,10 +19,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
       geom_smooth(method = lm, fullrange = TRUE, color = "black") +
       geom_point(data = exclude, fill = NA, color = "black", alpha = 0.25) +
       coord_cartesian(xlim = c(1.5, 5.5), ylim = c(5,35))
-      + labs(title = paste("Mean = ", round(mean(mtcars), 3), 
-                 "; SE = ", 
-                 round(sqrt(mean(mtcars)*
-                              (1-mean(mtcars))/input$sampsize), 3)))
+#      + labs(title = paste("Mean = ", round(mean(mtcars), 3), "; SE = ", round(sqrt(mean(mtcars)* (1-mean(mtcars))/input$sampsize), 3)))
   })
 
   # Toggle points that are clicked
