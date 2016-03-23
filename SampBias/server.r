@@ -42,7 +42,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
       coord_cartesian(xlim = c(1.5, 5.5), ylim = c(5,35))
       p <- p + ggtitle(paste("Mean = ", meannum, " SD = "))
       print(p)
-  })
+  })})
 
   # Toggle points that are brushed, when button is clicked
   observeEvent(input$exclude_toggle, {
@@ -60,7 +60,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
       coord_cartesian(xlim = c(1.5, 5.5), ylim = c(5,35))
       p <- p + ggtitle(paste("Mean = ", meannum, " SD = "))
       print(p)
-  })
+  })})
 
   # Reset all points
   observeEvent(input$exclude_reset, {
