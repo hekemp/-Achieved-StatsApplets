@@ -25,7 +25,7 @@ shinyUI(pageWithSidebar(
         tabPanel(textOutput("meansd1")),
         tabPanel(plotOutput("plot1", height = 350, click = "plot1_click", brush = brushOpts(id = "plot1_brush")),),
         tabPanel(actionButton("exclude_toggle", "Toggle points"),),
-        tabPanel(actionButton("exclude_reset", "Reset"))
+        tabPanel(actionButton("exclude_reset", "Reset")),
         tabPanel(textOutput("meansd2")),
         tabPanel(plotOutput("plot2",height = 350))
 #      )
