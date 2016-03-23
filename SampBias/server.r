@@ -31,18 +31,6 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     res <- nearPoints(mtcars, input$plot1_click, allRows = TRUE)
 
     vals$keeprows <- xor(vals$keeprows, res$selected_)
-    
-    renderPlot({
-    # Plot the kept and excluded points as two separate data sets
-    keep    <- mtcars[ vals$keeprows, , drop = FALSE]
-    exclude <- mtcars[!vals$keeprows, , drop = FALSE]
-    
-    p <- ggplot(keep, aes(wt, mpg)) + geom_point() +
-       geom_point(data = exclude, fill = NA, color = "black", alpha = 0.25) +
-      coord_cartesian(xlim = c(1.5, 5.5), ylim = c(5,35))
-      p <- p + ggtitle(paste("Mean = ", meannum, " SD = "))
-      print(p)
-  })
   })
 
   # Toggle points that are brushed, when button is clicked
@@ -50,35 +38,12 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     res <- brushedPoints(mtcars, input$plot1_brush, allRows = TRUE)
 
     vals$keeprows <- xor(vals$keeprows, res$selected_)
-    
-    renderPlot({
-    # Plot the kept and excluded points as two separate data sets
-    keep    <- mtcars[ vals$keeprows, , drop = FALSE]
-    exclude <- mtcars[!vals$keeprows, , drop = FALSE]
-    
-    p <- ggplot(keep, aes(wt, mpg)) + geom_point() +
-       geom_point(data = exclude, fill = NA, color = "black", alpha = 0.25) +
-      coord_cartesian(xlim = c(1.5, 5.5), ylim = c(5,35))
-      p <- p + ggtitle(paste("Mean = ", meannum, " SD = "))
-      print(p)
-  })
   })
 
   # Reset all points
   observeEvent(input$exclude_reset, {
     vals$keeprows <- rep(TRUE, nrow(mtcars))
-    
-    renderPlot({
-    # Plot the kept and excluded points as two separate data sets
-    keep    <- mtcars[ vals$keeprows, , drop = FALSE]
-    exclude <- mtcars[!vals$keeprows, , drop = FALSE]
-    
-    p <- ggplot(keep, aes(wt, mpg)) + geom_point() +
-       geom_point(data = exclude, fill = NA, color = "black", alpha = 0.25) +
-      coord_cartesian(xlim = c(1.5, 5.5), ylim = c(5,35))
-      p <- p + ggtitle(paste("Mean = ", meannum, " SD = "))
-      print(p)
   })
 })
-)
+
                             
