@@ -59,22 +59,10 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
 
   output$plot2 <- renderPlot({
   randSam <- getSample()
+  ranSam2 <- as.data.frame(randSam)
   pl <- ggplot(randSam, aes(wt, mpg)) + geom_point() +  coord_cartesian(xlim = c(1.5, 5.5), ylim = c(5,35))
-  pl <- pl+ ggtitle(getTitleVar(randSam))})
+  pl <- pl+ ggtitle(getTitleVar(ranSam2))})
   
-  
-#  output$plot2 <- renderPlot({
-#    ransam <- getSample()
-#    ggplot(ransam, aes(wt, mpg)) + geom_point() +
-#      coord_cartesian(xlim = c(1.5, 5.5), ylim = c(5,35))
-#  })
-  
-#  getTitle2 <- function() {
-#     paste("Sample Mean = ", mean(newSam$mpg), " | Sample SD = ", sd(newSam$mpg))
-#     }
-#  
-#  output$meansd2 <- renderText({
-#    getTitle2()
 
 })
 
