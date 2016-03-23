@@ -58,12 +58,12 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
       coord_cartesian(xlim = c(1.5, 5.5), ylim = c(5,35))
   })
   
-  getTitle2 <- function() {
-     paste("Sample Mean = ", mean(newSam$mpg), " | Sample SD = ", sd(newSam$mpg))
-     }
-  
-  output$meansd2 <- renderText({
-    getTitle2()
+#  getTitle2 <- function() {
+#     paste("Sample Mean = ", mean(newSam$mpg), " | Sample SD = ", sd(newSam$mpg))
+#     }
+#  
+#  output$meansd2 <- renderText({
+#    getTitle2()
 
 })
 
