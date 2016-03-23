@@ -21,27 +21,16 @@ shinyUI(pageWithSidebar(
     actionButton("goButton", "Go!")),
   
   mainPanel(
-    tabsetPanel(
-     tabPanel("Plot",
-       fluidRow(
-          column(8, plotOutput("plot1", height = 350,
-           click = "plot1_click",
-           brush = brushOpts(
-           id = "plot1_brush"
+      textOutput("meansd1"),
+      plotOutput("plot1", height = 350,
+        click = "plot1_click",
+        brush = brushOpts(
+          id = "plot1_brush"
         )
-      ))),
-          column(12, plotOutput("plot2"))
-         ))
-#      textOutput("meansd1"),
-#      plotOutput("plot1", height = 350,
-#        click = "plot1_click",
-#        brush = brushOpts(
-#          id = "plot1_brush"
-#        )
-#      ),
+      ),
       actionButton("exclude_toggle", "Toggle points"),
       actionButton("exclude_reset", "Reset")
     )
   )
-))
-    
+)
+  
