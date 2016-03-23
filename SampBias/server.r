@@ -5,8 +5,8 @@
 library(shiny)
 library(ggplot2)
 
-#meanvals <- mtcars$mpg
-meannum <- 5 #mean(meanvals)
+meanvals <- mtcars$mpg
+meannum <- mean(meanvals)
 
 shinyServer(function(input, output) {# For storing which rows have been excluded
   vals <- reactiveValues(
