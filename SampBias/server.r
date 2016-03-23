@@ -54,6 +54,14 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   samSet <- dataTableCars[sample(.N, input$sampsize)]
   return(samSet)}
   
+  getTitleVar <- function(dat) {
+    paste("Sample Mean = ", mean(dat), " | Population SD = ", sd(dat))
+
+  output$plot2 <- renderPlot({
+  randSam <- getSample()
+  pl <- ggplot(randSam, aes(wt, mpg)) + geom_point() +  coord_cartesian(xlim = c(1.5, 5.5), ylim = c(5,35))})
+  pl <- pl+ ggtitle(
+  
   
 #  output$plot2 <- renderPlot({
 #    ransam <- getSample()
