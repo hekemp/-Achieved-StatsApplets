@@ -9,6 +9,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   vals <- reactiveValues(
     keeprows = rep(TRUE, nrow(mtcars))
   )
+  
   output$plot1 <- renderPlot({
     # Plot the kept and excluded points as two separate data sets
     keep    <- mtcars[ vals$keeprows, , drop = FALSE]
@@ -55,6 +56,19 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
       #  result <- "Mean = " + mean(mpgdata) + " SD = " + round(sqrt(mean(mpgdata)* (1-mean(mpgdata))/nrow(mtcars), 3))
       # print(result)
   # "Mean = " + meanval + " SD = " + sdval
+  })
+  
+  output$plot2 <- renderPlot({
+   newSam <- sample(keep, input$sampsize, replace = TRUE)
+   ggplot(newSam, aes(wt,mpg))  + geom_point() + coord_cartesian(xlim = c(1.5, 5.5), ylim = c(5,35))
+    })
+    
+  getTitle2 <- function() {
+     paste("Sample Mean = ", mean(newSam$mpg), " | Sample SD = ", sd(newSam$mpg))
+  }
+  
+  output$meansd2 <- renderText({
+    getTitle2()
   })
 
 })
