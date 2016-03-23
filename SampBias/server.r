@@ -52,9 +52,15 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     ransam <- sample(keeper2, input$sampsize, replace = TRUE)
     
     ggplot(ransam, aes(wt, mpg)) + geom_point() +
-#       geom_point(data = exclude, fill = NA, color = "black", alpha = 0.25) +
       coord_cartesian(xlim = c(1.5, 5.5), ylim = c(5,35))
   })
+  
+  getTitle2 <- function() {
+     paste("Sample Mean = ", mean(newSam$mpg), " | Sample SD = ", sd(newSam$mpg))
+     }
+  
+  output$meansd2 <- renderText({
+    getTitle2()
 
 })
 
