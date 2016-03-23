@@ -41,7 +41,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   
   getTitle1 <- function() {
 #    mpgdata <- mtcars$mpg
-     paste("Mean = ", mean(mtcars$mpg), " SD = ", sd(mtcars$mpg))
+     paste("Population Mean = ", mean(mtcars$mpg), " | Population SD = ", sd(mtcars$mpg))
 #    meanval <- mean(mpgdata)
 #    sdval <- sd(mpgdata)
 #    result0 <- "Mean = " + meanval + " SD = " + sdval
