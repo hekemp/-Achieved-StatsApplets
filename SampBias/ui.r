@@ -29,7 +29,9 @@ shinyUI(pageWithSidebar(
         )
       ),
       actionButton("exclude_toggle", "Toggle points"),
-      actionButton("exclude_reset", "Reset")
+      actionButton("exclude_reset", "Reset"),
+      textOutput("meansd2"),
+      plotOutput("plot2", height = 350,),
     )
   )
 )
