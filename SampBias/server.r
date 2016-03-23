@@ -45,6 +45,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
 #    meanval <- mean(mpgdata)
 #    sdval <- sd(mpgdata)
 #    result0 <- "Mean = " + meanval + " SD = " + sdval
+  }
   
   output$meansd1 <- renderText({
   getTitle()
