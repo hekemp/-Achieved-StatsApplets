@@ -9,6 +9,8 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   vals <- reactiveValues(
     keeprows = rep(TRUE, nrow(mtcars))
   )
+  keep <- mtcars[ vals$keeprows, , drop = FALSE]
+  newSam <- keep
   
   output$plot1 <- renderPlot({
     # Plot the kept and excluded points as two separate data sets
