@@ -5,8 +5,6 @@
 library(shiny)
 library(ggplot2)
 
-output$meansd1 <- "5"#"Mean = " + mean(mtcars$mpg) + " SD = " + round(sqrt(mean(mtcars$mpg)* (1-mean(mtcars$mpg))/nrow(mtcars), 3))
-
 shinyServer(function(input, output) {# For storing which rows have been excluded
   vals <- reactiveValues(
     keeprows = rep(TRUE, nrow(mtcars))
@@ -40,6 +38,9 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   observeEvent(input$exclude_reset, {
     vals$keeprows <- rep(TRUE, nrow(mtcars))
   })
+  
+  output$meansd1 <- "5"#"Mean = " + mean(mtcars$mpg) + " SD = " + round(sqrt(mean(mtcars$mpg)* (1-mean(mtcars$mpg))/nrow(mtcars), 3))
+
 })
 
                             
