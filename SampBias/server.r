@@ -39,7 +39,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     vals$keeprows <- rep(TRUE, nrow(mtcars))
   })
   
-  getTitle <- function() {
+  getTitle1 <- function() {
 #    mpgdata <- mtcars$mpg
      paste("Mean = ", mean(mtcars$mpg), " SD = ", sd(mtcars$mpg))
 #    meanval <- mean(mpgdata)
@@ -48,7 +48,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   }
   
   output$meansd1 <- renderText({
-  getTitle()
+  getTitle1()
    # mpgdata <- mtcars$mpg
   #  meanval <- mean(mpgdata)
   #  sdval <- sd(mpgdata)
