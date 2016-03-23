@@ -46,6 +46,15 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   output$meansd1 <- renderText({
     getTitle1()
   })
+  
+  output$plot2 <- renderPlot({
+    keeper2 <- mtcars[ vals$keeprows, , drop = FALSE]
+    ransam <- sample(keeper2, input$sampsize, replace = TRUE)
+    
+    ggplot(ransam, aes(wt, mpg)) + geom_point() +
+#       geom_point(data = exclude, fill = NA, color = "black", alpha = 0.25) +
+      coord_cartesian(xlim = c(1.5, 5.5), ylim = c(5,35))
+  })
 
 })
 
