@@ -15,7 +15,6 @@ shinyUI(pageWithSidebar(
     numericInput("sampsize", "Sample Size:", 25)),
   
   mainPanel(
-      tableOutput("table1"),
       textOutput("meansd1"),
       plotOutput("plot1", height = 350, click = "plot1_click", brush = brushOpts(id = "plot1_brush")),
       actionButton("exclude_toggle", "Toggle points"),
