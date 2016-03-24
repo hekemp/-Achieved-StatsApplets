@@ -6,7 +6,7 @@ library(shiny)
 library(ggplot2)
 library(data.table)
 
-GET /repos/hekemp/StatsApplets/SampBias/baboons.csv
+mydata <- read.csv(baboons.csv)
 
 shinyServer(function(input, output) {# For storing which rows have been excluded
   vals <- reactiveValues(
