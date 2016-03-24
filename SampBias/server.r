@@ -6,6 +6,7 @@ library(shiny)
 library(ggplot2)
 library(data.table)
 
+
 shinyServer(function(input, output) {# For storing which rows have been excluded
   vals <- reactiveValues(
     keeprows = rep(TRUE, nrow(mtcars))
