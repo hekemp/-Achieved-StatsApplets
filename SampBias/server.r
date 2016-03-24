@@ -44,7 +44,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   })
   
   getTitle1 <- function() {
-     paste("Population Mean = ", mean(mtcars$mpg), " | Population SD = ", sd(mtcars$mpg))
+     paste("Population Mean = ", round(mean(mtcars$mpg),3), " | Population SD = ", round(sd(mtcars$mpg),3))
   }
   
   output$meansd1 <- renderText({
@@ -58,7 +58,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     return(samSet)}
   
   getTitleVar <- function(dat) {
-    paste("Sample Mean = ", mean(dat), " | Population SD = ", sd(dat))}
+    paste("Sample Mean = ", round(mean(dat),3), " | Sample SD = ", round(sd(dat),3))}
 
   output$plot2 <- renderPlot({
   randSam <- getSample()
