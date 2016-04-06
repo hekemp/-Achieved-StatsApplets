@@ -51,8 +51,8 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
      res <- subset(baboon, (upperarm < 15)
 #     vals$keeprows <- subset(vals$keeprows, (upperarm < 15))
 #    vals$keeprows <- xor(vals$keeprows, res)
-    
     }
+    
     if(input$selection == "age")
     {vals$keeprows <- rep(TRUE, nrow(baboon))
     }
