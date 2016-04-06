@@ -20,7 +20,6 @@ shinyUI(pageWithSidebar(
     selectInput("selection", "Select what variable there will be bias for:", choices = biasChoices)),
   
   mainPanel(
-      textOutput("rower"),
       textOutput("meansd1"),
       plotOutput("plot1", height = 350, click = "plot1_click", brush = brushOpts(id = "plot1_brush")),
       actionButton("exclude_toggle", "Toggle points"),
