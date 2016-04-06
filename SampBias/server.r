@@ -12,7 +12,6 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   vals <- reactiveValues(
     keeprows = rep(TRUE, nrow(baboon))
   )
-  output$rower <- renderText({vals$keeprows})
   
   output$plot1 <- renderPlot({
     # Plot the kept and excluded points as two separate data sets
@@ -49,7 +48,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     if(input$selection == "armLength")
     {vals$keeprows <- rep(TRUE, nrow(baboon))
     res <- rep(TRUE, nrow(baboon))
-    res[which(baboon$upperarm < 15)] <- FALSE
+    res[which(baboon$upperarm > 15)] <- FALSE
     vals$keeprows <- xor(vals$keeprows, res)
 
     }
