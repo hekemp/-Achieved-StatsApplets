@@ -3,7 +3,9 @@
 # to a shiny app.
 
 library(shiny)
-biasChoices <<- list("Upper Arm Length" = "armLength", "Age" = "age", "Skinfold Depth" = "skinfold"),
+
+biasChoices <<- list("Upper Arm Length" = "armLength", "Age" = "age", "Skinfold Depth" = "skinfold")
+
 shinyUI(pageWithSidebar(
   
   headerPanel("Sampling Bias"),
