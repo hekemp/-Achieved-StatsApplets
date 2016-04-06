@@ -13,6 +13,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     keeprows = rep(TRUE, nrow(baboon))
   )
   
+  reactive({
   if (input$selection == "default")
   {
   output$plot1 <- renderPlot({
@@ -77,7 +78,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     
 #  if (input$selection == "skinfold")
 #    {}
-  
+  })
 
 })
 
