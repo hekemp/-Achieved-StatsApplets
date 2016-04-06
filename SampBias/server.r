@@ -52,7 +52,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
 #     vals$keeprows <- res #vals$keeprows[res]
 #     vals$keeprows <- subset(vals$keeprows, (upperarm < 15))
 #    vals$keeprows <- vals$keeprows[!res]
-    vals$keeprows <- xor(vals$keeprows, $res)
+    vals$keeprows <- xor(vals$keeprows, !res)
     }
     
     if(input$selection == "age")
