@@ -3,7 +3,7 @@
 # to a shiny app.
 
 library(shiny)
-
+biasChoices <<- list("Upper Arm Length" = "armLength", "Age" = "age", "Skinfold Depth" = "skinfold"),
 shinyUI(pageWithSidebar(
   
   headerPanel("Sampling Bias"),
@@ -13,7 +13,6 @@ shinyUI(pageWithSidebar(
     helpText("To see the effects of bias just click the point that will be removed."),
     helpText("To use toggle points, highlight the area of points in question and then hit toggle points. This will invert the selected points' statuses."),
     numericInput("sampsize", "Sample Size:", 25),
-    biasChoices <<- list("Upper Arm Length" = "armLength", "Age" = "age", "Skinfold Depth" = "skinfold"),
     selectInput("selection", "Select what variable there will be bias for:", choices = biasChoices)),
   
   mainPanel(
