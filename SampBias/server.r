@@ -47,11 +47,17 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     if(input$selection == "default")
     {vals$keeprows <- rep(TRUE, nrow(baboon))}
     if(input$selection == "armLength")
-    {}
+    {#vals$keeprows <- rep(TRUE, nrow(baboon)
+    vals$keeprows <- subset(baboon, (upperarm < 15))
+#    vals$keeprows <- xor(vals$keeprows, res)
+    )
+    }
     if(input$selection == "age")
-    {}
+    {vals$keeprows <- rep(TRUE, nrow(baboon))
+    }
     if(input$selection == "skinfold")
-    {}
+    {vals$keeprows <- rep(TRUE, nrow(baboon))
+    }
     })
   
   getTitle1 <- function() {
