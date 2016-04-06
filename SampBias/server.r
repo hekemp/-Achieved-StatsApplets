@@ -13,11 +13,6 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     keeprows = rep(TRUE, nrow(baboon))
   )
   
-  if (input$selection = "default")
-  {keep    <- baboon[ vals$keeprows, , drop = FALSE]
-   exclude <- baboon[!vals$keeprows, , drop = FALSE]
-  }
-  
   output$plot1 <- renderPlot({
     # Plot the kept and excluded points as two separate data sets
     keep    <- baboon[ vals$keeprows, , drop = FALSE]
