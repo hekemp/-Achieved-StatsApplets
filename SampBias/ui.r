@@ -18,6 +18,9 @@ shinyUI(pageWithSidebar(
     helpText("To see examples of pre-established biases, select one of the following variables."),
     helpText("Note: Changing this variable will reset the graph's settings."),
     selectInput("selection", "Select what variable there will be bias for:", choices = biasChoices)),
+    helpText("Upper Arm Length: Baboons with an upper arm length of less than 15 inches will be excluded [Lower 18.72%]."),
+    helpText("Age: Baboons over 12 years old will be excluded [Upper 19.21%]."),
+    helpText("Skinfold Depth: Baboons with over a 7 on the skinfold intentsity scale will be excluded [Upper 15.27%]."),
   
   mainPanel(
       textOutput("meansd1"),
