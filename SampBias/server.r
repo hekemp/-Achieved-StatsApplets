@@ -45,20 +45,24 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   observeEvent(input$selection, {
     if(input$selection == "default")
     {vals$keeprows <- rep(TRUE, nrow(baboon))}
+    
     if(input$selection == "armLength")
     {vals$keeprows <- rep(TRUE, nrow(baboon))
     res <- rep(TRUE, nrow(baboon))
     res[which(baboon$upperarm > 15)] <- FALSE
-    vals$keeprows <- xor(vals$keeprows, res)
-
-    }
+    vals$keeprows <- xor(vals$keeprows, res)}
     
     if(input$selection == "age")
     {vals$keeprows <- rep(TRUE, nrow(baboon))
-    }
+    res <- rep(TRUE, nrow(baboon))
+    res[which(baboon$age < 12)] <- FALSE
+    vals$keeprows <- xor(vals$keeprows, res)}
+    
     if(input$selection == "skinfold")
     {vals$keeprows <- rep(TRUE, nrow(baboon))
-    }
+    res <- rep(TRUE, nrow(baboon))
+    res[which(baboon$skinfold < 7)] <- FALSE
+    vals$keeprows <- xor(vals$keeprows, res)}
     })
   
   getTitle1 <- function() {
