@@ -47,7 +47,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     if(input$selection == "default")
     {vals$keeprows <- rep(TRUE, nrow(baboon))}
     if(input$selection == "armLength")
-    {vals$keeprows <- rep(TRUE, nrow(baboon)
+    {vals$keeprows <- rep(TRUE, nrow(baboon))
      res <- subset(baboon, (upperarm < 15)
 #     vals$keeprows <- subset(vals$keeprows, (upperarm < 15))
 #    vals$keeprows <- xor(vals$keeprows, res)
