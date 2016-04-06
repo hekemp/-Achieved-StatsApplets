@@ -44,7 +44,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   })
   
   observeEvent(input$selection, {
-    if(input$selection == "Default")
+    if(input$selection == "default")
     {vals$keeprows <- rep(TRUE, nrow(baboon))}
   #  if(input$selection == "armLength")
   #  {}
