@@ -12,6 +12,9 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   vals <- reactiveValues(
     keeprows = rep(TRUE, nrow(baboon))
   )
+  output$plot1 = 0
+  output$meansd1 = 0
+  output$plot2 = 0
   
   reactive({
   if (input$selection == "default")
