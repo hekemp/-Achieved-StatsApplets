@@ -44,19 +44,15 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   })
   
   observeEvent(("default" == input$selection), {
-    vals$keeprows <- rep(TRUE, nrow(baboon))})
-  
-  observeEvent((input$selection == "armLength"),{
-  
-  })
-  
-  observeEvent((input$selection == "age"),{
-  
-  })
-  
-  observeEvent((input$selection == "skinfold"),{
-  
-  })
+    if(input$selection == "default")
+    {vals$keeprows <- rep(TRUE, nrow(baboon))}
+    if(input$selection == "armLength")
+    {}
+    if(input$selection == "age")
+    {}
+    if(input$selection == "skinfold")
+    {}
+    )
   
   getTitle1 <- function() {
      paste("Population Mean = ", round(mean(baboon$mass),3), " | Population SD = ", round(sd(baboon$mass),3))
