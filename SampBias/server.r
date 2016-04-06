@@ -52,7 +52,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
 #     vals$keeprows <- res #vals$keeprows[res]
 #     vals$keeprows <- subset(vals$keeprows, (upperarm < 15))
 #    vals$keeprows <- vals$keeprows[!res]
-    vals$keeprows <- which(baboon$upperarm > 15)
+    vals$keeprows <- xor(vals$keeprows, which(baboon$upperarm > 15))
     #vals$keeprows <- xor(vals$keeprows, !res)
     }
     
