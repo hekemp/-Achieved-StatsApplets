@@ -15,7 +15,7 @@ shinyUI(pageWithSidebar(
     helpText("To see the effects of bias just click the point that will be removed."),
     helpText("To use toggle points, highlight the area of points in question and then hit toggle points. This will invert the selected points' statuses."),
     numericInput("sampsize", "Sample Size:", 25),
-    helpText("To see examples of pre-established biases, select one of the following variables."),
+    helpText("To see examples of pre-established biases using a third hidden variable, select one of the following."),
     helpText("Note: Changing this variable will reset the graph's settings."),
     selectInput("selection", "Select what variable there will be bias for:", choices = biasChoices),
     helpText("Upper Arm Length: Baboons with an upper arm length of less than 15 inches will be excluded [Lower 18.72%]."),
