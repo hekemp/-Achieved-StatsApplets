@@ -69,14 +69,14 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   
   })}
   
-  if (input$selection == "armLength") 
-    {}
+#  if (input$selection == "armLength") 
+#    {}
     
-  if (input$selection == "age")
-    {}
+#  if (input$selection == "age")
+#    {}
     
-  if (input$selection == "skinfold")
-    {}
+#  if (input$selection == "skinfold")
+#    {}
   
 
 })
