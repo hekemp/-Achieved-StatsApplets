@@ -14,8 +14,8 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   )
   
   if (input$selection == "default")		
-   {keep    <- baboon[ vals$keeprows, , drop = FALSE]		
-    exclude <- baboon[!vals$keeprows, , drop = FALSE]		
+   {keep    <- baboon
+    exclude <- baboon
    }		
    
   
