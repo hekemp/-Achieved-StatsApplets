@@ -43,6 +43,11 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     vals$keeprows <- rep(TRUE, nrow(baboon))
   })
   
+  observeEvent(input$selection == "default", {
+    res <- brushedPoints(baboon, input$plot1_brush, allRows = TRUE)
+
+    vals$keeprows <- xor(vals$keeprows, res$selected_)})
+  
   getTitle1 <- function() {
      paste("Population Mean = ", round(mean(baboon$mass),3), " | Population SD = ", round(sd(baboon$mass),3))
   }
