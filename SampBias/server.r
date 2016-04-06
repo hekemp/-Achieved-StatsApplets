@@ -12,13 +12,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   vals <- reactiveValues(
     keeprows = rep(TRUE, nrow(baboon))
   )
-  output$plot1 = 0
-  output$meansd1 = 0
-  output$plot2 = 0
   
-  reactive({
-  if (input$selection == "default")
-  {
   output$plot1 <- renderPlot({
     # Plot the kept and excluded points as two separate data sets
     keep    <- baboon[ vals$keeprows, , drop = FALSE]
@@ -71,18 +65,9 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   pl <- pl+ ggtitle(getTitleVar(randSam$mass))
   print(pl)
   
-  })}
-  
-#  if (input$selection == "armLength") 
-#    {}
-    
-#  if (input$selection == "age")
-#    {}
-    
-#  if (input$selection == "skinfold")
-#    {}
   })
-
-})
+  
+  })
+  
 
                             
