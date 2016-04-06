@@ -4,7 +4,7 @@
 
 library(shiny)
 
-biasChoices <<- list("Upper Arm Length" = "armLength", "Age" = "age", "Skinfold Depth" = "skinfold")
+biasChoices <<- list("Default" = "default", "Upper Arm Length" = "armLength", "Age" = "age", "Skinfold Depth" = "skinfold")
 
 shinyUI(pageWithSidebar(
   
@@ -15,6 +15,8 @@ shinyUI(pageWithSidebar(
     helpText("To see the effects of bias just click the point that will be removed."),
     helpText("To use toggle points, highlight the area of points in question and then hit toggle points. This will invert the selected points' statuses."),
     numericInput("sampsize", "Sample Size:", 25),
+    helpText("To see examples of pre-established biases, select one of the following variables."),
+    helpText("Note: Selecting a variable aside from 'Default' will reset the graph's settings."),
     selectInput("selection", "Select what variable there will be bias for:", choices = biasChoices)),
   
   mainPanel(
