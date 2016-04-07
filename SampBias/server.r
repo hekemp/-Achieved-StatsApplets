@@ -61,7 +61,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     if(input$selection == "skinfold")
     {vals$keeprows <- rep(TRUE, nrow(baboon))
     res <- rep(TRUE, nrow(baboon))
-    res[which(baboon$skinfold < 7)] <- FALSE
+    res[which(baboon$skinfold > 7)] <- FALSE
     vals$keeprows <- xor(vals$keeprows, res)}
     })
   
