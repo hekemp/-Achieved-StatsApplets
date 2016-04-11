@@ -90,6 +90,11 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   
   })
   
+  output$plot3 <- renderPlot({
+  randSamp <- getSample()
+  pl <- ggplot(randSam, aes(length, mass)) + geom_point() +  coord_cartesian(xlim = c(66, 157), ylim = c(7,30)) + geom_smooth(method = lm, data = round(mean(randSamp$mass),3), fullrange = TRUE, shape = 21, color = "black")
+  })
+  
   })
   
 
