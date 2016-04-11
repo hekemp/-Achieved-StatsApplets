@@ -89,6 +89,8 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   print(pl)
   
   })
+  output$number <- renderText({
+  paste("The mean is ", mean(randSamp$mass))})
   
   output$plot3 <- renderPlot({
   randSamp <- getSample()
