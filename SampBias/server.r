@@ -92,7 +92,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   
   output$plot3 <- renderPlot({
   randSamp <- getSample()
-  pl <- ggplot(randSamp, aes(length, mass)) + geom_point() +  coord_cartesian(xlim = c(66, 157), ylim = c(7,30)) + abline(v = mean(randSamp$mass))
+  pl <- ggplot(randSamp, aes(length, mass)) + geom_point() +  coord_cartesian(xlim = c(66, 157), ylim = c(7,30)) + abline(h = mean(randSamp$mass))
   print(pl)
   })
   
