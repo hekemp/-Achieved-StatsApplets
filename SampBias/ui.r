@@ -28,7 +28,6 @@ shinyUI(pageWithSidebar(
       actionButton("exclude_toggle", "Toggle points"),
       actionButton("exclude_reset", "Reset"),
       plotOutput("plot2"),
-      textOutput("number"),
       plotOutput("plot3")
     )
   )
