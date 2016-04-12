@@ -100,7 +100,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
       a[timesExecuted] <- round(mean(randSampl$mass), 3)}
     
      bins <- seq(min(a), max(a), length.out = input$numBins + 1)
-     hist(a, breaks = bins, col = 'darkgray', border = 'white')}
+     hist(a, breaks = bins, col = 'darkgray', border = 'white', main = "Histogram of Mean Masses From Samples", xlab = "Mean of Sample")}
   })
   
 #  output$plot3 <- renderPlot({
