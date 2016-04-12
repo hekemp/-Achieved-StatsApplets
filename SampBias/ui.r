@@ -4,7 +4,7 @@
 
 library(shiny)
 
-biasChoices <<- list("Default" = "default", "Upper Arm Length" = "armLength", "Age" = "age", "Skinfold Depth" = "skinfold")
+biasChoices <<- list("Default" = "default", "Upper Arm Length" = "armLength", "Age" = "age", "Skinfold Depth" = "skinfold", "Rank in Tribe" = "ranking", "Location" = "location")
 
 shinyUI(pageWithSidebar(
   
@@ -21,6 +21,12 @@ shinyUI(pageWithSidebar(
     helpText("Upper Arm Length: Baboons with an upper arm length of less than 15 inches will be excluded [Lower 18.72%]."),
     helpText("Age: Baboons over 12 years old will be excluded [Upper 19.21%]."),
     helpText("Skinfold Depth: Baboons with over a 7 on the skinfold intentsity scale will be excluded [Upper 15.27%]."),
+    helpText("Rank in Tribe: Baboons that are at the top of the tribe (ranked from 0.9 to 1.0) will be excluded [Upper 13.79%]."),
+    helpText("Location: Baboons from the sampling sites H and J will be excluded [18.72% of population]."
+    helpText(" "),
+    helpText("This section of the applet will draw the number of samples you specify from your biased population and plot the mean mass of these samples in a histogram using the number of bins of your choosing."),
+    helpText("The population's mean is displayed on the histogram as a red block."),
+    helpText("Note: Changing either of these variables will reset the histograms settings and thus your samples."),
     numericInput("sampleTimes", "Number of Samples Taken:", 20),
     sliderInput("numBins", "Number of Bins:", 1, 100, 10, 1)),
   
