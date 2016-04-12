@@ -90,12 +90,23 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   
   })
   
-  output$plot3 <- renderPlot({
-  randSamp <- getSample()
-  pl <- ggplot(randSamp, aes(length, mass)) + geom_point() +  coord_cartesian(xlim = c(66, 157), ylim = c(7,30)) + abline(col = "lightgray", h = mean(randSamp$mass))
-  pl <- pl+ ggtitle(getTitleVar(randSamp$mass))
-  print(pl)
-  })
+  output$plot3 <- renderplot({
+  a <- c()
+  if(input$sampleTimes <= 0)
+    {}
+  else{
+    for (timesExecuted in 1:input$sampleTimes)
+      a[timesExecuted] = round(mean(getSample()))
+    }
+  bins <- seq(min(a), max(a), length.out = input$numBins + 1)
+  hist(a, breaks = bins, col = 'darkgray', border = 'white')
+  
+#  output$plot3 <- renderPlot({
+#  randSamp <- getSample()
+#  pl <- ggplot(randSamp, aes(length, mass)) + geom_point() +  coord_cartesian(xlim = c(66, 157), ylim = c(7,30)) + abline(col = "lightgray", h = mean(randSamp$mass))
+#  pl <- pl+ ggtitle(getTitleVar(randSamp$mass))
+#  print(pl)
+#  })
   
   })
   
