@@ -100,6 +100,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     }
   bins <- seq(min(a), max(a), length.out = input$numBins + 1)
   hist(a, breaks = bins, col = 'darkgray', border = 'white')
+  })
   
 #  output$plot3 <- renderPlot({
 #  randSamp <- getSample()
