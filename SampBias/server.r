@@ -98,8 +98,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     for (timesExecuted in 1:input$sampleTimes)
     {randSampl <- getSample()
       a[timesExecuted] <- round(mean(randSampl$mass), 3)}
-    altSet <- baboon[vals$keeprows, , drop = FALSE]
-    altSetMean <- c(round(mean(altSet$mass),3))
+    altSetMean <- c(round(mean(baboon$mass),3))
     a[input$sampleTimes + 1] <- altSetMean 
     
      bins <- seq(min(a), max(a), length.out = input$numBins + 1)
