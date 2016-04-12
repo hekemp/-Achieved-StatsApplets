@@ -22,7 +22,7 @@ shinyUI(pageWithSidebar(
     helpText("Age: Baboons over 12 years old will be excluded [Upper 19.21%]."),
     helpText("Skinfold Depth: Baboons with over a 7 on the skinfold intentsity scale will be excluded [Upper 15.27%]."),
     numericInput("sampleTimes", "Number of Samples Taken:", 20),
-    numericInput("numBins", "Number of Bins:", 5)),
+    sliderInput("numBins", "Number of Bins:", 1, 100, 10, 1)),
   
   mainPanel(
       textOutput("meansd1"),
