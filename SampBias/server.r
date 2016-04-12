@@ -97,7 +97,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     a <- c()
     for (timesExecuted in 1:input$sampleTimes)
     {randSampl <- getSample()
-      a[timesExecuted] <- round(mean(randSampl), 3)}
+      a[timesExecuted] <- round(mean(randSampl$mass), 3)}
     
      bins <- seq(min(a), max(a), length.out = input$numBins + 1)
      hist(a, breaks = bins, col = 'darkgray', border = 'white')}
