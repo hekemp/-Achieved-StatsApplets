@@ -98,9 +98,11 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     for (timesExecuted in 1:input$sampleTimes)
     {randSampl <- getSample()
       a[timesExecuted] <- round(mean(randSampl$mass), 3)}
+    altSet <- <- baboon[vals$keeprows, , drop = FALSE]
+    altSetMean <- c(round(mean(altSet),3))
     
      bins <- seq(min(a), max(a), length.out = input$numBins + 1)
-     hist(a, breaks = bins, col = 'darkgray', border = 'white', main = "Histogram of Mean Masses From Samples", xlab = "Mean of Sample")}
+     hist(a, breaks = bins, col = 'darkgray', border = 'white', main = "Histogram of Mean Masses From Samples", xlab = "Mean of Sample") + hist(altSetMean, breaks = bins, col = 'red', border = 'white')}
   })
   
 #  output$plot3 <- renderPlot({
