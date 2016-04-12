@@ -63,6 +63,26 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     res <- rep(TRUE, nrow(baboon))
     res[which(baboon$skinfold < 7)] <- FALSE
     vals$keeprows <- xor(vals$keeprows, res)}
+    
+    if(input$selection == "ranking")
+    {vals$keeprows <- rep(TRUE, nrow(baboon))
+    res <- rep(TRUE, nrow(baboon))
+    res[which(baboon$rank < .9)] <- FALSE
+    vals$keeprows <- xor(vals$keeprows, res)}
+    
+    if(input$selection == "location")
+    {vals$keeprows <- rep(TRUE, nrow(baboon))
+    res <- rep(TRUE, nrow(baboon))
+    res[which(baboon$group == "a")] <- FALSE
+    res[which(baboon$group == "b")] <- FALSE
+    res[which(baboon$group == "c")] <- FALSE
+    res[which(baboon$group == "d")] <- FALSE
+    res[which(baboon$group == "e")] <- FALSE
+    res[which(baboon$group == "f")] <- FALSE
+    res[which(baboon$group == "g")] <- FALSE
+    res[which(baboon$group == "i")] <- FALSE
+    res[which(baboon$group == "k")] <- FALSE
+    vals$keeprows <- xor(vals$keeprows, res)}
     })
   
   getTitle1 <- function() {
