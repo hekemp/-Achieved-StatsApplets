@@ -22,7 +22,7 @@ shinyUI(pageWithSidebar(
     helpText("Age: Baboons over 12 years old will be excluded [Upper 19.21%]."),
     helpText("Skinfold Depth: Baboons with over a 7 on the skinfold intentsity scale will be excluded [Upper 15.27%]."),
     helpText("Rank in Tribe: Baboons that are at the top of the tribe (ranked from 0.9 to 1.0) will be excluded [Upper 13.79%]."),
-    helpText("Location: Baboons from the sampling sites H and J will be excluded [18.72% of population]."
+    helpText("Location: Baboons from the sampling sites H and J will be excluded [18.72% of population]."),
     helpText(" "),
     helpText("This section of the applet will draw the number of samples you specify from your biased population and plot the mean mass of these samples in a histogram using the number of bins of your choosing."),
     helpText("The population's mean is displayed on the histogram as a red block."),
