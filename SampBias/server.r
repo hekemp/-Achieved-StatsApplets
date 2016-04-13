@@ -132,12 +132,12 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
      abline(v=mean(baboon$mass),col="red")
     }
   else{
-    for (timesExecuted in 1:input$sampleTimes)
-    {randSampl <- getSample()
-      a[timesExecuted] <- round(mean(randSampl$mass), 3)}
+#    for (timesExecuted in 1:input$sampleTimes)
+#    {randSampl <- getSample()
+#      a[timesExecuted] <- round(mean(randSampl$mass), 3)}
     
-     bins <- seq(min(a), max(a), length.out = input$numBins + 1)
-     hist(a, breaks = bins, col = 'darkgray', border = 'white', main = "Histogram of Mean Masses From Samples", xlab = "Mean of Sample", ylab = "Frequency", xlim = c(0,30))
+     bins <- seq(min(meanDataSet), max(meanDataSet), length.out = input$numBins + 1)
+     hist(meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = "Histogram of Mean Masses From Samples", xlab = "Mean of Sample", ylab = "Frequency", xlim = c(0,30))
      abline(v=mean(baboon$mass),col="red")
      }
   })
