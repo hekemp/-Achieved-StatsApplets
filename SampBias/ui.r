@@ -29,7 +29,9 @@ shinyUI(pageWithSidebar(
     helpText("Note: Changing either of these variables will reset the histograms settings and thus your samples."),
     actionButton("draw_Sample", "Draw A Sample"),
     numericInput("sampleTimes", "Number of Samples Taken:", 20),
-    sliderInput("numBins", "Number of Bins:", 1, 100, 10, 1)),
+    sliderInput("numBins", "Number of Bins:", 1, 100, 10, 1)
+    textOutput("numSamples"),
+    actionButton("clear_Samples", "Clear Samples")),
   
   mainPanel(
       textOutput("meansd1"),
