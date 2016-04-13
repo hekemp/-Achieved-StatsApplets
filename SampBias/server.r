@@ -94,16 +94,9 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     })
     
     observeEvent(input$draw_10_Sample, {
-    val$meanDataSet[length(val$meanDataSet) + 1] = round(mean(getSample()$mass), 3)
-    val$meanDataSet[length(val$meanDataSet) + 1] = round(mean(getSample()$mass), 3)
-    val$meanDataSet[length(val$meanDataSet) + 1] = round(mean(getSample()$mass), 3)
-    val$meanDataSet[length(val$meanDataSet) + 1] = round(mean(getSample()$mass), 3)
-    val$meanDataSet[length(val$meanDataSet) + 1] = round(mean(getSample()$mass), 3)
-    val$meanDataSet[length(val$meanDataSet) + 1] = round(mean(getSample()$mass), 3)
-    val$meanDataSet[length(val$meanDataSet) + 1] = round(mean(getSample()$mass), 3)
-    val$meanDataSet[length(val$meanDataSet) + 1] = round(mean(getSample()$mass), 3)
-    val$meanDataSet[length(val$meanDataSet) + 1] = round(mean(getSample()$mass), 3)
-    val$meanDataSet[length(val$meanDataSet) + 1] = round(mean(getSample()$mass), 3)
+    for (timesExecuted in 1:10)
+    {val$meanDataSet[length(val$meanDataSet) + 1] = round(mean(getSample()$mass), 3)}
+
 #    for (timesExecuted in 1:10)
  #   {val$meanDataSet[timesExecuted + length(val$meanDataSet)] <- round(mean(getSample()$mass), 3)}
     })
