@@ -122,7 +122,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     a[input$sampleTimes + 1] <- altSetMean 
     
      bins <- seq(min(a), max(a), length.out = input$numBins + 1)
-     hist(a, breaks = bins, col = 'darkgray', border = 'white', main = "Histogram of Mean Masses From Samples", xlab = "Mean of Sample") 
+     hist(a, breaks = bins, col = 'darkgray', border = 'white', main = "Histogram of Mean Masses From Samples", xlab = "Mean of Sample") + abline(v=mean(baboon$mass),col="red")
      hist(altSetMean, breaks = bins, col = 'red', border = 'white', add = TRUE)}
   })
   
