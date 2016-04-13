@@ -7,11 +7,12 @@ library(ggplot2)
 library(data.table)
 
 baboon <- read.csv("baboons.csv")
-meanDataSet <- c()
+#meanDataSet <- c()
 
 shinyServer(function(input, output) {# For storing which rows have been excluded
   vals <- reactiveValues(
     keeprows = rep(TRUE, nrow(baboon))
+    meanDataSet <- c()
   )
   
   output$plot1 <- renderPlot({
@@ -87,14 +88,14 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     })
     
     observeEvent(input$draw_Sample, {
-    meanDataSet[length(meanDataSet) + 1] = round(mean(getSample()$mass), 3)
+    vals$meanDataSet[length(vals$meanDataSet) + 1] = round(mean(getSample()$mass), 3)
     })
     
     observeEvent(input$sampleTimes, {
-    meanDataSet <- c()
+    vals$meanDataSet <- c()
     for (timesExecuted in 1:input$sampleTimes)
     {randSampl <- getSample()
-      meanDataSet[timesExecuted] <- round(mean(randSampl$mass), 3)}
+      vals$meanDataSet[timesExecuted] <- round(mean(randSampl$mass), 3)}
       })
   
   getTitle1 <- function() {
@@ -136,8 +137,8 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
 #    {randSampl <- getSample()
 #      a[timesExecuted] <- round(mean(randSampl$mass), 3)}
     
-     bins <- seq(min(meanDataSet), max(meanDataSet), length.out = input$numBins + 1)
-     hist(meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = "Histogram of Mean Masses From Samples", xlab = "Mean of Sample", ylab = "Frequency", xlim = c(0,30))
+     bins <- seq(min(vals$meanDataSet), max(vals$meanDataSet), length.out = input$numBins + 1)
+     hist(vals$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = "Histogram of Mean Masses From Samples", xlab = "Mean of Sample", ylab = "Frequency", xlim = c(0,30))
      abline(v=mean(baboon$mass),col="red")
      }
   })
