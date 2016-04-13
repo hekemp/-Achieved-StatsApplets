@@ -85,6 +85,17 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     res[which(baboon$group == "k")] <- FALSE
     vals$keeprows <- xor(vals$keeprows, res)}
     })
+    
+    observeEvent(input$draw_Sample, {
+    meanDataSet[length(meanDataSet) + 1] = round(mean(getSample()$mass), 3)
+    })
+    
+    observeEvent(input$sampleTimes, {
+    meanDataSet <- c()
+    for (timesExecuted in 1:input$sampleTimes)
+    {randSampl <- getSample()
+      meanDataSet[timesExecuted] <- round(mean(randSampl$mass), 3)}
+      })
   
   getTitle1 <- function() {
      paste("Population Mean = ", round(mean(baboon$mass),3), " | Population SD = ", round(sd(baboon$mass),3))
@@ -113,25 +124,23 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   
   output$plot3 <- renderPlot({
   if(input$sampleTimes <= 0)
-    {}
+    {plot(1, type="n", main = "Histogram of Mean Masses From Samples", xlab="Mean of Sample", ylab="Frequency", xlim=c(0, 30), ylim=c(0, 2))
+     abline(v=mean(baboon$mass),col="red"}
+  else if (length(meanDataSet) == 0)
+    {plot(1, type="n", main = "Histogram of Mean Masses From Samples", xlab="Mean of Sample", ylab="Frequency", xlim=c(0, 30), ylim=c(0, 2))
+     abline(v=mean(baboon$mass),col="red")
+    }
   else{
-    a <- c()
     for (timesExecuted in 1:input$sampleTimes)
     {randSampl <- getSample()
       a[timesExecuted] <- round(mean(randSampl$mass), 3)}
     
      bins <- seq(min(a), max(a), length.out = input$numBins + 1)
-     hist(a, breaks = bins, col = 'darkgray', border = 'white', main = "Histogram of Mean Masses From Samples", xlab = "Mean of Sample", xlim = c(0,30))
+     hist(a, breaks = bins, col = 'darkgray', border = 'white', main = "Histogram of Mean Masses From Samples", xlab = "Mean of Sample", ylab = "Frequency", xlim = c(0,30))
      abline(v=mean(baboon$mass),col="red")
      }
   })
   
-#  output$plot3 <- renderPlot({
-#  randSamp <- getSample()
-#  pl <- ggplot(randSamp, aes(length, mass)) + geom_point() +  coord_cartesian(xlim = c(66, 157), ylim = c(7,30)) + abline(col = "lightgray", h = mean(randSamp$mass))
-#  pl <- pl+ ggtitle(getTitleVar(randSamp$mass))
-#  print(pl)
-#  })
   
   })
   
