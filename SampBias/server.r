@@ -7,6 +7,7 @@ library(ggplot2)
 library(data.table)
 
 baboon <- read.csv("baboons.csv")
+meanDataSet <- c()
 
 shinyServer(function(input, output) {# For storing which rows have been excluded
   vals <- reactiveValues(
