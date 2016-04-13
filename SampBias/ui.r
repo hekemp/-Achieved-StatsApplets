@@ -28,6 +28,7 @@ shinyUI(pageWithSidebar(
     helpText("A histogram will be constructed using the mean of the mass per sample with the number of bins you specify."),
     helpText("The population's mean is displayed on the histogram as a red line."),
     helpText("Note: Samples drawn from a single point are not supported in this part of the applet."),
+    helpText("If you can't see your sample, try either decreasing the amount of bins or drawing more samples."),
     actionButton("draw_1_Sample", "Draw 1 Sample \n"),
     actionButton("draw_10_Sample", "Draw 10 Samples \n"),
     actionButton("draw_100_Sample", "Draw 100 Samples"),
