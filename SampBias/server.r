@@ -7,7 +7,6 @@ library(ggplot2)
 library(data.table)
 
 baboon <- read.csv("baboons.csv")
-#meanDataSet <- c()
 
 shinyServer(function(input, output) {# For storing which rows have been excluded
   vals <- reactiveValues(
@@ -96,14 +95,11 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     observeEvent(input$draw_10_Sample, {
     for (timesExecuted in 1:10)
     {val$meanDataSet[length(val$meanDataSet) + 1] = round(mean(getSample()$mass), 3)}
-
-#    for (timesExecuted in 1:10)
- #   {val$meanDataSet[timesExecuted + length(val$meanDataSet)] <- round(mean(getSample()$mass), 3)}
     })
     
     observeEvent(input$draw_100_Sample, {
     for (timesExecuted in 1:100)
-    {val$meanDataSet[timesExecuted + length(val$meanDataSet)] <- round(mean(getSample()$mass), 3)}
+    {val$meanDataSet[length(val$meanDataSet) + 1] = round(mean(getSample()$mass), 3)}
     })
       
     observeEvent(input$clear_Samples, {
@@ -143,11 +139,11 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     {plot(1, type="n", main = "Histogram of Mean Masses From Samples", xlab="Mean of Sample", ylab="Frequency", xlim=c(0, 30), ylim=c(0, 2))
      abline(v=mean(baboon$mass),col="red")
     }
-  else if(length(val$meanDataSet) <= 2)
-  {bins <- seq(min(val$meanDataSet), max(val$meanDataSet), length.out = input$numBins + 1)
-     hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = "Histogram of Mean Masses From Samples", xlab = "Mean of Sample", ylab = "Frequency", xlim = c(0,30), ylim=c(0, 2))
-     abline(v=mean(baboon$mass),col="red")
-     }
+#  else if(length(val$meanDataSet) <= 2)
+#  {bins <- seq(min(val$meanDataSet), max(val$meanDataSet), length.out = input$numBins + 1)
+ #    hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = "Histogram of Mean Masses From Samples", xlab = "Mean of Sample", ylab = "Frequency", xlim = c(0,30), ylim=c(0, 2))
+#     abline(v=mean(baboon$mass),col="red")
+#     }
     
   else{
      bins <- seq(min(val$meanDataSet), max(val$meanDataSet), length.out = input$numBins + 1)
