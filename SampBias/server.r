@@ -130,6 +130,9 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   
   })
   
+  getHistTitle <- function()
+  {paste("Histogram of Sample Means from Baboon Population \n Each sample mean is based on a random sample of size ", input$sampsize)}
+  
   output$numSamples <- renderText({
     paste("The number of samples is: ", length(val$meanDataSet))
     })
@@ -147,7 +150,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     
   else{
      bins <- seq(min(val$meanDataSet), max(val$meanDataSet), length.out = input$numBins + 1)
-     hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = "Histogram of Mean Masses From Samples \n sample", xlab = "Mean of Sample", ylab = "Frequency", xlim = c(8,29))
+     hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mean of Sample", ylab = "Frequency", xlim = c(8,29))
      abline(v=mean(baboon$mass),col="red")
      }
   })
