@@ -14,7 +14,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     keeprows = rep(TRUE, nrow(baboon))
   )
   val <- reactiveValues(
-    meanDataSet <- c()
+    meanDataSet = c()
   )
   
   output$plot1 <- renderPlot({
