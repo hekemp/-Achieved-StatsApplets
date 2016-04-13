@@ -136,18 +136,18 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   
   output$plot3 <- renderPlot({
   if(length(val$meanDataSet) == 0)
-    {plot(1, type="n", main = "Histogram of Mean Masses From Samples", xlab="Mean of Sample", ylab="Frequency", xlim=c(8, 29), ylim=c(0, 2))
+    {plot(1, type="n", main = "Histogram of Mean Masses From Samples", sub = "Sample mean", xlab="Mean of Sample", ylab="Frequency", xlim=c(8, 29), ylim=c(0, 2))
      abline(v=mean(baboon$mass),col="red")
     }
   else if(length(val$meanDataSet) == 1)
   {bins <- seq(min(val$meanDataSet), max(val$meanDataSet) + 1, length.out = input$numBins + 1)
-     hist(val$meanDataSet, breaks =bins, col = 'darkgray', border = 'white', main = "Histogram of Mean Masses From Samples", xlab = "Mean of Sample", ylab = "Frequency", xlim = c(8,29), ylim=c(0, 2))
+     hist(val$meanDataSet, breaks =bins, col = 'darkgray', border = 'white', main = "Histogram of Mean Masses From Samples", sub = "Sample mean", xlab = "Mean of Sample", ylab = "Frequency", xlim = c(8,29), ylim=c(0, 2))
      abline(v=mean(baboon$mass),col="red")
      }
     
   else{
      bins <- seq(min(val$meanDataSet), max(val$meanDataSet), length.out = input$numBins + 1)
-     hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = "Histogram of Mean Masses From Samples", xlab = "Mean of Sample", ylab = "Frequency", xlim = c(8,29))
+     hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = "Histogram of Mean Masses From Samples", sub = "Sample mean", xlab = "Mean of Sample", ylab = "Frequency", xlim = c(8,29))
      abline(v=mean(baboon$mass),col="red")
      }
   })
