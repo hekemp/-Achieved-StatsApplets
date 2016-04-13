@@ -140,8 +140,8 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
      abline(v=mean(baboon$mass),col="red")
     }
   else if(length(val$meanDataSet) == 1)
-  {#bins <- seq(min(val$meanDataSet), max(val$meanDataSet), length.out = input$numBins + 1)
-     hist(val$meanDataSet, breaks = input$numBins, col = 'darkgray', border = 'white', main = "Histogram of Mean Masses From Samples", xlab = "Mean of Sample", ylab = "Frequency", xlim = c(0,30), ylim=c(0, 2))
+  {bins <- seq(min(val$meanDataSet), max(val$meanDataSet) + 1, length.out = input$numBins + 1)
+     hist(val$meanDataSet, breaks =bins, col = 'darkgray', border = 'white', main = "Histogram of Mean Masses From Samples", xlab = "Mean of Sample", ylab = "Frequency", xlim = c(0,30), ylim=c(0, 2))
      abline(v=mean(baboon$mass),col="red")
      }
     
