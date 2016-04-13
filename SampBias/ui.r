@@ -27,6 +27,7 @@ shinyUI(pageWithSidebar(
     helpText("This section of the applet will draw the number of samples you specify from your biased population and plot the mean mass of these samples in a histogram using the number of bins of your choosing."),
     helpText("The population's mean is displayed on the histogram as a red block."),
     helpText("Note: Changing either of these variables will reset the histograms settings and thus your samples."),
+    actionButton("draw_Sample", "Draw A Sample"),
     numericInput("sampleTimes", "Number of Samples Taken:", 20),
     sliderInput("numBins", "Number of Bins:", 1, 100, 10, 1)),
   
