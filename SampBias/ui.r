@@ -31,8 +31,6 @@ shinyUI(pageWithSidebar(
     helpText("If you can't see your sample, try either decreasing the amount of bins or drawing more samples."),
     actionButton("draw_1_Sample", "Draw 1 Sample \n"),
     actionButton("draw_10_Sample", "Draw 10 Samples \n"),
-    actionButton("draw_100_Sample", "Draw 100 Samples"),
-    sliderInput("numBins", "Number of Bins:", 1, 100, 10, 1),
     textOutput("numSamples"),
     actionButton("clear_Samples", "Clear Samples")),
   
