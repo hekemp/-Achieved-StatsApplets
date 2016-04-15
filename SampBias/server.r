@@ -151,7 +151,19 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
      
   else {
   bins <- seq(min(baboon$mass), max(baboon$mass), length.out = 11)
-  cVThing <- hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency", xlim = c(8,29))
+  numTimesMin <- 0
+  minNum <- 0
+  for(loopStep in 1:len(val$meanDataSet))
+  {if(minNum < val$meanDataSet[loopStep])
+    {numTimesMin <- 0
+    minNum <- val$meanDataSet[loopStep])
+    for(loopStep2 in loopStep:len(val$meanDataSet))
+    {if(minNum == val$meanDataSet[loopStep2])
+      numTimesMin <- numTimesMin + 1
+    }
+    }
+  }
+  cVThing <- hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency", xlim = c(8,29), ylim(0, numTimesMin + 1))
   counterV <- 21 + (max(cVThingt$counts) - 20)
      hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency", xlim = c(8,29), ylim = c(0, counterV))
      abline(v=mean(baboon$mass),col="red")
