@@ -96,11 +96,6 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     for (timesExecuted in 1:10)
     {val$meanDataSet[length(val$meanDataSet) + 1] = round(mean(getSample()$mass), 3)}
     })
-    
-    observeEvent(input$draw_100_Sample, {
-    for (timesExecuted in 1:100)
-    {val$meanDataSet[length(val$meanDataSet) + 1] = round(mean(getSample()$mass), 3)}
-    })
       
     observeEvent(input$clear_Samples, {
     val$meanDataSet <- c()})
@@ -139,20 +134,25 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   
   output$plot3 <- renderPlot({
   if(length(val$meanDataSet) == 0)
-    {plot(1, type="n", main = getHistTitle(), xlab="Mass", ylab="Frequency", xlim=c(8, 29), ylim=c(0, 2))
+    {plot(1, type="n", main = getHistTitle(), xlab="Mass", ylab="Frequency", xlim=c(8, 29), ylim= c(0, 21))
      abline(v=mean(baboon$mass),col="red")
     }
   else if(length(val$meanDataSet) == 1)
-  {bins <- seq(min(val$meanDataSet), max(val$meanDataSet) + 1, length.out = input$numBins + 1)
-     hist(val$meanDataSet, breaks =bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency", xlim = c(8,29), ylim=c(0, 2))
+  {bins <- seq(min(baboon$mass), max(baboon$mass), length.out = 11)
+     hist(val$meanDataSet, breaks =bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency", xlim = c(8,29), ylim= c(0, 21))
      abline(v=mean(baboon$mass),col="red")
      }
     
-  else{
-     bins <- seq(min(val$meanDataSet), max(val$meanDataSet), length.out = input$numBins + 1)
-     hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency", xlim = c(8,29))
+  else if (max(val$meanDataSet$counts) <= 20) {
+     bins <- seq(min(baboon$mass), max(baboon$mass), length.out = 11)
+     hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency", xlim = c(8,29), ylim = c(0, 21))
      abline(v=mean(baboon$mass),col="red")
      }
+     
+  else {
+  bins <- seq(min(baboon$mass), max(baboon$mass), length.out = 11)
+     hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency", xlim = c(8,29), ylim = c(0, 21 + ((max(val$meanDataSet$counts) - 20)) ))
+     abline(v=mean(baboon$mass),col="red")
   })
   
   
