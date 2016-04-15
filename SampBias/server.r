@@ -167,13 +167,13 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
 #    }
 #  }
   
-     if (numTimesMin <= 20) {
-     hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = numTimesMin, ylab = "Frequency", xlim = c(8,29), ylim = c(0, 21))
+     if (minNumFinal <= 20) {
+     hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency", xlim = c(8,29), ylim = c(0, 21))
      abline(v=mean(baboon$mass),col="red")
      }
      
     else {
-      hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency", xlim = c(8,29), ylim = c(0, numTimesMin))
+      hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency", xlim = c(8,29), ylim = c(0, minNumFinal))
       abline(v=mean(baboon$mass),col="red")
     }
   }
