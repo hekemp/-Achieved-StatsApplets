@@ -145,16 +145,23 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     
   else {
     numTimesMin <- 0
-    minNum <- 100
+    minNumFinal <- 1000000
     for(loopStep in 1:length(val$meanDataSet))
-    {if(minNum > floor(val$meanDataSet[loopStep]))
-     {numTimesMin <- 0
-      minNum <- floor(val$meanDataSet[loopStep])
-      for(loopStep2 in loopStep:length(val$meanDataSet))
-        {if(minNum == floor(val$meanDataSet[loopStep2]))
+      {for(loopStep2 in loopStep:length(val$meanDataSet))
+        {if(floor(val$meanDataSet[loopStep]) == floor(val$meanDataSet[loopStep2]))
           {numTimesMin <- numTimesMin + 1}}
-    }
-  }
+      if(minNumFinal > numTimesMin)
+        minNumFinal <- numTimesMin
+        }
+          
+#    {if(minNum > floor(val$meanDataSet[loopStep]))
+#     {numTimesMin <- 0
+#      minNum <- floor(val$meanDataSet[loopStep])
+#      for(loopStep2 in loopStep:length(val$meanDataSet))
+#        {if(minNum == floor(val$meanDataSet[loopStep2]))
+#          {numTimesMin <- numTimesMin + 1}}
+#    }
+#  }
   
      if (numTimesMin <= 20) {
      bins <- seq(min(baboon$mass), max(baboon$mass), length.out = 41)
