@@ -158,7 +158,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   
      if (numTimesMin <= 20) {
      bins <- seq(min(baboon$mass), max(baboon$mass), length.out = 41)
-     hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency", xlim = c(8,29), ylim = c(0, 21))
+     hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = numTimesMin, ylab = "Frequency", xlim = c(8,29), ylim = c(0, 21))
      abline(v=mean(baboon$mass),col="red")
      }
      
