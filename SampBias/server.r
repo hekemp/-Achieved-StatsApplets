@@ -145,46 +145,15 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
      }
     
   else {
-  bins <- seq(min(baboon$mass), max(baboon$mass), length.out = 41)
-    minNumFinal <- 1000000
-    for(firstLoopVar in 1: length(bins)-1)
-      {tempStore <- c()
-      tempVals <- which(vals$meanDataSet > bins[firstLoopVar])
-      for (tempCount in 1: length(tempVals))
-        tempStore[tempCount] <- val$meanDataSet[tempCount]
-      secondTemp <- which(tempStore < bins[firstLoopVar + 1])
-      if (minNumFinal > length(secondTemp))
-        minNumFinal <- length(secondTemp)
-        }
         
      if (minNumFinal <= 20) {
      bins <- seq(min(baboon$mass), max(baboon$mass), length.out = 41)
-    minNumFinal <- 1000000
-    for(firstLoopVar in 1: length(bins)-1)
-      {tempStore <- c()
-      tempVals <- which(vals$meanDataSet > bins[firstLoopVar])
-      for (tempCount in 1: length(tempVals))
-        tempStore[tempCount] <- val$meanDataSet[tempCount]
-      secondTemp <- which(tempStore < bins[firstLoopVar + 1])
-      if (minNumFinal > length(secondTemp))
-        minNumFinal <- length(secondTemp)
-        }
      hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency", xlim = c(8,29), ylim = c(0, 21))
      abline(v=mean(baboon$mass),col="red")
      }
      
     else {
     bins <- seq(min(baboon$mass), max(baboon$mass), length.out = 41)
-    minNumFinal <- 1000000
-    for(firstLoopVar in 1: length(bins)-1)
-      {tempStore <- c()
-      tempVals <- which(vals$meanDataSet > bins[firstLoopVar])
-      for (tempCount in 1: length(tempVals))
-        tempStore[tempCount] <- val$meanDataSet[tempCount]
-      secondTemp <- which(tempStore < bins[firstLoopVar + 1])
-      if (minNumFinal > length(secondTemp))
-        minNumFinal <- length(secondTemp)
-        }
       hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency", xlim = c(8,29), ylim = c(0, minNumFinal))
       abline(v=mean(baboon$mass),col="red")
     }
