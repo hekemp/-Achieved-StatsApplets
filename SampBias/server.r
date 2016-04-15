@@ -133,6 +133,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     })
   
   output$plot3 <- renderPlot({
+  
   if(length(val$meanDataSet) == 0)
     {plot(1, type="n", main = getHistTitle(), xlab="Mass", ylab="Frequency", xlim=c(8, 29), ylim= c(0, 21))
      abline(v=mean(baboon$mass),col="red")
@@ -144,15 +145,18 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
      }
     
   else {
-    numTimesMin <- 0
+    bins <- seq(min(baboon$mass), max(baboon$mass), length.out = 41)
     minNumFinal <- 1000000
-    for(loopStep in 1:length(val$meanDataSet))
-      {for(loopStep2 in loopStep:length(val$meanDataSet))
-        {if(floor(val$meanDataSet[loopStep]) == floor(val$meanDataSet[loopStep2]))
-          {numTimesMin <- numTimesMin + 1}}
-      if(minNumFinal > numTimesMin)
-        minNumFinal <- numTimesMin
+    for(firstLoopVar in 1: length(bins)-1)
+      {tempStore <- c()
+      tempVals <- which(vals$meanDataSet > bins[firstLoopVar])
+      for (tempCount in 1: length(tempVals))
+        tempStore[tempCount] <- val$meanDataSet[tempCount]
+      secondTemp <- which(tempStore < bins[firstLoopVar + 1])
+      if (minNumFinal > length(secondTemp))
+        minNumFinal <- length(secondTemp)
         }
+        
           
 #    {if(minNum > floor(val$meanDataSet[loopStep]))
 #     {numTimesMin <- 0
@@ -164,13 +168,11 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
 #  }
   
      if (numTimesMin <= 20) {
-     bins <- seq(min(baboon$mass), max(baboon$mass), length.out = 41)
      hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = numTimesMin, ylab = "Frequency", xlim = c(8,29), ylim = c(0, 21))
      abline(v=mean(baboon$mass),col="red")
      }
      
     else {
-      bins <- seq(min(baboon$mass), max(baboon$mass), length.out = 41)
       hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency", xlim = c(8,29), ylim = c(0, numTimesMin))
       abline(v=mean(baboon$mass),col="red")
     }
