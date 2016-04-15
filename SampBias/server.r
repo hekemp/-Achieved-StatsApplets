@@ -145,7 +145,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     
   else {
     numTimesMin <- 0
-    minNum <- 0
+    minNum <- 100
     for(loopStep in 1:length(val$meanDataSet))
     {if(minNum > floor(val$meanDataSet[loopStep]))
      {numTimesMin <- 0
