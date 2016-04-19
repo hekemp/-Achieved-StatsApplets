@@ -4,7 +4,7 @@
 
 library(shiny)
 
-biasChoices <<- list("Default" = "default", "Upper arm length of less than 15 inches (Lower 18.72%)" = "armLength", "Over 12 years old (Upper 19.21%)" = "age", "Over a 7 on the skinfold intentsity scale (Upper 15.27%)" = "skinfold", "Ranked from 0.9 to 1.0 in the tribe (Upper 13.79%)" = "ranking", "From sampling sites H and J (18.72% of population)" = "location")
+biasChoices <<- list("Default" = "default", "Upper arm length of less than 15 inches (Lower 18.72%)" = "armLength", "Over 12 years old (Upper 19.21%)" = "age", "With over 7mm of skinfolds (Upper 15.27%)" = "skinfold", "Ranked from 0.9 to 1.0 in the tribe (Upper 13.79%)" = "ranking", "From sampling sites H and J (18.72% of population)" = "location")
 
 shinyUI(pageWithSidebar(
   
