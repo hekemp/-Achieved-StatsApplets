@@ -147,7 +147,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   else {
          bins <- seq(min(baboon$mass), max(baboon$mass), length.out = 41)
          counta <- hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency")$counts
-         if(counta <= 20)
+         if(max(counta) <= 20)
            {counta <- hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency")$counts
             hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency", xlim = c(8,29), ylim = c(0, 21))
             abline(v=mean(baboon$mass),col="red")}
