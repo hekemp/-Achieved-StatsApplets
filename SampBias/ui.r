@@ -4,7 +4,7 @@
 
 library(shiny)
 
-biasChoices <<- list("Default" = "default", "Excludes baboons with an upper arm length of less than 15 inches (Lower 18.72%)" = "armLength", "Excludes baboons over 12 years old (Upper 19.21%)" = "age", "Excludes baboons with over a 7 on the skinfold intentsity scale (Upper 15.27%)" = "skinfold", "Excludes baboons ranked from 0.9 to 1.0 in the tribe (Upper 13.79%)" = "ranking", "Excludes baboons from sampling sites H and J (18.72% of population)" = "location")
+biasChoices <<- list("Default" = "default", "Upper arm length of less than 15 inches (Lower 18.72%)" = "armLength", "Over 12 years old (Upper 19.21%)" = "age", "Over a 7 on the skinfold intentsity scale (Upper 15.27%)" = "skinfold", "Ranked from 0.9 to 1.0 in the tribe (Upper 13.79%)" = "ranking", "From sampling sites H and J (18.72% of population)" = "location")
 
 shinyUI(pageWithSidebar(
   
@@ -17,7 +17,7 @@ shinyUI(pageWithSidebar(
     numericInput("sampsize", "Sample Size:", 25),
     helpText("To see examples of pre-established biases using a third hidden variable, select one of the following."),
     helpText("Note: Changing this variable will reset the graph's settings."),
-    selectInput("selection", "Select what variable there will be bias for:", choices = biasChoices),
+    selectInput("selection", "Select a group of baboons to exclude:", choices = biasChoices),
 #    helpText("Upper Arm Length: Baboons with an upper arm length of less than 15 inches will be excluded [Lower 18.72%]."),
 #    helpText("Age: Baboons over 12 years old will be excluded [Upper 19.21%]."),
 #    helpText("Skinfold Depth: Baboons with over a 7 on the skinfold intentsity scale will be excluded [Upper 15.27%]."),
