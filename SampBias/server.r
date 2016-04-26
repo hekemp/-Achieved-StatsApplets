@@ -16,7 +16,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     if(input$popSelect == "all")
       {baboon <- baboons}
     if(input$popSelect == "males")
-      {baboon <- baboonM)}
+      {baboon <- baboonM}
     if(input$popSelect == "females")
       {baboon <- baboonF}
       })
