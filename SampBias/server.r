@@ -17,7 +17,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     baboon <- read.csv("baboonsM.csv")
   if(input$popSelect == "females")
     baboon <- read.csv("baboonsF.csv")
-  }
+  })
     
   vals <- reactiveValues(
     keeprows = rep(TRUE, nrow(baboon))
