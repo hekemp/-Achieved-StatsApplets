@@ -6,33 +6,15 @@ library(shiny)
 library(ggplot2)
 library(data.table)
 
-baboons <- read.csv("baboons.csv")
-baboonM <- read.csv("baboonsM.csv")
-baboonF <- read.csv("baboonsF.csv")
+baboon <- read.csv("baboons.csv")
 
 shinyServer(function(input, output) {# For storing which rows have been excluded
-
-  baboon <- reactive({
-  switch(input$dataset, "all" = baboons, "males" = baboonM, "females" = baboonF)
-  })
-
-  observeEvent(input$popSelect, {
-    if(input$popSelect == "all")
-      {baboon <- baboons}
-    if(input$popSelect == "males")
-      {baboon <- baboonM}
-    if(input$popSelect == "females")
-      {baboon <- baboonF}
-      #clearSamples
-      })
-  
   vals <- reactiveValues(
-    keeprows = rep(TRUE, nrow(baboon()))
+    keeprows = rep(TRUE, nrow(baboon))
   )
   val <- reactiveValues(
     meanDataSet = c()
   )
-  
   
   output$plot1 <- renderPlot({
     # Plot the kept and excluded points as two separate data sets
@@ -180,6 +162,3 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   
   
   })
-  
-
-                     
