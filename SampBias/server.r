@@ -22,11 +22,16 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
  #   baboon <- read.csv("baboonsF.csv")
 #  })
  baboon <- reactive({
-    switch(input$popSelect, "baboons.csv" = baboonA, "baboonsM.csv" = baboonM, "baboonsF.csv" = baboonF)
-    })
+    if(input$popSelect == "baboons.csv")
+      baboonA
+    if(input$popSelect == "baboonsM.csv")
+      baboonM
+    if(input$popSelect == "baboonsF.csv")
+      baboonF
+      })
   
   vals <- reactiveValues(
-    keeprows = rep(TRUE, nrow(baboon()))
+    keeprows = rep(TRUE, nrow(baboon))
   )
   val <- reactiveValues(
     meanDataSet = c()
