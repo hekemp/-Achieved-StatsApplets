@@ -12,16 +12,18 @@ baboonsF <- read.csv("baboonsF.csv")
 
 
 shinyServer(function(input, output) {# For storing which rows have been excluded
+  baboon <- reactive({
+  switch(input$dataset, "all" = baboons, "males" = baboonsM, "females" = baboonsF)
+  })
+  
   vals <- reactiveValues(
-    keeprows = rep(TRUE, nrow(baboon))
+    keeprows = rep(TRUE, nrow(baboon()))
   )
   val <- reactiveValues(
     meanDataSet = c()
   )
   
-  baboon <- reactive({
-  switch(input$dataset, "all" = baboons, "males" = baboonsM, "females" = baboonsF)
-  })
+  
   
   output$plot1 <- renderPlot({
     # Plot the kept and excluded points as two separate data sets
