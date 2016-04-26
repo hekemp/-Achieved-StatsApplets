@@ -17,12 +17,12 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   )
   
   observeEvent(input$popSelect, {
-    if(input$popSelect == "default")
-      baboon <- read.csv("baboons.csv")
+    if(input$popSelect == "all")
+      {baboon <- read.csv("baboons.csv")}
     if(input$popSelect == "males")
-      baboon <- read.csv("baboonsM.csv")
+      {baboon <- read.csv("baboonsM.csv")}
     if(input$popSelect == "females")
-      baboon <- read.csv("baboonsF.csv")
+      {baboon <- read.csv("baboonsF.csv")}
       })
   
   output$plot1 <- renderPlot({
