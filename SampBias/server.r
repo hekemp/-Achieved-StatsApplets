@@ -31,7 +31,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
       })
   
   vals <- reactiveValues(
-    keeprows = rep(TRUE, nrow(baboon))
+    keeprows = rep(TRUE, nrow(baboon()))
   )
   val <- reactiveValues(
     meanDataSet = c()
