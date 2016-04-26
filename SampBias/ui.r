@@ -5,7 +5,7 @@
 library(shiny)
 
 biasChoices <<- list("Default" = "default", "Upper arm length of less than 15 inches (Lower 18.72%)" = "armLength", "Over 12 years old (Upper 19.21%)" = "age", "With over 7mm of skinfolds (Upper 15.27%)" = "skinfold", "Ranked from 0.9 to 1.0 in the tribe (Upper 13.79%)" = "ranking", "From sampling sites H and J (18.72% of population)" = "location")
-populationChoices <<- list("All Baboons" = "all", "Male Baboons" = "males", "Female Baboons" = "females")
+populationChoices <<- list("All Baboons" = "baboons.csv", "Male Baboons" = "baboonsM.csv", "Female Baboons" = "baboonsF.csv")
 
 
 shinyUI(pageWithSidebar(
