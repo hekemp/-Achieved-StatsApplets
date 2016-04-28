@@ -29,7 +29,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   observeEvent(input$plot1_click, {
     res <- nearPoints(baboon, input$plot1_click, allRows = TRUE)
     vals$keeprows <- xor(vals$keeprows, res$selected_)
-     if (ncol(res) != 0)
+     if (nrow(nearPoints(baboon, input$plot1_click, allRows = FALSE)) != 0)
       {val$meanDataSet <- c()}
   })
 
