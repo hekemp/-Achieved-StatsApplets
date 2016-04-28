@@ -19,11 +19,11 @@ baboon <- reactive(
     baboon <- baboonA
 )
   if(popSelectionChoice == "all")
-    {baboon$baboon <- baboonA}
+    {baboon <- baboonA}
   if(popSelectionChoice == "males")
-    {baboon$baboon <- baboonM}
+    {baboon <- baboonM}
   if(popSelectionChoice == "females")
-    {baboon$baboon <- baboonF}
+    {baboon <- baboonF}
 
   vals <- reactiveValues(
     keeprows = rep(TRUE, nrow(baboon)))
