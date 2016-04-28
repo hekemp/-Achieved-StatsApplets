@@ -31,7 +31,8 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
       coord_cartesian(xlim = c(66, 157), ylim = c(7,30))
   })
   
-  baboon <- read.csv("baboonsM.csv")
+  observeEvent(input$selection, {
+    baboon <- read.csv("baboonsM.csv")}
 
   # Toggle points that are clicked
   observeEvent(input$plot1_click, {
