@@ -29,12 +29,14 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   observeEvent(input$plot1_click, {
     res <- nearPoints(baboon, input$plot1_click, allRows = TRUE)
     vals$keeprows <- xor(vals$keeprows, res$selected_)
+    val$meanDataSet <- c()
   })
 
   # Toggle points that are brushed, when button is clicked
   observeEvent(input$exclude_toggle, {
     res <- brushedPoints(baboon, input$plot1_brush, allRows = TRUE)
     vals$keeprows <- xor(vals$keeprows, res$selected_)
+    val$meanDataSet <- c()
     })
     
   observeEvent(input$sampsize, {
@@ -43,35 +45,45 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   # Reset all points
   observeEvent(input$exclude_reset, {
     vals$keeprows <- rep(TRUE, nrow(baboon))
+    val$meanDataSet <- c()
   })
   
   observeEvent(input$selection, {
     if(input$selection == "default")
-    {vals$keeprows <- rep(TRUE, nrow(baboon))}
+    {vals$keeprows <- rep(TRUE, nrow(baboon))
+     val$meanDataSet <- c()}
 
     if(input$selection == "armLength")
     {vals$keeprows <- rep(TRUE, nrow(baboon))
     res <- rep(TRUE, nrow(baboon))
     res[which(baboon$upperarm > 15)] <- FALSE
-    vals$keeprows <- xor(vals$keeprows, res)}
+    vals$keeprows <- xor(vals$keeprows, res)
+    val$meanDataSet <- c()
+    }
     
     if(input$selection == "age")
     {vals$keeprows <- rep(TRUE, nrow(baboon))
     res <- rep(TRUE, nrow(baboon))
     res[which(baboon$age < 12)] <- FALSE
-    vals$keeprows <- xor(vals$keeprows, res)}
+    vals$keeprows <- xor(vals$keeprows, res)
+    val$meanDataSet <- c()
+    }
     
     if(input$selection == "skinfold")
     {vals$keeprows <- rep(TRUE, nrow(baboon))
     res <- rep(TRUE, nrow(baboon))
     res[which(baboon$skinfold < 7)] <- FALSE
-    vals$keeprows <- xor(vals$keeprows, res)}
+    vals$keeprows <- xor(vals$keeprows, res)
+    val$meanDataSet <- c()
+    }
 
     if(input$selection == "ranking")
     {vals$keeprows <- rep(TRUE, nrow(baboon))
     res <- rep(TRUE, nrow(baboon))
     res[which(baboon$rank < .9)] <- FALSE
-    vals$keeprows <- xor(vals$keeprows, res)}
+    vals$keeprows <- xor(vals$keeprows, res)
+    val$meanDataSet <- c()
+    }
 
     if(input$selection == "location")
     {vals$keeprows <- rep(TRUE, nrow(baboon))
@@ -85,7 +97,9 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     res[which(baboon$group == "g")] <- FALSE
     res[which(baboon$group == "i")] <- FALSE
     res[which(baboon$group == "k")] <- FALSE
-    vals$keeprows <- xor(vals$keeprows, res)}
+    vals$keeprows <- xor(vals$keeprows, res)
+    val$meanDataSet <- c()
+    }
     })
 
     observeEvent(input$draw_1_Sample, {
