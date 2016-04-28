@@ -6,7 +6,7 @@ library(shiny)
 library(ggplot2)
 library(data.table)
 
-baboon <- read.csv("baboons.csv")
+baboons <- read.csv("baboons.csv")
 
 baboonA <- read.csv("baboons.csv")
 baboonM <- read.csv("baboonsM.csv")
@@ -16,13 +16,13 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
 
   observeEvent(input$popSelect, {
     if(input$popSelect == "all")
-    {baboon <- baboonA
+    {baboon <- baboons
     vals$keeprows <- rep(TRUE, nrow(baboon))
     val$meanDataSet <- c()
     valr$lastSample <- c()
     }
     if(input$popSelect == "males")
-    {baboon <- baboonM
+    {baboon <- baboons[-which(baboon$sex == "F"),]
     vals$keeprows <- rep(TRUE, nrow(baboon))
     val$meanDataSet <- c()
     valr$lastSample <- c()
