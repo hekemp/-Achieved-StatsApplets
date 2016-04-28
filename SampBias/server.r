@@ -157,10 +157,10 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     paste("Sample Mean = ", round(mean(dat),3), " | Sample SD = ", round(sd(dat),3))}
 
   output$plot2 <- renderPlot({
-    if(length(valr$meanDataSet) == 0)
-      {ggplot(valr$lastSample, aes(x = valr$lastSample$length, y = valr$lastSample$mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() + coord_cartesian(xlim = c(66, 157), ylim = c(7,30)) + ggtitle(paste("Sample Mean = N/A | Sample SD = N/A"))
-      }
-    else
+    #if(length(valr$meanDataSet) == 0)
+    #  {ggplot(valr$lastSample, aes(x = valr$lastSample$length, y = valr$lastSample$mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() + coord_cartesian(xlim = c(66, 157), ylim = c(7,30)) + ggtitle(paste("Sample Mean = N/A | Sample SD = N/A"))
+    #  }
+    #else
       {ggplot(valr$lastSample, aes(x = valr$lastSample$length, y = valr$lastSample$mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() + coord_cartesian(xlim = c(66, 157), ylim = c(7,30)) + ggtitle(getTitleVar(lastSample$mass))
       }
 #  randSam <- getSample()
