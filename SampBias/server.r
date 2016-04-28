@@ -21,7 +21,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     # Plot the kept and excluded points as two separate data sets
     keep    <- baboon[ vals$keeprows, , drop = FALSE]
     exclude <- baboon[!vals$keeprows, , drop = FALSE]
-    ggplot(keep, aes(length, mass)) + geom_point() + geom_point(data = exclude, fill = NA, color = "black", alpha = 0.25) +
+    ggplot(keep, aes(length, mass), xlab = "Length (ft)", ylab = "Mass (lbs)") + geom_point() + geom_point(data = exclude, fill = NA, color = "black", alpha = 0.25) +
       coord_cartesian(xlim = c(66, 157), ylim = c(7,30))
   })
 
@@ -119,7 +119,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
 
   output$plot2 <- renderPlot({
   randSam <- getSample()
-  pl <- ggplot(randSam, aes(length, mass)) + geom_point() +  coord_cartesian(xlim = c(66, 157), ylim = c(7,30))
+  pl <- ggplot(randSam, aes(length, mass)) + geom_point() +  coord_cartesian(xlim = c(66, 157), ylim = c(7,30), xlab = "Length (ft)", ylab = "Mass (lbs)")
   pl <- pl+ ggtitle(getTitleVar(randSam$mass))
   print(pl)
   })
@@ -133,27 +133,27 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     
   output$plot3 <- renderPlot({
   if(length(val$meanDataSet) == 0)
-    {plot(1, type="n", main = getHistTitle(), xlab="Mass", ylab="Frequency", xlim=c(8, 29), ylim= c(0, 21))
+    {plot(1, type="n", main = getHistTitle(), xlab="Mass (lbs)", ylab="Frequency", xlim=c(8, 29), ylim= c(0, 21))
      abline(v=mean(baboon$mass),col="red")
     }
 
   else if(length(val$meanDataSet) == 1)
   {bins <- seq(min(baboon$mass), max(baboon$mass), length.out = 41)
-     hist(val$meanDataSet, breaks =bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency", xlim = c(8,29), ylim= c(0, 21))
+     hist(val$meanDataSet, breaks =bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency", xlim = c(8,29), ylim= c(0, 21))
      abline(v=mean(baboon$mass),col="red")
      }
 
   else {
          bins <- seq(min(baboon$mass), max(baboon$mass), length.out = 41)
-         counta <- hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency")$counts
+         counta <- hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency")$counts
 
          if(max(counta) <= 20)
-           {counta <- hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency")$counts
+           {counta <- hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency")$counts
             hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency", xlim = c(8,29), ylim = c(0, 21))
             abline(v=mean(baboon$mass),col="red")}
 
           else
-            {counta <- hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency")$counts
+            {counta <- hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency")$counts
             hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency", xlim = c(8,29), ylim = c(0, max(counta)+1))
             abline(v=mean(baboon$mass),col="red")
           }
