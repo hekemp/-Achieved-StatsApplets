@@ -103,6 +103,9 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
       
     observeEvent(input$clear_Samples, {
     val$meanDataSet <- c()})
+    
+    observeEvent(input$sampsize, {
+    val$meanDataSet <- c()})
   
   getTitle1 <- function() {
      paste("Population Mean = ", round(mean(baboon$mass),3), " | Population SD = ", round(sd(baboon$mass),3))
