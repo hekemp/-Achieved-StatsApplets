@@ -16,14 +16,11 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
 
   observeEvent(input$popSelect, {
     if(input$popSelect == "all")
-    {val$meanDataSet <- c()
-    valr$lastSample <- c()}
+    {baboon <- baboonA}
     if(input$popSelect == "males")
-    {val$meanDataSet <- c()
-    valr$lastSample <- c()}
+    {baboon <- baboonM}
     if(input$popSelect == "females")
-    {val$meanDataSet <- c()
-    valr$lastSample <- c()}
+    {baboon <- baboonF}
     })
   
   vals <- reactiveValues(
