@@ -18,12 +18,14 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
 baboon <- reactive(
     baboon <- baboonA
 )
-#  if(popSelectionChoice == "all")
+  if(popSelectionChoice == "all")
     {baboon <- baboonA}
-#  if(popSelectionChoice == "males")
-    {baboon <- baboonM}
-#  if(popSelectionChoice == "females")
-    {baboon <- baboonF}
+  if(popSelectionChoice == "males")
+    {baboon <- baboonM
+    lastSample = c()}
+  if(popSelectionChoice == "females")
+    {baboon <- baboonF
+    lastSample = c()}
 
   vals <- reactiveValues(
     keeprows = rep(TRUE, nrow(baboon)))
