@@ -123,15 +123,15 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
 
     observeEvent(input$draw_1_Sample, {
     newSample <- getSample()
-    val$meanDataSet[length(val$meanDataSet) + 1] = round(mean(newSample$mass), 3)
-    valr$meanSampleSet[length(valr$meanSampleSet) + 1] = newSample
+    val$meanDataSet[length(val$meanDataSet) + 1] <- round(mean(newSample$mass), 3)
+    valr$meanSampleSet[length(valr$meanSampleSet) + 1] <- newSample
     })
 
     observeEvent(input$draw_10_Sample, {
     for (timesExecuted in 1:10)
     {newSample <- getSample()
-    val$meanDataSet[length(val$meanDataSet) + 1] = round(mean(newSample$mass), 3)
-    valr$meanSampleSet[length(valr$meanSampleSet) + 1] = newSample}
+    val$meanDataSet[length(val$meanDataSet) + 1] <- round(mean(newSample$mass), 3)
+    valr$meanSampleSet[length(valr$meanSampleSet) + 1] <- newSample}
     })
 
     observeEvent(input$clear_Samples, {
