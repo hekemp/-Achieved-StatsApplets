@@ -6,20 +6,14 @@ library(shiny)
 library(ggplot2)
 library(data.table)
 
-baboons <- read.csv("baboons.csv")
-
+baboon <- read.csv("baboons.csv")
 baboonA <- read.csv("baboons.csv")
 baboonM <- read.csv("baboonsM.csv")
 baboonF <- read.csv("baboonsF.csv")
 
 shinyServer(function(input, output) {# For storing which rows have been excluded
-
-if(input$popSelect == "males")
-  baboon <- baboons
-  
   vals <- reactiveValues(
-    keeprows = rep(TRUE, nrow(baboon))
-    )
+    keeprows = rep(TRUE, nrow(baboon)))
 
   val <- reactiveValues(
   meanDataSet = c()
@@ -206,5 +200,5 @@ if(input$popSelect == "males")
      }
 
   })
-  
+    
   })
