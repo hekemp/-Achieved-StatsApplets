@@ -20,7 +20,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   )
   
   valr <- reactiveValues(
-  meanSampleSet = c()
+  lastSample = c()
   )
 
   output$plot1 <- renderPlot({
@@ -37,7 +37,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     vals$keeprows <- xor(vals$keeprows, res$selected_)
      if (nrow(nearPoints(baboon, input$plot1_click, allRows = FALSE)) != 0)
       {val$meanDataSet <- c()
-       valr$meanSampleSet <- c()}
+       valr$lastSample <- c()}
   })
 
   # Toggle points that are brushed, when button is clicked
@@ -45,26 +45,26 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     res <- brushedPoints(baboon, input$plot1_brush, allRows = TRUE)
     vals$keeprows <- xor(vals$keeprows, res$selected_)
     val$meanDataSet <- c()
-    valr$meanSampleSet <- c()
+    valr$lastSample <- c()
     })
     
   observeEvent(input$sampsize, {
     val$meanDataSet <- c()
-    valr$meanSampleSet <- c()
+    valr$lastSample <- c()
     })
 
   # Reset all points
   observeEvent(input$exclude_reset, {
     vals$keeprows <- rep(TRUE, nrow(baboon))
     val$meanDataSet <- c()
-    valr$meanSampleSet <- c()
+    valr$lastSample <- c()
   })
   
   observeEvent(input$selection, {
     if(input$selection == "default")
     {vals$keeprows <- rep(TRUE, nrow(baboon))
      val$meanDataSet <- c()
-     valr$meanSampleSet <- c()
+     valr$lastSample <- c()
      }
 
     if(input$selection == "armLength")
@@ -73,7 +73,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     res[which(baboon$upperarm > 15)] <- FALSE
     vals$keeprows <- xor(vals$keeprows, res)
     val$meanDataSet <- c()
-    valr$meanSampleSet <- c()
+    valr$lastSample <- c()
     }
     
     if(input$selection == "age")
@@ -82,7 +82,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     res[which(baboon$age < 12)] <- FALSE
     vals$keeprows <- xor(vals$keeprows, res)
     val$meanDataSet <- c()
-    valr$meanSampleSet <- c()
+    valr$lastSample <- c()
     }
     
     if(input$selection == "skinfold")
@@ -91,7 +91,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     res[which(baboon$skinfold < 7)] <- FALSE
     vals$keeprows <- xor(vals$keeprows, res)
     val$meanDataSet <- c()
-    valr$meanSampleSet <- c()
+    valr$lastSample <- c()
     }
 
     if(input$selection == "ranking")
@@ -100,7 +100,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     res[which(baboon$rank < .9)] <- FALSE
     vals$keeprows <- xor(vals$keeprows, res)
     val$meanDataSet <- c()
-    valr$meanSampleSet <- c()
+    valr$lastSample <- c()
     }
 
     if(input$selection == "location")
@@ -117,26 +117,26 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     res[which(baboon$group == "k")] <- FALSE
     vals$keeprows <- xor(vals$keeprows, res)
     val$meanDataSet <- c()
-    valr$meanSampleSet <- c()
+    valr$lastSample <- c()
     }
     })
 
     observeEvent(input$draw_1_Sample, {
     newSample <- getSample()
     val$meanDataSet[length(val$meanDataSet) + 1] <- round(mean(newSample$mass), 3)
-    valr$meanSampleSet[length(valr$meanSampleSet) + 1] <- newSample
+    valr$lastSample <- newSample
     })
 
     observeEvent(input$draw_10_Sample, {
     for (timesExecuted in 1:10)
     {newSample <- getSample()
     val$meanDataSet[length(val$meanDataSet) + 1] <- round(mean(newSample$mass), 3)
-    valr$meanSampleSet[length(valr$meanSampleSet) + 1] <- newSample}
+    valr$lastSample <- newSample}
     })
 
     observeEvent(input$clear_Samples, {
     val$meanDataSet <- c()
-    valr$meanSampleSet <- c()
+    valr$lastSample <- c()
     })
   
   getTitle1 <- function() {
@@ -157,11 +157,11 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     paste("Sample Mean = ", round(mean(dat),3), " | Sample SD = ", round(sd(dat),3))}
 
   output$plot2 <- renderPlot({
-    if(length(valr$meanSampleSet) == 0)
-      {ggplot(valr$meanSampleSet[length(valr$meanSampleSet)], aes(x = valr$meanSampleSet$length, valr$meanSampleSet$mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() + coord_cartesian(xlim = c(66, 157), ylim = c(7,30)) + ggtitle(paste("Sample Mean = N/A | Sample SD = N/A"))
+    if(length(valr$meanDataSet) == 0)
+      {ggplot(valr$lastSample, aes(length, mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() + coord_cartesian(xlim = c(66, 157), ylim = c(7,30)) + ggtitle(paste("Sample Mean = N/A | Sample SD = N/A"))
       }
     else
-      {ggplot(valr$meanSampleSet[length(valr$meanSampleSet)], aes(x = valr$meanSampleSet$length, valr$meanSampleSet$mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() + coord_cartesian(xlim = c(66, 157), ylim = c(7,30)) + ggtitle(getTitleVar(valr$meanSampleSet[length(valr$meanSampleSet)]$mass))
+      {ggplot(valr$lastSample, aes(length, mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() + coord_cartesian(xlim = c(66, 157), ylim = c(7,30)) + ggtitle(getTitleVar(lastSample$mass))
       }
 #  randSam <- getSample()
 #  pl <- ggplot(randSam, aes(length, mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() +  coord_cartesian(xlim = c(66, 157), ylim = c(7,30))
