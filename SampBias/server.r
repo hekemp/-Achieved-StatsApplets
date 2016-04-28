@@ -14,6 +14,8 @@ baboonF <- read.csv("baboonsF.csv")
 
 shinyServer(function(input, output) {# For storing which rows have been excluded
 
+baboon <- baboons
+
   observeEvent(input$popSelect, {
     if(input$popSelect == "all")
     {baboon <- baboons
