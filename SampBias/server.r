@@ -177,6 +177,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   else if(length(val$meanDataSet) == 1)
   {bins <- seq(min(baboon$mass), max(baboon$mass), length.out = 41)
      hist(val$meanDataSet, breaks =bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency", xlim = c(8,29), ylim= c(0, 21))
+     hist(valr$lastSample$mass, breaks =bins, col = 'orange', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency", xlim = c(8,29), ylim= c(0, 21))
      abline(v=mean(baboon$mass),col="red")
      }
 
@@ -187,11 +188,13 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
          if(max(counta) <= 20)
            {counta <- hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency")$counts
             hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency", xlim = c(8,29), ylim = c(0, 21))
+            hist(valr$lastSample$mass, breaks =bins, col = 'orange', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency", xlim = c(8,29), ylim = c(0, 21))
             abline(v=mean(baboon$mass),col="red")}
 
           else
             {counta <- hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency")$counts
             hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency", xlim = c(8,29), ylim = c(0, max(counta)+1))
+            hist(valr$lastSample$mass, breaks =bins, col = 'orange', border = 'white', main = getHistTitle(), xlab = "Mass", ylab = "Frequency", xlim = c(8,29), ylim = c(0, max(counta)+1))
             abline(v=mean(baboon$mass),col="red")
           }
      }
