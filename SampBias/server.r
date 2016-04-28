@@ -14,28 +14,22 @@ baboonF <- read.csv("baboonsF.csv")
 
 shinyServer(function(input, output) {# For storing which rows have been excluded
 
-baboon <- baboons
+baboon <- reactive({switch(input$popSelect,"all" = baboonA, "males" = baboonM, "females" = baboonF)
+})
 
-  observeEvent(input$popSelect, {
-    if(input$popSelect == "all")
-    {baboon <- baboons
-    vals$keeprows <- rep(TRUE, nrow(baboon))
-    val$meanDataSet <- c()
-    valr$lastSample <- c()
-    }
-    if(input$popSelect == "males")
-    {baboon <- baboons[-which(baboon$sex == "F"),]
-    vals$keeprows <- rep(TRUE, nrow(baboon))
-    val$meanDataSet <- c()
-    valr$lastSample <- c()
-    }
-    if(input$popSelect == "females")
-    {baboon <- baboonF
-    vals$keeprows <- rep(TRUE, nrow(baboon))
-    val$meanDataSet <- c()
-    valr$lastSample <- c()
-    }
-    })
+#baboon <- baboons
+
+#  observeEvent(input$popSelect, {
+#    if(input$popSelect == "all")
+#    {baboon <- baboons
+#    }
+#    if(input$popSelect == "males")
+#    {baboon <- baboons[-which(baboon$sex == "F"),]
+#    }
+#    if(input$popSelect == "females")
+#    {baboon <- baboonF
+#    }
+#    })
   
   vals <- reactiveValues(
     keeprows = rep(TRUE, nrow(baboon)))
@@ -47,20 +41,12 @@ baboon <- baboons
   valr <- reactiveValues(
   lastSample = c()
   )
-  
-  valu <- reactiveValues(
-  keep = c()
-  )
-  
-  vlu <- reactiveValues(
-  exclude = c()
-  )
 
   output$plot1 <- renderPlot({
     # Plot the kept and excluded points as two separate data sets
-    valu$keep    <- baboon[ vals$keeprows, , drop = FALSE]
-    vlu$exclude <- baboon[!vals$keeprows, , drop = FALSE]
-    ggplot(valu$keep, aes(length, mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() + geom_point(data = vlu$exclude, fill = NA, color = "black", alpha = 0.25) +
+    keep    <- baboon[ vals$keeprows, , drop = FALSE]
+    exclude <- baboon[!vals$keeprows, , drop = FALSE]
+    ggplot(keep, aes(length, mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() + geom_point(data = exclude, fill = NA, color = "black", alpha = 0.25) +
       coord_cartesian(xlim = c(66, 157), ylim = c(7,30))
   })
 
