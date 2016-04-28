@@ -154,19 +154,11 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     return(samSet)}
   
   getTitleVar <- function(dat) {
-    paste("Sample Mean = ", round(mean(dat),3), " | Sample SD = ", round(sd(dat),3))}
+    paste("Last Sample Mean = ", round(mean(dat),3), " | Last Sample SD = ", round(sd(dat),3))}
 
   output$plot2 <- renderPlot({
-  #  if(length(valr$meanDataSet) == 0)
-  #    {ggplot(valr$lastSample, aes(x = valr$lastSample$length, y = valr$lastSample$mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() + coord_cartesian(xlim = c(66, 157), ylim = c(7,30)) + ggtitle(paste("Sample Mean = N/A | Sample SD = N/A"))
-  #    }
-  #  else
-      {ggplot(valr$lastSample, aes(x = valr$lastSample$length, y = valr$lastSample$mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() + coord_cartesian(xlim = c(66, 157), ylim = c(7,30)) + ggtitle(getTitleVar(valr$lastSample$mass))
-      }
-#  randSam <- getSample()
-#  pl <- ggplot(randSam, aes(length, mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() +  coord_cartesian(xlim = c(66, 157), ylim = c(7,30))
-#  pl <- pl+ ggtitle(getTitleVar(randSam$mass))
-#  print(pl)
+  ggplot(valr$lastSample, aes(x = valr$lastSample$length, y = valr$lastSample$mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() + coord_cartesian(xlim = c(66, 157), ylim = c(7,30)) + ggtitle(getTitleVar(valr$lastSample$mass))
+      
   })
 
   getHistTitle <- function()
