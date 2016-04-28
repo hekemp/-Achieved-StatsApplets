@@ -13,13 +13,12 @@ baboonF <- read.csv("baboonsF.csv")
 
 shinyServer(function(input, output) {# For storing which rows have been excluded
 
-  baboony <- reactive({
+  baboon <- reactive({
     switch(input$popSelect, "all" = baboonA, "male" = baboonM, "females" = baboonF)
   })
-  baboon <- baboony()
   
   vals <- reactiveValues(
-    keeprows = rep(TRUE, nrow(baboon)))
+    keeprows = rep(TRUE, nrow(baboon())))
 
   val <- reactiveValues(
   meanDataSet = c()
