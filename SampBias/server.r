@@ -45,12 +45,17 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   valr <- reactiveValues(
   lastSample = c()
   )
+  
+  valu <- reactiveValues(
+  keep = c()
+  exclude = c()
+  )
 
   output$plot1 <- renderPlot({
     # Plot the kept and excluded points as two separate data sets
-    keep    <- baboon[ vals$keeprows, , drop = FALSE]
-    exclude <- baboon[!vals$keeprows, , drop = FALSE]
-    ggplot(keep, aes(length, mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() + geom_point(data = exclude, fill = NA, color = "black", alpha = 0.25) +
+    valu$keep    <- baboon[ vals$keeprows, , drop = FALSE]
+    valu$exclude <- baboon[!vals$keeprows, , drop = FALSE]
+    ggplot(valu$keep, aes(length, mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() + geom_point(data = exclude, fill = NA, color = "black", alpha = 0.25) +
       coord_cartesian(xlim = c(66, 157), ylim = c(7,30))
   })
 
