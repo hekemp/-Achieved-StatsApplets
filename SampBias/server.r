@@ -21,7 +21,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     # Plot the kept and excluded points as two separate data sets
     keep    <- baboon[ vals$keeprows, , drop = FALSE]
     exclude <- baboon[!vals$keeprows, , drop = FALSE]
-    ggplot(keep, aes(length, mass), xlab = "Length (ft)", ylab = "Mass (lbs)") + geom_point() + geom_point(data = exclude, fill = NA, color = "black", alpha = 0.25) +
+    ggplot(keep, aes(length, mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() + geom_point(data = exclude, fill = NA, color = "black", alpha = 0.25) +
       coord_cartesian(xlim = c(66, 157), ylim = c(7,30))
   })
 
@@ -119,7 +119,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
 
   output$plot2 <- renderPlot({
   randSam <- getSample()
-  pl <- ggplot(randSam, aes(length, mass), xlab = "Length (ft)", ylab = "Mass (lbs)") + geom_point() +  coord_cartesian(xlim = c(66, 157), ylim = c(7,30))
+  pl <- ggplot(randSam, aes(length, mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() +  coord_cartesian(xlim = c(66, 157), ylim = c(7,30))
   pl <- pl+ ggtitle(getTitleVar(randSam$mass))
   print(pl)
   })
