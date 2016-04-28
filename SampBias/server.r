@@ -29,7 +29,8 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   observeEvent(input$plot1_click, {
     res <- nearPoints(baboon, input$plot1_click, allRows = TRUE)
     vals$keeprows <- xor(vals$keeprows, res$selected_)
-    val$meanDataSet <- c()
+     if (nrow(res) != 0)
+      {val$meanDataSet <- c()}
   })
 
   # Toggle points that are brushed, when button is clicked
