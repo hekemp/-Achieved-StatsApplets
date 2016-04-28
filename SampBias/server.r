@@ -6,7 +6,7 @@ library(shiny)
 library(ggplot2)
 library(data.table)
 
-#baboon <- read.csv("baboons.csv")
+baboon <- read.csv("baboons.csv")
 baboonA <- read.csv("baboons.csv")
 baboonM <- read.csv("baboonsM.csv")
 baboonF <- read.csv("baboonsF.csv")
