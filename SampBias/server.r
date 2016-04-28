@@ -30,6 +30,8 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     ggplot(keep, aes(length, mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() + geom_point(data = exclude, fill = NA, color = "black", alpha = 0.25) +
       coord_cartesian(xlim = c(66, 157), ylim = c(7,30))
   })
+  
+  baboon <- read.csv("baboonsM.csv")
 
   # Toggle points that are clicked
   observeEvent(input$plot1_click, {
