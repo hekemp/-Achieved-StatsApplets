@@ -15,6 +15,7 @@ popSelectionChoice = "all"
 
 shinyServer(function(input, output) {# For storing which rows have been excluded
 
+baboon <- reactive()
 #  if(popSelectionChoice == "all")
     {baboon <- baboonA}
 #  if(popSelectionChoice == "males")
