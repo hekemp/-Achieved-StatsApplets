@@ -32,7 +32,8 @@ baboon <- reactive({switch(input$popSelect,"all" = baboonA, "males" = baboonM, "
 #    })
   
   vals <- reactiveValues(
-    keeprows = rep(TRUE, nrow(baboon)))
+    keeprows = rep(TRUE, nrow(baboon()))
+    )
 
   val <- reactiveValues(
   meanDataSet = c()
