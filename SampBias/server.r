@@ -13,6 +13,9 @@ baboonF <- read.csv("baboonsF.csv")
 
 shinyServer(function(input, output) {# For storing which rows have been excluded
 
+  baboon <- reactive({
+    switch(input$dataset, "all" = baboonA, "male" = baboonM, "females" = baboonF)
+  })
 
   vals <- reactiveValues(
     keeprows = rep(TRUE, nrow(baboon)))
