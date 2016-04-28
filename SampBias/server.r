@@ -11,7 +11,17 @@ baboonA <- read.csv("baboons.csv")
 baboonM <- read.csv("baboonsM.csv")
 baboonF <- read.csv("baboonsF.csv")
 
+popSelectionChoice = "all"
+
 shinyServer(function(input, output) {# For storing which rows have been excluded
+
+  if(popSelectionChoice == "all")
+    {baboon <- baboonA}
+  if(popSelectionChoice == "males")
+    {baboon <- baboonM}
+  if(popSelectionChoice == "females")
+    {baboon <- baboonF}
+
   vals <- reactiveValues(
     keeprows = rep(TRUE, nrow(baboon)))
 
@@ -32,8 +42,13 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   })
   
   observeEvent(input$popSelect, {
-    val$meanDataSet <- c()
-    baboon <- read.csv("baboonsM.csv")
+    if(input$popSelect == "all")
+    {popSelectionChoice = "all"}
+    
+    if(input$popSelect == "males")
+    {popSelectionChoice = "males"}
+    if(input$popSelect == "females")
+    {popSelectionChoice = "females"}
     })
 
   # Toggle points that are clicked
