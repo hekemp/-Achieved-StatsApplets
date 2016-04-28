@@ -32,7 +32,9 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   })
   
   observeEvent(input$popSelect, {
-    baboon <- read.csv("baboonsM.csv")})
+    val$meanDataSet <- c()
+    baboon <- read.csv("baboonsM.csv")
+    })
 
   # Toggle points that are clicked
   observeEvent(input$plot1_click, {
