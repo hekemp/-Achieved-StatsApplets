@@ -161,7 +161,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
       {ggplot(valr$meanSampleSet[length(valr$meanSampleSet)], aes(x = valr$meanSampleSet$length, valr$meanSampleSet$mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() + coord_cartesian(xlim = c(66, 157), ylim = c(7,30)) + ggtitle(paste("Sample Mean = N/A | Sample SD = N/A"))
       }
     else
-      {ggplot(valr$meanSampleSet[length(valr$meanSampleSet)], aes(length, mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() + coord_cartesian(xlim = c(66, 157), ylim = c(7,30)) + ggtitle(getTitleVar(valr$meanSampleSet[length(valr$meanSampleSet)]))
+      {ggplot(valr$meanSampleSet[length(valr$meanSampleSet)], aes(x = valr$meanSampleSet$length, valr$meanSampleSet$mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() + coord_cartesian(xlim = c(66, 157), ylim = c(7,30)) + ggtitle(getTitleVar(valr$meanSampleSet[length(valr$meanSampleSet)]$mass))
       }
 #  randSam <- getSample()
 #  pl <- ggplot(randSam, aes(length, mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() +  coord_cartesian(xlim = c(66, 157), ylim = c(7,30))
