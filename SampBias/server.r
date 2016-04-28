@@ -18,7 +18,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   })
   
   vle <- reactiveValues(
-    numRows = nrow(baboon())
+    numRows = nrow(baboon()))
 
   vals <- reactiveValues(
     keeprows = rep(TRUE, vle$numRows))
