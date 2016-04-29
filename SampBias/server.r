@@ -44,6 +44,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
    {numberOfRows <- nrow(baboonM)}
    if(input$popSelect == "females")
    {numberOfRows <- nrow(baboonF)}
+   })
 
   # Toggle points that are clicked
   observeEvent(input$plot1_click, {
