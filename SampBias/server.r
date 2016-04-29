@@ -10,6 +10,7 @@ baboon <- read.csv("baboons.csv")
 baboonA <- read.csv("baboons.csv")
 baboonM <- read.csv("baboonsM.csv")
 baboonF <- read.csv("baboonsF.csv")
+numberOfRows <- nrow(baboon)
 
 shinyServer(function(input, output) {# For storing which rows have been excluded
 
@@ -18,7 +19,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   })
   
   vals <- reactiveValues(
-    keeprows = rep(TRUE, nrow(baboon())))
+    keeprows = rep(TRUE, numberOfRows))
 
   val <- reactiveValues(
   meanDataSet = c()
@@ -35,6 +36,14 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     ggplot(keep, aes(length, mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() + geom_point(data = exclude, fill = NA, color = "black", alpha = 0.25) +
       coord_cartesian(xlim = c(66, 157), ylim = c(7,30))
   })
+  
+  observeEvent(input$popSelect, {
+   if(input$popSelect == "all")
+   {numberOfRows <- nrow(baboonA)}
+   if(input$popSelect == "males")
+   {numberOfRows <- nrow(baboonM)}
+   if(input$popSelect == "females")
+   {numberOfRows <- nrow(baboonF)}
 
   # Toggle points that are clicked
   observeEvent(input$plot1_click, {
