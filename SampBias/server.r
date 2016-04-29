@@ -51,7 +51,6 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
    {numberOfRows <- nrow(baboonM)
    binLength <- 5
     histLims <- c(19,29)
-    print(histLims)
     }
    if(input$popSelect == "females")
    {numberOfRows <- nrow(baboonF)
@@ -153,13 +152,16 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     newSample <- getSample()
     val$meanDataSet[length(val$meanDataSet) + 1] <- round(mean(newSample$mass), 3)
     valr$lastSample <- newSample
+    print(mean(newSample$mass))
     })
 
     observeEvent(input$draw_10_Sample, {
     for (timesExecuted in 1:10)
     {newSample <- getSample()
     val$meanDataSet[length(val$meanDataSet) + 1] <- round(mean(newSample$mass), 3)
-    valr$lastSample <- newSample}
+    valr$lastSample <- newSample
+    print(mean(newSample$mass))
+    }
     })
 
     observeEvent(input$clear_Samples, {
