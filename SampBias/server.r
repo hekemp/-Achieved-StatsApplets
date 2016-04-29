@@ -14,12 +14,12 @@ numberOfRows <- nrow(baboon)
 
 shinyServer(function(input, output) {# For storing which rows have been excluded
 
-  baboon <- reactive({
-    switch(input$popSelect, "all" = baboonA, "male" = baboonM, "females" = baboonF)
-  })
+#  baboon <- reactive({
+#    switch(input$popSelect, "all" = baboonA, "male" = baboonM, "females" = baboonF)
+#  })
   
   vals <- reactiveValues(
-    keeprows = rep(TRUE, numberOfRows))
+    keeprows = rep(TRUE, nrow(baboon))
 
   val <- reactiveValues(
   meanDataSet = c()
