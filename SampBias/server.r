@@ -187,8 +187,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
       
   })
   
-  output$dataT <- renderTable({
-  val$meanDataSet})
+  output$dataT <- renderDataTable(val$meanDataSet)
 
   getHistTitle <- function()
   {paste("Histogram of Sample Means from the Baboon Population \n Each Sample Mean is Based on a Random Sample of Size", input$sampsize)}
