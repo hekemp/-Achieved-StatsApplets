@@ -39,6 +39,9 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   })
   
   observeEvent(input$popSelect, {
+    vals$keeprows <- rep(TRUE, numberOfRows)
+    val$meanDataSet <- c()
+    valr$lastSample <- c()
    if(input$popSelect == "all")
    {numberOfRows <- nrow(baboonA)
     histLims <- c(8,29)}
