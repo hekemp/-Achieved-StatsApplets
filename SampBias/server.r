@@ -180,6 +180,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   getSample <- function(){
    keep2 <- baboon()[vals$keeprows, , drop = FALSE]
     dataTableCars <- data.table(keep2)
+    print(dataTableCars)
     samSet <- dataTableCars[sample(.N, input$sampsize, replace = TRUE)]
     return(samSet)}
   
