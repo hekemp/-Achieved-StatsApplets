@@ -50,13 +50,13 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
    if(input$popSelect == "males")
    {numberOfRows <- nrow(baboonM)
    vals$keeprows <- rep(TRUE, numberOfRows)
-   binLength <- 5
+   binLength <- 41
     histLims <- c(19,29)
     }
    if(input$popSelect == "females")
    {numberOfRows <- nrow(baboonF)
    vals$keeprows <- rep(TRUE, numberOfRows)
-   binLength <- 5
+   binLength <- 41
     histLims <- c(8,17)}
    })
 
@@ -154,7 +154,6 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     newSample <- getSample()
     val$meanDataSet[length(val$meanDataSet) + 1] <- round(mean(newSample$mass), 3)
     valr$lastSample <- newSample
-    print(mean(newSample$mass))
     })
 
     observeEvent(input$draw_10_Sample, {
@@ -162,7 +161,6 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     {newSample <- getSample()
     val$meanDataSet[length(val$meanDataSet) + 1] <- round(mean(newSample$mass), 3)
     valr$lastSample <- newSample
-    print(mean(newSample$mass))
     }
     })
 
@@ -182,7 +180,6 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   getSample <- function(){
    keep2 <- baboon()[vals$keeprows, , drop = FALSE]
     dataTableCars <- data.table(keep2)
-    print(dataTableCars)
     samSet <- dataTableCars[sample(.N, input$sampsize, replace = TRUE)]
     return(samSet)}
   
