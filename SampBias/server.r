@@ -11,6 +11,8 @@ baboonA <- read.csv("baboons.csv")
 baboonM <- read.csv("baboonsM.csv")
 baboonF <- read.csv("baboonsF.csv")
 numberOfRows <- nrow(baboon)
+minHistogram <- 8
+maxHistogram <- 29
 
 shinyServer(function(input, output) {# For storing which rows have been excluded
 
@@ -39,11 +41,17 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   
   observeEvent(input$popSelect, {
    if(input$popSelect == "all")
-   {numberOfRows <- nrow(baboonA)}
+   {numberOfRows <- nrow(baboonA)
+    minHistogram <- 8
+    maxHistogram <- 29}
    if(input$popSelect == "males")
-   {numberOfRows <- nrow(baboonM)}
+   {numberOfRows <- nrow(baboonM)
+    minHistogram <- 19
+    maxHistogram <- 29}
    if(input$popSelect == "females")
-   {numberOfRows <- nrow(baboonF)}
+   {numberOfRows <- nrow(baboonF)
+    minHistogram <- 8
+    maxHistogram <- 17}
    })
 
   # Toggle points that are clicked
@@ -185,7 +193,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     
   output$plot3 <- renderPlot({
   if(length(val$meanDataSet) == 0)
-    {plot(1, type="n", main = getHistTitle(), xlab="Mass (lbs)", ylab="Frequency", xlim=c(8, 29), ylim= c(0, 21))
+    {plot(1, type="n", main = getHistTitle(), xlab="Mass (lbs)", ylab="Frequency", xlim=c(minHistogram, maxHistogram), ylim= c(0, 21))
      abline(v=mean(baboon()$mass),col="red")
     }
 
