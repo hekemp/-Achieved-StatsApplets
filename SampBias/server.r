@@ -186,6 +186,9 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   ggplot(valr$lastSample, aes(x = valr$lastSample$length, y = valr$lastSample$mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() + coord_cartesian(xlim = c(66, 157), ylim = c(7,30)) + ggtitle(getTitleVar(valr$lastSample$mass))
       
   })
+  
+  output$dataT <- renderTable({
+  val$meanDataSet})
 
   getHistTitle <- function()
   {paste("Histogram of Sample Means from the Baboon Population \n Each Sample Mean is Based on a Random Sample of Size", input$sampsize)}
@@ -202,7 +205,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
 
   else if(length(val$meanDataSet) == 1)
   {bins <- seq(min(baboon()$mass), max(baboon()$mass), length.out = binLength)
-     hist(val$meanDataSet, breaks =bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency", xlim= c(9,18), ylim= c(0, 21)) 
+     hist(val$meanDataSet, breaks =bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency", xlim= histLims, ylim= c(0, 21)) 
      hist(mean(valr$lastSample$mass), breaks =bins, col = 'orange', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency", xlim=histLims, ylim= c(0, 21), add = T)
      abline(v=mean(baboon()$mass),col="red")
      }
