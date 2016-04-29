@@ -40,7 +40,7 @@ shinyUI(pageWithSidebar(
       actionButton("exclude_reset", "Reset"),
       plotOutput("plot2"),
       plotOutput("plot3"),
-      tableOutput("dataT")
+      dataTableOutput("dataT")
     )
   )
 )
