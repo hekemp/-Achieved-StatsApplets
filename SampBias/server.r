@@ -15,7 +15,7 @@ numberOfRows <- nrow(baboon)
 shinyServer(function(input, output) {# For storing which rows have been excluded
 
   baboon <- reactive({
-    switch(input$popSelect, "all" = baboonA, "male" = baboonM, "females" = baboonF)
+    switch(input$popSelect, "all" = baboonA, "males" = baboonM, "females" = baboonF)
   })
   
   vals <- reactiveValues(
