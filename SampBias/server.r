@@ -11,8 +11,7 @@ baboonA <- read.csv("baboons.csv")
 baboonM <- read.csv("baboonsM.csv")
 baboonF <- read.csv("baboonsF.csv")
 numberOfRows <- nrow(baboon)
-minHistogram <- 8
-maxHistogram <- 29
+histLims <- c(8,29)
 
 shinyServer(function(input, output) {# For storing which rows have been excluded
 
@@ -42,16 +41,13 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   observeEvent(input$popSelect, {
    if(input$popSelect == "all")
    {numberOfRows <- nrow(baboonA)
-    minHistogram <- 8
-    maxHistogram <- 29}
+    histLims <- c(8,29)}
    if(input$popSelect == "males")
    {numberOfRows <- nrow(baboonM)
-    minHistogram <- 19
-    maxHistogram <- 29}
+    histLims <- c(19,29)}
    if(input$popSelect == "females")
    {numberOfRows <- nrow(baboonF)
-    minHistogram <- 8
-    maxHistogram <- 17}
+    histLims <- c(8,17)}
    })
 
   # Toggle points that are clicked
@@ -193,14 +189,14 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     
   output$plot3 <- renderPlot({
   if(length(val$meanDataSet) == 0)
-    {plot(1, type="n", main = getHistTitle(), xlab="Mass (lbs)", ylab="Frequency", xlim=c(minHistogram, maxHistogram), ylim= c(0, 21))
+    {plot(1, type="n", main = getHistTitle(), xlab="Mass (lbs)", ylab="Frequency", xlim=histLims, ylim= c(0, 21))
      abline(v=mean(baboon()$mass),col="red")
     }
 
   else if(length(val$meanDataSet) == 1)
   {bins <- seq(min(baboon()$mass), max(baboon()$mass), length.out = 41)
-     hist(val$meanDataSet, breaks =bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency", xlim=c(minHistogram, maxHistogram), ylim= c(0, 21)) 
-     hist(mean(valr$lastSample$mass), breaks =bins, col = 'orange', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency", xlim=c(minHistogram, maxHistogram), ylim= c(0, 21), add = T)
+     hist(val$meanDataSet, breaks =bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency", xlim=histLims, ylim= c(0, 21)) 
+     hist(mean(valr$lastSample$mass), breaks =bins, col = 'orange', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency", xlim=histLims, ylim= c(0, 21), add = T)
      abline(v=mean(baboon()$mass),col="red")
      }
 
@@ -210,14 +206,14 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
 
          if(max(counta) <= 20)
            {counta <- hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency")$counts
-            hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency", xlim=c(minHistogram, maxHistogram)), ylim = c(0, 21))
-            hist(mean(valr$lastSample$mass), breaks =bins, col = 'orange', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency", xlim=c(minHistogram, maxHistogram), ylim = c(0, 21), add = T)
+            hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency", xlim=histLims, ylim = c(0, 21))
+            hist(mean(valr$lastSample$mass), breaks =bins, col = 'orange', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency", xlim=histLims, ylim = c(0, 21), add = T)
             abline(v=mean(baboon()$mass),col="red")}
 
           else
             {counta <- hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency")$counts
-            hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency", xlim=c(minHistogram, maxHistogram), ylim = c(0, max(counta)+1))
-            hist(mean(valr$lastSample$mass), breaks =bins, col = 'orange', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency", xlim=c(minHistogram, maxHistogram), ylim = c(0, max(counta)+1), add = T)
+            hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency", xlim= histLims, ylim = c(0, max(counta)+1))
+            hist(mean(valr$lastSample$mass), breaks =bins, col = 'orange', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency", xlim=histLims, ylim = c(0, max(counta)+1), add = T)
             abline(v=mean(baboon()$mass),col="red")
           }
      }
