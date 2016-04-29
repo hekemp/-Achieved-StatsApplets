@@ -48,16 +48,16 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
 
   # Toggle points that are clicked
   observeEvent(input$plot1_click, {
-    res <- nearPoints(baboon, input$plot1_click, allRows = TRUE)
+    res <- nearPoints(baboon(), input$plot1_click, allRows = TRUE)
     vals$keeprows <- xor(vals$keeprows, res$selected_)
-     if (nrow(nearPoints(baboon, input$plot1_click, allRows = FALSE)) != 0)
+     if (nrow(nearPoints(baboon(), input$plot1_click, allRows = FALSE)) != 0)
       {val$meanDataSet <- c()
        valr$lastSample <- c()}
   })
 
   # Toggle points that are brushed, when button is clicked
   observeEvent(input$exclude_toggle, {
-    res <- brushedPoints(baboon, input$plot1_brush, allRows = TRUE)
+    res <- brushedPoints(baboon(), input$plot1_brush, allRows = TRUE)
     vals$keeprows <- xor(vals$keeprows, res$selected_)
     val$meanDataSet <- c()
     valr$lastSample <- c()
@@ -70,66 +70,66 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
 
   # Reset all points
   observeEvent(input$exclude_reset, {
-    vals$keeprows <- rep(TRUE, nrow(baboon))
+    vals$keeprows <- rep(TRUE, numberOfRows)
     val$meanDataSet <- c()
     valr$lastSample <- c()
   })
   
   observeEvent(input$selection, {
     if(input$selection == "default")
-    {vals$keeprows <- rep(TRUE, nrow(baboon))
+    {vals$keeprows <- rep(TRUE, numberOfRows)
      val$meanDataSet <- c()
      valr$lastSample <- c()
      }
 
     if(input$selection == "armLength")
-    {vals$keeprows <- rep(TRUE, nrow(baboon))
-    res <- rep(TRUE, nrow(baboon))
-    res[which(baboon$upperarm > 15)] <- FALSE
+    {vals$keeprows <- rep(TRUE, numberOfRows)
+    res <- rep(TRUE, numberOfRows)
+    res[which(baboon()$upperarm > 15)] <- FALSE
     vals$keeprows <- xor(vals$keeprows, res)
     val$meanDataSet <- c()
     valr$lastSample <- c()
     }
     
     if(input$selection == "age")
-    {vals$keeprows <- rep(TRUE, nrow(baboon))
-    res <- rep(TRUE, nrow(baboon))
-    res[which(baboon$age < 12)] <- FALSE
+    {vals$keeprows <- rep(TRUE, numberOfRows)
+    res <- rep(TRUE, numberOfRows)
+    res[which(baboon()$age < 12)] <- FALSE
     vals$keeprows <- xor(vals$keeprows, res)
     val$meanDataSet <- c()
     valr$lastSample <- c()
     }
     
     if(input$selection == "skinfold")
-    {vals$keeprows <- rep(TRUE, nrow(baboon))
-    res <- rep(TRUE, nrow(baboon))
-    res[which(baboon$skinfold < 7)] <- FALSE
+    {vals$keeprows <- rep(TRUE, numberOfRows)
+    res <- rep(TRUE, numberOfRows)
+    res[which(baboon()$skinfold < 7)] <- FALSE
     vals$keeprows <- xor(vals$keeprows, res)
     val$meanDataSet <- c()
     valr$lastSample <- c()
     }
 
     if(input$selection == "ranking")
-    {vals$keeprows <- rep(TRUE, nrow(baboon))
-    res <- rep(TRUE, nrow(baboon))
-    res[which(baboon$rank < .9)] <- FALSE
+    {vals$keeprows <- rep(TRUE, numberOfRows)
+    res <- rep(TRUE, numberOfRows)
+    res[which(baboon()$rank < .9)] <- FALSE
     vals$keeprows <- xor(vals$keeprows, res)
     val$meanDataSet <- c()
     valr$lastSample <- c()
     }
 
     if(input$selection == "location")
-    {vals$keeprows <- rep(TRUE, nrow(baboon))
+    {vals$keeprows <- rep(TRUE, numberOfRows)
     res <- rep(TRUE, nrow(baboon))
-    res[which(baboon$group == "a")] <- FALSE
-    res[which(baboon$group == "b")] <- FALSE
-    res[which(baboon$group == "c")] <- FALSE
-    res[which(baboon$group == "d")] <- FALSE
-    res[which(baboon$group == "e")] <- FALSE
-    res[which(baboon$group == "f")] <- FALSE
-    res[which(baboon$group == "g")] <- FALSE
-    res[which(baboon$group == "i")] <- FALSE
-    res[which(baboon$group == "k")] <- FALSE
+    res[which(baboon()$group == "a")] <- FALSE
+    res[which(baboon()$group == "b")] <- FALSE
+    res[which(baboon()$group == "c")] <- FALSE
+    res[which(baboon()$group == "d")] <- FALSE
+    res[which(baboon()$group == "e")] <- FALSE
+    res[which(baboon()$group == "f")] <- FALSE
+    res[which(baboon()$group == "g")] <- FALSE
+    res[which(baboon()$group == "i")] <- FALSE
+    res[which(baboon()$group == "k")] <- FALSE
     vals$keeprows <- xor(vals$keeprows, res)
     val$meanDataSet <- c()
     valr$lastSample <- c()
@@ -155,7 +155,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     })
   
   getTitle1 <- function() {
-     paste("Population Mean = ", round(mean(baboon$mass),3), " | Population SD = ", round(sd(baboon$mass),3))
+     paste("Population Mean = ", round(mean(baboon()$mass),3), " | Population SD = ", round(sd(baboon()$mass),3))
   }
 
   output$meansd1 <- renderText({
@@ -163,7 +163,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   })
   
   getSample <- function(){
-   keep2 <- baboon[vals$keeprows, , drop = FALSE]
+   keep2 <- baboon()[vals$keeprows, , drop = FALSE]
     dataTableCars <- data.table(keep2)
     samSet <- dataTableCars[sample(.N, input$sampsize, replace = TRUE)]
     return(samSet)}
@@ -186,31 +186,31 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   output$plot3 <- renderPlot({
   if(length(val$meanDataSet) == 0)
     {plot(1, type="n", main = getHistTitle(), xlab="Mass (lbs)", ylab="Frequency", xlim=c(8, 29), ylim= c(0, 21))
-     abline(v=mean(baboon$mass),col="red")
+     abline(v=mean(baboon()$mass),col="red")
     }
 
   else if(length(val$meanDataSet) == 1)
-  {bins <- seq(min(baboon$mass), max(baboon$mass), length.out = 41)
+  {bins <- seq(min(baboon()$mass), max(baboon()$mass), length.out = 41)
      hist(val$meanDataSet, breaks =bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency", xlim = c(8,29), ylim= c(0, 21)) 
      hist(mean(valr$lastSample$mass), breaks =bins, col = 'orange', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency", xlim = c(8,29), ylim= c(0, 21), add = T)
-     abline(v=mean(baboon$mass),col="red")
+     abline(v=mean(baboon()$mass),col="red")
      }
 
   else {
-         bins <- seq(min(baboon$mass), max(baboon$mass), length.out = 41)
+         bins <- seq(min(baboon()$mass), max(baboon()$mass), length.out = 41)
          counta <- hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency")$counts
 
          if(max(counta) <= 20)
            {counta <- hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency")$counts
             hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency", xlim = c(8,29), ylim = c(0, 21))
             hist(mean(valr$lastSample$mass), breaks =bins, col = 'orange', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency", xlim = c(8,29), ylim = c(0, 21), add = T)
-            abline(v=mean(baboon$mass),col="red")}
+            abline(v=mean(baboon()$mass),col="red")}
 
           else
             {counta <- hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency")$counts
             hist(val$meanDataSet, breaks = bins, col = 'darkgray', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency", xlim = c(8,29), ylim = c(0, max(counta)+1))
             hist(mean(valr$lastSample$mass), breaks =bins, col = 'orange', border = 'white', main = getHistTitle(), xlab = "Mass (lbs)", ylab = "Frequency", xlim = c(8,29), ylim = c(0, max(counta)+1), add = T)
-            abline(v=mean(baboon$mass),col="red")
+            abline(v=mean(baboon()$mass),col="red")
           }
      }
 
