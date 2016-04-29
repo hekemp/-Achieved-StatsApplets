@@ -50,7 +50,9 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
    if(input$popSelect == "males")
    {numberOfRows <- nrow(baboonM)
    binLength <- 5
-    histLims <- c(19,29)}
+    histLims <- c(19,29)
+    print(histLims)
+    }
    if(input$popSelect == "females")
    {numberOfRows <- nrow(baboonF)
    binLength <- 5
@@ -186,8 +188,6 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
   ggplot(valr$lastSample, aes(x = valr$lastSample$length, y = valr$lastSample$mass)) + labs(x = "Length (ft)", y = "Mass (lbs)") + geom_point() + coord_cartesian(xlim = c(66, 157), ylim = c(7,30)) + ggtitle(getTitleVar(valr$lastSample$mass))
       
   })
-  
-  output$dataT <- renderDataTable(val$meanDataSet)
 
   getHistTitle <- function()
   {paste("Histogram of Sample Means from the Baboon Population \n Each Sample Mean is Based on a Random Sample of Size", input$sampsize)}
