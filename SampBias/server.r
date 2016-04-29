@@ -12,6 +12,7 @@ baboonM <- read.csv("baboonsM.csv")
 baboonF <- read.csv("baboonsF.csv")
 numberOfRows <- nrow(baboon)
 histLims <- c(8,29)
+binLength <- 41
 
 shinyServer(function(input, output) {# For storing which rows have been excluded
 
@@ -44,12 +45,15 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     valr$lastSample <- c()
    if(input$popSelect == "all")
    {numberOfRows <- nrow(baboonA)
+   binLength <- 41
     histLims <- c(8,29)}
    if(input$popSelect == "males")
    {numberOfRows <- nrow(baboonM)
+   binLength <- 5
     histLims <- c(19,29)}
    if(input$popSelect == "females")
    {numberOfRows <- nrow(baboonF)
+   binLength <- 5
     histLims <- c(8,17)}
    })
 
@@ -127,7 +131,7 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
 
     if(input$selection == "location")
     {vals$keeprows <- rep(TRUE, numberOfRows)
-    res <- rep(TRUE, nrow(baboon))
+    res <- rep(TRUE, numberOfRows)
     res[which(baboon()$group == "a")] <- FALSE
     res[which(baboon()$group == "b")] <- FALSE
     res[which(baboon()$group == "c")] <- FALSE
