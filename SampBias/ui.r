@@ -14,7 +14,7 @@ shinyUI(pageWithSidebar(
   
   sidebarPanel(
   
-    radioButtons("popSelect", label = "Select a population to use for your samples:", choices = populationChoices , selected = all),
+    radioButtons("popSelect", "Select a population to use for your samples:", choices = populationChoices),
    # selectInput("popSelect", "Select a population to use for your samples:", choices = populationChoices),
     helpText("To see the effects of bias just click the point that will be removed."),
     helpText("To use toggle points, highlight the area of points in question and then hit toggle points. This will invert the selected points' statuses."),
