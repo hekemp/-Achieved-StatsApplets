@@ -4,7 +4,7 @@
 
 library(shiny)
 
-biasChoices <<- list("Default" = "default", "Upper arm length of less than 15 inches" = "armLength", "Over 12 years old" = "age", "With over 7mm of skinfolds" = "skinfold", "Ranked from 0.9 to 1.0 in the tribe" = "ranking", "From sampling sites H and J" = "location")
+biasChoices <<- list("Default" = "default", "Baboons with the shortest upper arm length (inches) [~Lower 20%]" = "armLength", "Oldest baboons (years) [~Upper 20%]" = "age", "Baboons with the most skinfolds (mm) [~Upper 20%]" = "skinfold", "Ranked highest in the tribe [~Upper 20%]" = "ranking", "From sampling sites H and J [~20%]" = "location")
 populationChoices <<- list("All Baboons" = "all", "Male Baboons" = "males", "Female Baboons" = "females")
 
 
@@ -27,7 +27,7 @@ shinyUI(pageWithSidebar(
     helpText("The selected population's mean is displayed on the histogram as a red line."),
     helpText("The entire population's mean is displayed on the histogram as a purple line."),
     helpText("Note: Samples drawn from a single point are not supported in this part of the applet."),
-    helpText("If you can't see your sample, try either decreasing the amount of bins or drawing more samples."),
+    helpText("If you draw a sample and it doesn't show up, this means that the server had a bad time obtaining your sample. Just change either the population or bias scenario to something else momentarily and then the server will be ready to process your request again."),
     actionButton("draw_1_Sample", "Draw 1 Sample \n"),
     actionButton("draw_10_Sample", "Draw 10 Samples \n"),
     textOutput("numSamples"),
