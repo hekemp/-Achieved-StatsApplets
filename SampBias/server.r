@@ -99,15 +99,15 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     if(input$selection == "armLength")
     {limit <- 15 
      if(input$popSelect == "all")
-   {limit <- 15 # Upper 20.68966%
+   {limit <- 15 # Lower 20.68966%
    }
 
    if(input$popSelect == "males")
-   {limit <- 23.5 # Upper 22% 
+   {limit <- 23.5 # Lower 22% 
    }
    
    if(input$popSelect == "females")
-   {limit <- 14.75 #Upper 23.52941%
+   {limit <- 14.75 #Lower 23.52941%
    }
     
     vals$keeprows <- rep(TRUE, numberOfRows)
@@ -119,34 +119,76 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     }
     
     if(input$selection == "age")
-    {vals$keeprows <- rep(TRUE, numberOfRows)
+    {limit <- 12 
+     if(input$popSelect == "all")
+   {limit <- 12 # Upper 23.64532%
+   }
+
+   if(input$popSelect == "males")
+   {limit <- 11 # Upper 22% 
+   }
+   
+   if(input$popSelect == "females")
+   {limit <- 13 #Upper 19.60784%
+   }
+    
+    vals$keeprows <- rep(TRUE, numberOfRows)
     res <- rep(TRUE, numberOfRows)
-    res[which(baboon()$age < 12)] <- FALSE
+    res[which(baboon()$age < limit)] <- FALSE
     vals$keeprows <- xor(vals$keeprows, res)
     val$meanDataSet <- c()
     valr$lastSample <- c()
     }
     
     if(input$selection == "skinfold")
-    {vals$keeprows <- rep(TRUE, numberOfRows)
+    {limit <- 7
+     if(input$popSelect == "all")
+   {limit <- 7 # Upper 17.24138%
+   }
+
+   if(input$popSelect == "males")
+   {limit <- 6.5 # Upper 22% 
+   }
+   
+   if(input$popSelect == "females")
+   {limit <- 7 #Upper 20.26144%
+   }
+    vals$keeprows <- rep(TRUE, numberOfRows)
     res <- rep(TRUE, numberOfRows)
-    res[which(baboon()$skinfold < 7)] <- FALSE
+    res[which(baboon()$skinfold < limit)] <- FALSE
     vals$keeprows <- xor(vals$keeprows, res)
     val$meanDataSet <- c()
     valr$lastSample <- c()
     }
 
     if(input$selection == "ranking")
-    {vals$keeprows <- rep(TRUE, numberOfRows)
+    {limit <- .85
+     if(input$popSelect == "all")
+   {limit <- .85 # Upper 19.70443%
+   }
+
+   if(input$popSelect == "males")
+   {limit <- .85 # Upper 22% 
+   }
+   
+   if(input$popSelect == "females")
+   {limit <- .8 #Upper 22.87582%
+   }
+    vals$keeprows <- rep(TRUE, numberOfRows)
     res <- rep(TRUE, numberOfRows)
-    res[which(baboon()$rank < .9)] <- FALSE
+    res[which(baboon()$rank < limit)] <- FALSE
     vals$keeprows <- xor(vals$keeprows, res)
     val$meanDataSet <- c()
     valr$lastSample <- c()
     }
 
     if(input$selection == "location")
-    {vals$keeprows <- rep(TRUE, numberOfRows)
+    {#Leaving this the same regardless of population because it worked out better than removing more locations
+    # All: 18.71921%
+    # Males: 18.30065%
+    # Females: 20%
+
+    vals$keeprows <- rep(TRUE, numberOfRows)
     res <- rep(TRUE, numberOfRows)
     res[which(baboon()$group == "a")] <- FALSE
     res[which(baboon()$group == "b")] <- FALSE
