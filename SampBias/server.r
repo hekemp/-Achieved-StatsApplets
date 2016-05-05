@@ -97,9 +97,22 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
      }
 
     if(input$selection == "armLength")
-    {vals$keeprows <- rep(TRUE, numberOfRows)
+    {limit <- 15 
+     if(input$popSelect == "all")
+   {limit <- 15 # Upper 20.68966%
+   }
+
+   if(input$popSelect == "males")
+   {limit <- 23.5 # Upper 22% 
+   }
+   
+   if(input$popSelect == "females")
+   {limit <- 14.75 #Upper 23.52941%
+   }
+    
+    vals$keeprows <- rep(TRUE, numberOfRows)
     res <- rep(TRUE, numberOfRows)
-    res[which(baboon()$upperarm > 15)] <- FALSE
+    res[which(baboon()$upperarm > limit)] <- FALSE
     vals$keeprows <- xor(vals$keeprows, res)
     val$meanDataSet <- c()
     valr$lastSample <- c()
