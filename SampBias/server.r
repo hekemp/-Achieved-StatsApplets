@@ -199,15 +199,13 @@ shinyServer(function(input, output) {# For storing which rows have been excluded
     })
     
   output$plot3 <- renderPlot({
- # if(input$popSelect == "all")
- # {
-  histLims <- c(8,29)
-#  }
-  # if(input$popSelect == "males")
-  # {histLims <- c(19,29)
- #   }
- #  if(input$popSelect == "females")
- #  {    histLims <- c(8,17)}
+  if(input$popSelect == "all")
+  {histLims <- c(8,29) }
+   if(input$popSelect == "males")
+   {histLims <- c(15,29)
+    }
+   if(input$popSelect == "females")
+   {    histLims <- c(8,17)}
   
   if(length(val$meanDataSet) == 0)
     {plot(1, type="n", main = getHistTitle(), xlab="Mass (lbs)", ylab="Frequency", xlim=histLims, ylim= c(0, 21))
