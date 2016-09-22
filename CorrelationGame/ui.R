@@ -14,8 +14,11 @@ shinyUI(pageWithSidebar(
     sliderInput("rho", "Estimated Corrlelation:", min = -1, max = 1, value = 0.5, step=0.01),
     textOutput("guessResult"),
     actionButton("checkAnswer", "Check Answer \n"),
+    br(),
     actionButton("newPlot", "Get New Plot"),
+    br(),
     actionButton("resetScore", "Reset Score \n"),
+    br(),
     br(),
     "Note: The observations are distributed accorting to a standard bivariate distribution with correlation r."
     ),
