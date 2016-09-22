@@ -5,6 +5,7 @@ library(MASS)
 
 shinyServer(function(input,output){
   
+  
   correctMessage <- "That's correct!"
   overDotThreePlus <- "That guess was a little too high. Try again!"
   overDotThreeMinus <- "That guess was a little too low. Try again!"
