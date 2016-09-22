@@ -3,18 +3,20 @@ library(shiny)
 shinyUI(pageWithSidebar(
 
   # Application title
-  headerPanel("Illustrating Correlation in Data"),
+  headerPanel("The Correlation Guessing Game"),
 
   # Sidebar with input for correlation and number of observations
   sidebarPanel(
 #    "INPUTS",
 
-    sliderInput("rho", "Corrlelation:", min = -1, max = 1, value = 0.5, step=0.01),
-    selectInput("nr_obs", "Number of observations:", c(50,100,500,1000,10000,100000), selected =1000, multiple = FALSE),
+    sliderInput("rho", "Estimated Corrlelation:", min = -1, max = 1, value = 0.5, step=0.01),
+    textOutput("guessResult"),
+    selectInput("nr_obs", "Number of observations:", c(50,100,500,1000,10000), selected =100, multiple = FALSE),
     br(),
     "Note: The observations are distributed accorting to a standard bivariate distribution with correlation r."
     ),
 
-  mainPanel(plotOutput("scatterplot",height="800px"))
+  mainPanel(plotOutput("scatterplot",height="800px"), plotOutput("results"))
+
 
 ))
