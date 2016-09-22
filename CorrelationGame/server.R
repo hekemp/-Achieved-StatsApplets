@@ -28,7 +28,7 @@ mu1  <- 0
 mu2  <- 0
 sig1 <- 1
 sig2 <- 1
-rho  <- input$rho
+rho  <- runif(1, min=-1, max=1)
 
 # Generate random shots
 shots <- mvrnorm(n=as.numeric(input$nr_obs),mu=c(mu1,mu2),Sigma=matrix(c(sig1,rho,rho,sig2),2))
@@ -46,7 +46,7 @@ mu1  <- 0
 mu2  <- 0
 sig1 <- 1
 sig2 <- 1
-rho  <- input$rho
+rho  <- runif(1, min=-1, max=1)
 
 # Generate random shots
 shots <- mvrnorm(n=as.numeric(input$nr_obs),mu=c(mu1,mu2),Sigma=matrix(c(sig1,rho,rho,sig2),2))
