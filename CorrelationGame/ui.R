@@ -9,9 +9,13 @@ shinyUI(pageWithSidebar(
   sidebarPanel(
 #    "INPUTS",
 
+    selectInput("nr_obs", "Number of observations:", c(50,100,500,1000,10000), selected =100, multiple = FALSE),
+    br(),
     sliderInput("rho", "Estimated Corrlelation:", min = -1, max = 1, value = 0.5, step=0.01),
     textOutput("guessResult"),
-    selectInput("nr_obs", "Number of observations:", c(50,100,500,1000,10000), selected =100, multiple = FALSE),
+    actionButton("checkAnswer", "Check Answer \n"),
+    actionButton("newPlot", "Get New Plot"),
+    actionButton("resetScore", "Reset Score \n"),
     br(),
     "Note: The observations are distributed accorting to a standard bivariate distribution with correlation r."
     ),
