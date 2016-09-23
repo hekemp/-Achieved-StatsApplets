@@ -6,7 +6,8 @@ library(MASS)
 shinyServer(function(input,output){
 
 vals <- reactiveValues(
-  rValue = runif(1, min=-1, max=1))
+  rValue = runif(1, min=-1, max=1)
+  messageToReturn = "")
   
   observeEvent(input$newPlot, {
        vals$rValue <- runif(1, min=-1, max=1)
