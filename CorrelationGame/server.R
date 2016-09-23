@@ -16,33 +16,56 @@ val <- reactiveValues(
     })
   
   
-  observeEvent(input$checkAnswer, {
+ # observeEvent(input$checkAnswer, {
+#    if(abs(input$rho) - abs(val$rValue) < .3)
+#   {val$messageToReturn <- "That's correct!"}
+#    if(abs(input$rho) - abs(val$rValue) > .3)
+ #     {if(abs(input$rho) - abs(val$rValue) < .6)
+#        {if(vals$rValue > input$rho)
+#            {val$messageToReturn <- "That guess was a little too high. Try again!"}
+#
+#         if(val$rValue < input$rho)
+#          {val$messageToReturn <- "That guess was a little too low. Try again!"}
+ #         
+#      if(abs(input$rho) - abs(val$rValue) < 1)
+ ##       {if(vals$rValue > input$rho)
+  #          {val$messageToReturn <- "That guess was too high. Try again!"}
+#
+ #        if(val$rValue < input$rho)
+ #         {val$messageToReturn <- "That guess was too low. Try again!"}
+#
+  #      }
+   #   }
+#  }
+ # }
+  #)
+  
+  getResult <- function() {
     if(abs(input$rho) - abs(val$rValue) < .3)
-    {val$messageToReturn <- "That's correct!"}
+    {paste("That's correct!")}
     if(abs(input$rho) - abs(val$rValue) > .3)
       {if(abs(input$rho) - abs(val$rValue) < .6)
         {if(vals$rValue > input$rho)
-            {val$messageToReturn <- "That guess was a little too high. Try again!"}
+            {paste("That guess was a little too high. Try again!")}
 
          if(val$rValue < input$rho)
-          {val$messageToReturn <- "That guess was a little too low. Try again!"}
+          {paste("That guess was a little too low. Try again!")}
           
       if(abs(input$rho) - abs(val$rValue) < 1)
         {if(vals$rValue > input$rho)
-            {val$messageToReturn <- "That guess was too high. Try again!"}
+            {paste("That guess was too high. Try again!")}
 
          if(val$rValue < input$rho)
-          {val$messageToReturn <- "That guess was too low. Try again!"}
+          {paste("That guess was too low. Try again!")}
 
         }
       }
   }
-  }
-  )
-  
-  getResult <- function() {
-     paste(val$messageToReturn)
-  }
+#     paste(val$messageToReturn)
+
+
+
+ }
 
   output$guessResult <- renderText({
     getResult()
