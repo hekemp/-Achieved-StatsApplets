@@ -21,7 +21,7 @@ val <- reactiveValues(
   overDotSixPlus <- "Your guess was too high. Try again!"
   overDotSixMinus <- "Your guess was too low. Try again!"
   
-  observeEvent(input$checkAnswer{
+  observeEvent(input$checkAnswer, {
     if(abs(input$rho) - abs(val$rValue) < .3)
     {val$messageToReturn <- "That's correct!"}
     if(abs(input$rho) - abs(val$rValue) > .3)
