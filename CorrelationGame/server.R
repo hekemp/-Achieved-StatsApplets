@@ -67,7 +67,7 @@ val <- reactiveValues(
 
  }
 
-  output$guessResult <- renderPrint({
+  output$guessResult <- renderText({
     getResult()
   })
   
