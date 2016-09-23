@@ -16,11 +16,6 @@ val <- reactiveValues(
     })
   
   
-  overDotThreePlus <- "That guess was a little too high. Try again!"
-  overDotThreeMinus <- "That guess was a little too low. Try again!"
-  overDotSixPlus <- "Your guess was too high. Try again!"
-  overDotSixMinus <- "Your guess was too low. Try again!"
-  
   observeEvent(input$checkAnswer, {
     if(abs(input$rho) - abs(val$rValue) < .3)
     {val$messageToReturn <- "That's correct!"}
@@ -34,14 +29,16 @@ val <- reactiveValues(
           
       if(abs(input$rho) - abs(val$rValue) < 1)
         {if(vals$rValue > input$rho)
-            {val$messageToReturn <- "That guess was a little too high. Try again!"}
+            {val$messageToReturn <- "That guess was too high. Try again!"}
 
          if(val$rValue < input$rho)
-          {val$messageToReturn <- "That guess was a little too low. Try again!"}
+          {val$messageToReturn <- "That guess was too low. Try again!"}
 
         }
       }
-  })
+  }
+  }
+  )
   
   getResult <- function() {
      paste(correctMessage)
