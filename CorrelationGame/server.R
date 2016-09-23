@@ -9,7 +9,7 @@ vals <- reactiveValues(
   rValue = runif(1, min=-1, max=1))
   
 val <- reactiveValues(
-  messageToReturn = "")
+  messageToReturn = "hi")
   
   observeEvent(input$newPlot, {
        vals$rValue <- runif(1, min=-1, max=1)
