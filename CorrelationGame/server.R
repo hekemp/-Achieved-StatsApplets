@@ -41,17 +41,17 @@ val <- reactiveValues(
   #)
   
   getResult <- function() {
-    if(abs(input$rho) - abs(vals$rValue) < .3)
+    if(abs(abs(input$rho) - abs(vals$rValue)) < .3)
     {paste("That's correct!")}
-    if(abs(input$rho) - abs(vals$rValue) > .3)
-      {if(abs(input$rho) - abs(vals$rValue) < .6)
+    if(abs(abs(input$rho) - abs(vals$rValue) > .3))
+      {if(abs(abs(input$rho) - abs(vals$rValue) < .6))
         {if(vals$rValue > input$rho)
             {paste("That guess was a little too high. Try again!")}
 
          if(vals$rValue < input$rho)
           {paste("That guess was a little too low. Try again!")}
           
-      if(abs(input$rho) - abs(vals$rValue) < 1)
+      if(abs(abs(input$rho) - abs(vals$rValue) < 1))
         {if(vals$rValue > input$rho)
             {paste("That guess was too high. Try again!")}
 
