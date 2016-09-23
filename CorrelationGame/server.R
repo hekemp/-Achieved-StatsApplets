@@ -27,7 +27,7 @@ val <- reactiveValues(
          if(vals$rValue < input$rho)
           {val$messageToReturn <- "That guess was a little too low. Try again!"}
           
-      if(abs(input$rho) - abs(vals$rValue) < 1 || abs(input$rho) - abs(vals$rValue)) > -1)
+      if(abs(input$rho) - abs(vals$rValue) < 1 || abs(input$rho) - abs(vals$rValue) > -1)
         {if(vals$rValue > input$rho)
             {val$messageToReturn <- "That guess was too high. Try again!"}
 
