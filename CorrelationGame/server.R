@@ -41,7 +41,7 @@ val <- reactiveValues(
   )
   
   getResult <- function() {
-     paste(correctMessage)
+     paste(val$messageToReturn)
   }
 
   output$guessResult <- renderText({
