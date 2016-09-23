@@ -4,8 +4,9 @@ if (!"MASS" %in% installed.packages()) install.packages("MASS")
 library(MASS) 
 
 shinyServer(function(input,output){
-  
-  rValue <- runif(1, min=-1, max=1)
+
+vals <- reactiveValues(
+  rValue <- runif(1, min=-1, max=1))
   
   observeEvent(input$newPlot, {
        rValue <- runif(1, min=-1, max=1)
@@ -34,7 +35,7 @@ mu1  <- 0
 mu2  <- 0
 sig1 <- 1
 sig2 <- 1
-rho  <- rValue
+rho  <- vals$rValue
 
 # Generate random shots
 shots <- mvrnorm(n=as.numeric(input$nr_obs),mu=c(mu1,mu2),Sigma=matrix(c(sig1,rho,rho,sig2),2))
@@ -52,7 +53,7 @@ mu1  <- 0
 mu2  <- 0
 sig1 <- 1
 sig2 <- 1
-rho  <- rValue
+rho  <- vals$rValue
 
 # Generate random shots
 shots <- mvrnorm(n=as.numeric(input$nr_obs),mu=c(mu1,mu2),Sigma=matrix(c(sig1,rho,rho,sig2),2))
