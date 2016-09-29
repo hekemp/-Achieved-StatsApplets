@@ -31,7 +31,7 @@ val <- reactiveValues(
       
       if((input$rho - vals$rValue <= .3 & input$rho - vals$rValue >= .1) || (input$rho - vals$rValue >= -.3 & input$rho - vals$rValue <= -.1))
         {if(vals$rValue < input$rho)
-            {val$messageToReturn <- "That guess was a little too high. R = " + + vals$rValue}
+            {val$messageToReturn <- "That guess was a little too high. R = " + vals$rValue}
 
          if(vals$rValue > input$rho)
           {val$messageToReturn <- "That guess was a little too low. R = " + vals$rValue}
