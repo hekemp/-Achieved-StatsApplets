@@ -33,7 +33,7 @@ valuePlot2 <- reactiveValues(
   
     observeEvent(input$newPlot, {
     
-    vals$rValue = runif(1, min=-1, max=1))
+    vals$rValue = runif(1, min=-1, max=1)
     mu1  <- 0
     mu2  <- 0
     sig1 <- 1
