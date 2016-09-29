@@ -20,27 +20,32 @@ valu <- reactiveValues(
   
   
   observeEvent(input$checkAnswer, {
-  
+  if(valu$answerChecked <= 0){
    # if(abs(input$rho) - abs(vals$rValue) < .3 || abs(input$rho) - abs(vals$rValue) > -.3 )
    if(input$rho - vals$rValue <= .1 & input$rho - vals$rValue >= -.1)
    {#val$messageToReturn <- "That's correct! R = " + paste(vals$rValue)
      val$messageToReturn <- paste("That's correct! R = ", round(vals$rValue,3))
+     valu$answerChecked <- 1
    }
     if(input$rho - vals$rValue > .1 || input$rho - vals$rValue < -.1)
       {if(input$rho - vals$rValue <= 1 || input$rho - vals$rValue >= -1)
         {if(vals$rValue < input$rho)
-            {val$messageToReturn <- paste("That guess was too high. R = ", round(vals$rValue,2))}
+            {val$messageToReturn <- paste("That guess was too high. R = ", round(vals$rValue,2))
+             valu$answerChecked <- 1}
 
          if(vals$rValue > input$rho)
-          {val$messageToReturn <- paste("That guess was too low. R = ", round(vals$rValue,2))}
+          {val$messageToReturn <- paste("That guess was too low. R = ", round(vals$rValue,2))
+          valu$answerChecked <- 1}
       
       if((input$rho - vals$rValue <= .3 & input$rho - vals$rValue > .1) || (input$rho - vals$rValue >= -.3 & input$rho - vals$rValue < -.1))
         {if(vals$rValue < input$rho)
-            {val$messageToReturn <- paste("That guess was a little too high. R = ", round(vals$rValue,2))}
+            {val$messageToReturn <- paste("That guess was a little too high. R = ", round(vals$rValue,2))
+            valu$answerChecked <- 1}
 
          if(vals$rValue > input$rho)
-          {val$messageToReturn <- paste("That guess was a little too low. R = ", round(vals$rValue,2))}
-
+          {val$messageToReturn <- paste("That guess was a little too low. R = ", round(vals$rValue,2))
+          valu$answerChecked <- 1}
+        }
         }
       }
   }
