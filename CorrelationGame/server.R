@@ -28,7 +28,9 @@ valuePlot2 <- reactiveValues(
     })
   
   observeEvent(input$resetScore, {
-    
+    valuPlot$numRight = {}
+    valuePlot$numGuessed = 1
+    valuePlot2$numGuessedRight = 0
     })
   
     observeEvent(input$newPlot, {
