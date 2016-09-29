@@ -20,7 +20,8 @@ val <- reactiveValues(
   
    # if(abs(input$rho) - abs(vals$rValue) < .3 || abs(input$rho) - abs(vals$rValue) > -.3 )
    if(input$rho - vals$rValue < .1 & input$rho - vals$rValue > -.1)
-   {val$messageToReturn <- "That's correct!"}
+   {val$messageToReturn <- "That's correct! R="
+   }
     if(input$rho - vals$rValue > .1 || input$rho - vals$rValue < -.1)
       {if(input$rho - vals$rValue <= 1 || input$rho - vals$rValue >= -1)
         {if(vals$rValue < input$rho)
