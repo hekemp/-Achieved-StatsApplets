@@ -135,7 +135,7 @@ plot(shots,xlim=c(-4,4),ylim=c(-4,4),xlab="x",ylab="y",col="dark blue",pch=20)
   })
   
     output$results <- renderPlot({
-  plot(valuPlot$numRight,c(1:valuePlot$numGuessed))
+  plot(valuPlot$numRight,c(1:valuePlot$numGuessed-1))
 })
 
 })
