@@ -9,7 +9,7 @@ vals <- reactiveValues(
   rValue = runif(1, min=-1, max=1))
   
 val <- reactiveValues(
-  messageToReturn = "hi")
+  messageToReturn = "")
   
   observeEvent(input$newPlot, {
        vals$rValue <- runif(1, min=-1, max=1)
@@ -19,17 +19,17 @@ val <- reactiveValues(
   observeEvent(input$checkAnswer, {
   
    # if(abs(input$rho) - abs(vals$rValue) < .3 || abs(input$rho) - abs(vals$rValue) > -.3 )
-   if(input$rho - vals$rValue < .3 & input$rho - vals$rValue > -.3)
+   if(input$rho - vals$rValue < .1 & input$rho - vals$rValue > -.1)
    {val$messageToReturn <- "That's correct!"}
-    if(abs(input$rho) - abs(vals$rValue) > .3 || abs(input$rho) - abs(vals$rValue) < -.3)
-      {if(abs(input$rho) - abs(vals$rValue) < .6 || abs(input$rho) - abs(vals$rValue) > -.6)
+    if(input$rho - vals$rValue > .1 || input$rho - vals$rValue < -.1)
+      {if(input$rho - vals$rValue < .3 || input$rho - vals$rValue > -.3)
         {if(vals$rValue < input$rho)
             {val$messageToReturn <- "That guess was a little too high. Try again!"}
 
          if(vals$rValue > input$rho)
           {val$messageToReturn <- "That guess was a little too low. Try again!"}
           
-      if(abs(input$rho) - abs(vals$rValue) < 1 || abs(input$rho) - abs(vals$rValue) > -1)
+      if(input$rho - vals$rValue < 1 || input$rho - vals$rValue > -1)
         {if(vals$rValue < input$rho)
             {val$messageToReturn <- "That guess was too high. Try again!"}
 
@@ -43,30 +43,7 @@ val <- reactiveValues(
   )
   
   getResult <- function() {
-  #  if(abs(abs(input$rho) - abs(vals$rValue)) < .3)
-  #  {paste("That's correct!")}
-    #if(abs(abs(input$rho) - abs(vals$rValue) > .3))
-   #   {if(abs(abs(input$rho) - abs(vals$rValue) < .6))
-  #      {if(vals$rValue > input$rho)
- #           {paste("That guess was a little too high. Try again!")}
-#
-#         if(vals$rValue < input$rho)
-#          {paste("That guess was a little too low. Try again!")}
-#          
-#      if(abs(abs(input$rho) - abs(vals$rValue) < 1))
-#        {if(vals$rValue > input$rho)
-#            {paste("That guess was too high. Try again!")}
-#
-#         if(vals$rValue < input$rho)
- #         {paste("That guess was too low. Try again!")}
-#
-#        }
-#      }
-#  }
      paste(val$messageToReturn)
-
-
-
  }
 
   output$guessResult <- renderText({
