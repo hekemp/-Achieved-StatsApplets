@@ -22,14 +22,14 @@ val <- reactiveValues(
    if(input$rho - vals$rValue < .1 & input$rho - vals$rValue > -.1)
    {val$messageToReturn <- "That's correct!"}
     if(input$rho - vals$rValue > .1 || input$rho - vals$rValue < -.1)
-      {if(input$rho - vals$rValue < 1 || input$rho - vals$rValue > -1)
+      {if(input$rho - vals$rValue <= 1 || input$rho - vals$rValue >= -1)
         {if(vals$rValue < input$rho)
             {val$messageToReturn <- "That guess was too high. Try again!"}
 
          if(vals$rValue > input$rho)
           {val$messageToReturn <- "That guess was too low. Try again!"}
       
-      if(input$rho - vals$rValue < .3 || input$rho - vals$rValue > -.3)
+      if((input$rho - vals$rValue <= .3 & input$rho - vals$rValue >= .1) || (input$rho - vals$rValue >= -.3 & input$rho - vals$rValue <= -.1))
         {if(vals$rValue < input$rho)
             {val$messageToReturn <- "That guess was a little too high. Try again!"}
 
