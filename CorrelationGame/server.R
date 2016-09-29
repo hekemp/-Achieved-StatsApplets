@@ -11,6 +11,9 @@ vals <- reactiveValues(
 val <- reactiveValues(
   messageToReturn = "")
   
+valu <- reactiveValues(
+  answerChecked = 0)
+  
   observeEvent(input$newPlot, {
        vals$rValue <- runif(1, min=-1, max=1)
     })
