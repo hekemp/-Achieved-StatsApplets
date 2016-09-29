@@ -20,21 +20,21 @@ val <- reactiveValues(
   
    # if(abs(input$rho) - abs(vals$rValue) < .3 || abs(input$rho) - abs(vals$rValue) > -.3 )
    if(input$rho - vals$rValue < .1 & input$rho - vals$rValue > -.1)
-   {val$messageToReturn <- "That's correct! R = " + vals$rValue}
+   {val$messageToReturn <- "That's correct! R = "}
     if(input$rho - vals$rValue > .1 || input$rho - vals$rValue < -.1)
       {if(input$rho - vals$rValue <= 1 || input$rho - vals$rValue >= -1)
         {if(vals$rValue < input$rho)
-            {val$messageToReturn <- "That guess was too high. R = " + vals$rValue}
+            {val$messageToReturn <- "That guess was too high. R = "}
 
          if(vals$rValue > input$rho)
-          {val$messageToReturn <- "That guess was too low. R = " + vals$rValue}
+          {val$messageToReturn <- "That guess was too low. R = "}
       
       if((input$rho - vals$rValue <= .3 & input$rho - vals$rValue >= .1) || (input$rho - vals$rValue >= -.3 & input$rho - vals$rValue <= -.1))
         {if(vals$rValue < input$rho)
-            {val$messageToReturn <- "That guess was a little too high. R = " + vals$rValue}
+            {val$messageToReturn <- "That guess was a little too high. R = "}
 
          if(vals$rValue > input$rho)
-          {val$messageToReturn <- "That guess was a little too low. R = " + vals$rValue}
+          {val$messageToReturn <- "That guess was a little too low. R = "}
 
         }
       }
