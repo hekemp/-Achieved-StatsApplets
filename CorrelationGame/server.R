@@ -135,7 +135,7 @@ plot(shots*100,xlim=c(0,100),ylim=c(0,100),xlab="x",ylab="y",col="dark blue",pch
   })
   
     output$results <- renderPlot({
-  plot(seq(1,valu$answerChecked), valuPlot$numRight)
+  plot(x = seq(1,valu$answerChecked), y = valuPlot$numRight)
 })
 
 })
