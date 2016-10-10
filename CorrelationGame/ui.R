@@ -25,7 +25,7 @@ shinyUI(pageWithSidebar(
     "Note: The observations are distributed accorting to a standard bivariate distribution with correlation r."
     ),
 
-  mainPanel(plotOutput("scatterplot",height="800px"), plotOutput("results"))
+  mainPanel(plotOutput("scatterplot",height="800px"), plotOutput("results"), plotOutput("secondResults"))
 
 
 ))
