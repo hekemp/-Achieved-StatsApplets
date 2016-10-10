@@ -171,7 +171,7 @@ plot(shots*100,xlim=c(0,100),ylim=c(0,100),xlab="x",ylab="y",col="dark blue",pch
       }
     else{
   #plot(x = seq(1,length(valuPlot$numRight)), y = valuPlot$numRight)
-   plot(x = guessPlot2$guess2 , y = guessPlot3$guess3, xlim = c(-1,1),ylim=c(-1,1))
+   plot(y = guessPlot2$guess2 , x = guessPlot3$guess3, xlim = c(-1,1),ylim=c(-1,1))
    lines(x= seq(-2,2), y=seq(-2,2) ,type="l", col="blue")
     }
   })
