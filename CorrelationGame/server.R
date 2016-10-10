@@ -20,6 +20,10 @@ valuPlot <- reactiveValues(
 valuePlot <- reactiveValues(
   numGuessed = 1)
   
+guessPlot <- reactiveValues(
+  guess = {}
+  )
+  
 valuePlot2 <- reactiveValues(
   numGuessedRight = 0)
   
@@ -31,6 +35,7 @@ valuePlot2 <- reactiveValues(
     valuPlot$numRight = {}
     valuePlot$numGuessed = 1
     valuePlot2$numGuessedRight = 0
+    guessPlot$guess = {}
     })
   
     observeEvent(input$newPlot, {
@@ -60,6 +65,7 @@ valuePlot2 <- reactiveValues(
 #  numGuessedRight = 0)
   
   observeEvent(input$checkAnswer, {
+  guessPlot$guess[valuePlot$numGuessed] = abs(max(input$rho, vals$rValue)) - abs(min(input$rho, vals$rValue))
   if(valu$answerChecked <= 0){
    # if(abs(input$rho) - abs(vals$rValue) < .3 || abs(input$rho) - abs(vals$rValue) > -.3 )
    if(input$rho - vals$rValue <= .1 & input$rho - vals$rValue >= -.1)
@@ -135,7 +141,8 @@ plot(shots*100,xlim=c(0,100),ylim=c(0,100),xlab="x",ylab="y",col="dark blue",pch
   })
   
     output$results <- renderPlot({
-  plot(x = seq(1,length(valuPlot$numRight)), y = valuPlot$numRight)
+  #plot(x = seq(1,length(valuPlot$numRight)), y = valuPlot$numRight)
+   plot(x = seq(1,length(guessPlot$guess)), y = guessPlot$guess)
 })
 
 })
