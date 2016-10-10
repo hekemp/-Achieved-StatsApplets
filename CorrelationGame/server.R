@@ -43,7 +43,7 @@ valuePlot2 <- reactiveValues(
     rho  <- vals$rValue
 
     # Generate random shots
-    shots <- mvrnorm(n=as.numeric(input$nr_obs),mu=c(mu1,mu2),Sigma=matrix(c(sig1,rho,rho,sig2),2))
+    shots <- rellipticalCopula(n=as.numeric(input$nr_obs),rho=rho)
       
     valu$answerChecked = 0
     val$messageToReturn = ""
@@ -126,10 +126,10 @@ sig2 <- 1
 rho  <- vals$rValue
 
 # Generate random shots
-shots <- mvrnorm(n=as.numeric(input$nr_obs),mu=c(mu1,mu2),Sigma=matrix(c(sig1,rho,rho,sig2),2))
+shots <- rellipticalCopula(n=as.numeric(input$nr_obs),rho=rho)
 
 # Plot the shots
-plot(shots,xlim=c(-4,4),ylim=c(-4,4),xlab="x",ylab="y",col="dark blue",pch=20)
+plot(shots*100,xlim=c(0,100),ylim=c(0,100),xlab="x",ylab="y",col="dark blue",pch=20)
 
 
   })
