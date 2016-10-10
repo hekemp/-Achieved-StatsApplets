@@ -65,7 +65,7 @@ valuePlot2 <- reactiveValues(
 #  numGuessedRight = 0)
   
   observeEvent(input$checkAnswer, {
-  guessPlot$guess[valuePlot$numGuessed] = abs(max(input$rho, vals$rValue)) - abs(min(input$rho, vals$rValue))
+  guessPlot$guess[valuePlot$numGuessed] = input$rho - vals$rValue
   if(valu$answerChecked <= 0){
    # if(abs(input$rho) - abs(vals$rValue) < .3 || abs(input$rho) - abs(vals$rValue) > -.3 )
    if(input$rho - vals$rValue <= .1 & input$rho - vals$rValue >= -.1)
