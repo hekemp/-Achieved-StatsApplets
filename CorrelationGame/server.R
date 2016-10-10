@@ -142,7 +142,7 @@ plot(shots*100,xlim=c(0,100),ylim=c(0,100),xlab="x",ylab="y",col="dark blue",pch
   
     output$results <- renderPlot({
     if(length(guessPlot$guess) == 0)
-      {plot(-3, ylimit = c(-2,2))
+      {plot(-3, ylim = c(-2,2))
        abline(h=0)
       }
     else{
