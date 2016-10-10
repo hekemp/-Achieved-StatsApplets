@@ -166,12 +166,12 @@ plot(shots*100,xlim=c(0,100),ylim=c(0,100),xlab="x",ylab="y",col="dark blue",pch
   
   output$secondResults <- renderPlot({
     if(length(guessPlot2$guess2) == 0)
-      {plot(-3, ylim = c(-1,1))
+      {plot(-3, xlim=c(-1,1),ylim = c(-1,1))
        lines(seq(-1,1),type="l", col="blue")
       }
     else{
   #plot(x = seq(1,length(valuPlot$numRight)), y = valuPlot$numRight)
-   plot(x = guessPlot2$guess2 , y = guessPlot3$guess3, ylim=c(-1,1))
+   plot(x = guessPlot2$guess2 , y = guessPlot3$guess3, xlim = c(-1,1),ylim=c(-1,1))
    lines(seq(-1,1) ,type="l", col="blue")
     }
   })
