@@ -23,6 +23,14 @@ valuePlot <- reactiveValues(
 guessPlot <- reactiveValues(
   guess = {}
   )
+
+guessPlot2 <- reactiveValues (
+  guess2 = {}
+  )
+  
+guessPlot3 <- reactiveValues (
+  guess3 = {}
+  )
   
 valuePlot2 <- reactiveValues(
   numGuessedRight = 0)
@@ -36,6 +44,8 @@ valuePlot2 <- reactiveValues(
     valuePlot$numGuessed = 1
     valuePlot2$numGuessedRight = 0
     guessPlot$guess = {}
+    guessPlot2$guess2= {}
+    guessPlot3$guess3 = {}
     })
   
     observeEvent(input$newPlot, {
@@ -65,8 +75,11 @@ valuePlot2 <- reactiveValues(
 #  numGuessedRight = 0)
   
   observeEvent(input$checkAnswer, {
-  guessPlot$guess[valuePlot$numGuessed] = input$rho - vals$rValue
+  
   if(valu$answerChecked <= 0){
+    guessPlot$guess[valuePlot$numGuessed] = input$rho - vals$rValue
+    guessPlot2$guess2[valuePlot$numGuessed] = input$rho
+    guessPlot3$guess3[valuePlot$numGuessed] = vals$rValue
    # if(abs(input$rho) - abs(vals$rValue) < .3 || abs(input$rho) - abs(vals$rValue) > -.3 )
    if(input$rho - vals$rValue <= .1 & input$rho - vals$rValue >= -.1)
    {#val$messageToReturn <- "That's correct! R = " + paste(vals$rValue)
