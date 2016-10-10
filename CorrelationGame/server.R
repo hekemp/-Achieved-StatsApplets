@@ -141,9 +141,14 @@ plot(shots*100,xlim=c(0,100),ylim=c(0,100),xlab="x",ylab="y",col="dark blue",pch
   })
   
     output$results <- renderPlot({
+    if(length(guessPlot$guess) == 0)
+      {plot(-3, ylimit = c(-2,2))
+       abline(h=0)
+      }
+    else{
   #plot(x = seq(1,length(valuPlot$numRight)), y = valuPlot$numRight)
-   plot(x = seq(1,length(guessPlot$guess)), y = guessPlot$guess, ylim=c(-1,1))
-   abline(h=0)
+   plot(x = seq(1,length(guessPlot$guess)), y = guessPlot$guess, ylim=c(-2,2))
+   abline(h=0)}
 })
 
 })
