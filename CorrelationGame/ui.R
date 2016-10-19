@@ -9,8 +9,6 @@ shinyUI(pageWithSidebar(
   sidebarPanel(
 #    "INPUTS",
 
-    selectInput("nr_obs", "Number of observations:", c(50,100,500,1000,10000), selected =100, multiple = FALSE),
-    br(),
     "Guesses will be considered correct if they are within +/- .1 of the true R value.",
     br(),
     sliderInput("rho", "Estimated Corrlelation:", min = -1, max = 1, value = 0.5, step=0.01),
