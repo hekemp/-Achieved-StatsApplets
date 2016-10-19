@@ -7,9 +7,11 @@ shinyServer(function(input,output){
   
 nr_obs2 = 50
 nr_obs = 100
+  
+  rValueChoices = c(-1.0, -.9, -.8, -.7, -.6, -.5, -.2, 0, .2, .5, .6, .7, .8, .9, 1.0)
 
 vals <- reactiveValues(
-  rValue = runif(1, min=-1, max=1))
+  rValue = sample(rValueChoices,1)
   
 val <- reactiveValues(
   messageToReturn = "")
