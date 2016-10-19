@@ -156,7 +156,7 @@ secondData <- mvrnorm(n=as.numeric(nr_obs2),mu=c(mu1,mu2),Sigma=matrix(c(sig1,rh
 
 # Plot the shots
 plot(abs(shots)*100,xlim=c(0,100),ylim=c(0,100),xlab="x",ylab="y",col="dark blue",pch=20)
-plot(abs(secondData)*100,xlim=c(0,100),ylim=c(0,100),xlab="x",ylab="y",col="dark blue",pch=20, add=TRUE)
+points(abs(secondData)*100)
 
 
   })
