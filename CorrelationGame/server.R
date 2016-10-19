@@ -4,6 +4,9 @@ if (!"MASS" %in% installed.packages()) install.packages("MASS")
 library(MASS) 
 
 shinyServer(function(input,output){
+  
+nr_obs2 = 50
+nr_obs = 100
 
 vals <- reactiveValues(
   rValue = runif(1, min=-1, max=1))
@@ -58,7 +61,7 @@ valuePlot2 <- reactiveValues(
     rho  <- vals$rValue
 
     # Generate random shots
-    shots <- rellipticalCopula(n=as.numeric(input$nr_obs),rho=rho)
+    shots <- rellipticalCopula(n=as.numeric(nr_obs2),rho=rho)
       
     valu$answerChecked = 0
     val$messageToReturn = ""
@@ -145,11 +148,11 @@ sig2 <- 1
 rho  <- vals$rValue
 
 # Generate random shots
-shots <- rellipticalCopula(n=as.numeric(input$nr_obs),rho=rho)
+shots <- rellipticalCopula(n=as.numeric(nr_obs2),rho=rho)
 
 # Plot the shots
 plot(shots*100,xlim=c(0,100),ylim=c(0,100),xlab="x",ylab="y",col="dark blue",pch=20)
-plot(mvrnorm(n=as.numeric(input$nr_obs/2),mu=c(mu1,mu2),Sigma=matrix(c(sig1,rho,rho,sig2),2))*100,xlim=c(0,100),ylim=c(0,100),xlab="x",ylab="y",col="dark blue",pch=20)
+plot(mvrnorm(n=as.numeric(nr_obs2),mu=c(mu1,mu2),Sigma=matrix(c(sig1,rho,rho,sig2),2))*100,xlim=c(0,100),ylim=c(0,100),xlab="x",ylab="y",col="dark blue",pch=20)
 
 
   })
