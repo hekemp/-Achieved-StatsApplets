@@ -41,7 +41,7 @@ valuePlot2 <- reactiveValues(
   numGuessedRight = 0)
   
   observeEvent(input$newPlot, {
-       vals$rValue <- runif(1, min=-1, max=1)
+       vals$rValue = sample(rValueChoices,1))
     })
   
   observeEvent(input$resetScore, {
