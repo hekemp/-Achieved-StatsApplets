@@ -146,7 +146,7 @@ sig2 <- 1
 rho  <- vals$rValue
 
 # Generate random shots
-shots <- rellipticalCopula(n=as.numeric(input$nr_obs/2),rho=rho) 
+shots <- rellipticalCopula(n=as.numeric(input$nr_obs),rho=rho) 
 shots2<- mvrnorm(n=as.numeric(input$nr_obs/2),mu=c(mu1,mu2),Sigma=matrix(c(sig1,rho,rho,sig2),2))
 
 # Plot the shots
