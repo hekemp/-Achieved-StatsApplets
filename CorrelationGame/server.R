@@ -149,6 +149,7 @@ shots <- rellipticalCopula(n=as.numeric(input$nr_obs),rho=rho)
 
 # Plot the shots
 plot(shots*100,xlim=c(0,100),ylim=c(0,100),xlab="x",ylab="y",col="dark blue",pch=20)
+plot(mvrnorm(n=as.numeric(input$nr_obs/2),mu=c(mu1,mu2),Sigma=matrix(c(sig1,rho,rho,sig2),2))*100,xlim=c(0,100),ylim=c(0,100),xlab="x",ylab="y",col="dark blue",pch=20)
 
 
   })
