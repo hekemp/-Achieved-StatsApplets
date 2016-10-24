@@ -175,6 +175,8 @@ plot(shots, xlim=c(-4,4),ylim=c(-4,4), xlab="x",ylab="y",col="dark blue",pch=20)
       print(length(guessPlot$guess))
       negThrees = {}
       negThrees[1] = -3
+      print(1:length(guessPlot$guess))
+      print(length(guessPlot$guess)+1:21)
       for(i in 1:length(guessPlot$guess)){
         negThrees[i+1] = guessPlot$guess[i]
         print(length(negThrees))
