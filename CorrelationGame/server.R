@@ -171,15 +171,15 @@ plot(shots, xlim=c(-4,4),ylim=c(-4,4), xlab="x",ylab="y",col="dark blue",pch=20)
    plot(x = seq(0,20), y = negThrees, ylim=c(-2,2))
    abline(h=0)}
       
-    else if(length(guessPlot$guess) <= 21){
+    else if(length(guessPlot$guess) <= 20){
       print(length(guessPlot$guess))
       negThrees = {}
       negThrees[1] = -3
-      for(i in 2:length(guessPlot$guess)){
+      for(i in 2:length(guessPlot$guess)-1){
         negThrees[i] = guessPlot$guess[i]
         print(length(negThrees))
       }
-      for(i in length(guessPlot$guess)+1:21){
+      for(i in length(guessPlot$guess):21){
         negThrees[i] = -3
         print(length(negThrees))
       }
