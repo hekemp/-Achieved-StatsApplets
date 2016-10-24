@@ -154,7 +154,7 @@ plot(shots, xlim=c(60,140),ylim=c(60,140), xlab="x",ylab="y",col="dark blue",pch
       for(i in 1:21){
         negThrees[i] = -3
       }
-      plot(x = seq(0,20), y = negThrees, ylim = c(-2,2))
+      plot(x = seq(0,20), y = negThrees, ylim = c(-2,2), xlab = "Trial", ylab = "Difference (Guess - Actual)")
        abline(h=0)
       }
       
@@ -166,7 +166,7 @@ plot(shots, xlim=c(60,140),ylim=c(60,140), xlab="x",ylab="y",col="dark blue",pch
         negThrees[i] = -3
       }
       
-   plot(x = seq(0,20), y = negThrees, ylim=c(-2,2))
+   plot(x = seq(0,20), y = negThrees, ylim=c(-2,2), xlab = "Trial", ylab = "Difference (Guess - Actual)")
    abline(h=0)}
       
     else if(length(guessPlot$guess) <= 20){
@@ -183,7 +183,7 @@ plot(shots, xlim=c(60,140),ylim=c(60,140), xlab="x",ylab="y",col="dark blue",pch
         print(i)
       }
       
-   plot(x = seq(0,20), y = negThrees[1:21], ylim=c(-2,2))
+   plot(x = seq(0,20), y = negThrees[1:21], ylim=c(-2,2), xlab = "Trial", ylab = "Difference (Guess - Actual)")
    abline(h=0)}
     else{
       negThrees = {}
@@ -191,7 +191,7 @@ plot(shots, xlim=c(60,140),ylim=c(60,140), xlab="x",ylab="y",col="dark blue",pch
       for(i in 2:length(guessPlot$guess)+1){
         negThrees[i] = guessPlot$guess[i]
       }
-      plot(x = seq(0,length(guessPlot$guess)), y = guessPlot$guess, ylim=c(-2,2))
+      plot(x = seq(0,length(guessPlot$guess)), y = guessPlot$guess, ylim=c(-2,2), xlab = "Trial", ylab = "Difference (Guess - Actual)")
    abline(h=0)}
       
 
