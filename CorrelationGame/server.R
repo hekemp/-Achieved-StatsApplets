@@ -10,8 +10,8 @@ nr_obs = 100
 
 mu1  <- 100
 mu2  <- 100
-sig1 <- 10
-sig2 <- 10
+sig1 <- 100
+sig2 <- 100
   
   rValueChoices = c(-1.0, -.9, -.8, -.7, -.6, -.5, -.2, 0, .2, .5, .6, .7, .8, .9, 1.0)
 
@@ -64,7 +64,7 @@ valuePlot2 <- reactiveValues(
     rho  <- vals$rValue
 
     # Generate random shots
-    shots <- mvrnorm(n=as.numeric(nr_obs),mu=c(mu1,mu2),Sigma=matrix(c(sig1,rho,rho,sig2),2))
+    shots <- mvrnorm(n=as.numeric(nr_obs),mu=c(mu1,mu2),Sigma=matrix(c(sig1,rho*100,rho*100,sig2),2))
       
     valu$answerChecked = 0
     val$messageToReturn = ""
@@ -140,7 +140,7 @@ valuePlot2 <- reactiveValues(
 rho  <- vals$rValue
 
 # Generate random shots
-shots <- mvrnorm(n=as.numeric(nr_obs),mu=c(mu1,mu2),Sigma=matrix(c(sig1,rho,rho,sig2),2))
+shots <- mvrnorm(n=as.numeric(nr_obs),mu=c(mu1,mu2),Sigma=matrix(c(sig1,rho*100,rho*100,sig2),2))
 
 # Plot the shots
 plot(shots, xlim=c(70,130),ylim=c(70,130), xlab="x",ylab="y",col="dark blue",pch=20)
