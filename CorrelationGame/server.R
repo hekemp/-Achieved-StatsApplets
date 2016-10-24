@@ -164,7 +164,7 @@ plot(shots, xlim=c(-4,4),ylim=c(-4,4), xlab="x",ylab="y",col="dark blue",pch=20)
       for(i in 1:length(guessPlot$guess)){
         negThrees[i] = guessPlot$guess[i]
       }
-      for(i in length(guessPlot$guess):2-){
+      for(i in length(guessPlot$guess):20){
         negThrees[i] = -3
       }
       
