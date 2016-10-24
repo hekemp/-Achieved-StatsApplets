@@ -178,9 +178,11 @@ plot(shots, xlim=c(-4,4),ylim=c(-4,4), xlab="x",ylab="y",col="dark blue",pch=20)
       print(length(guessPlot$guess)+1:21)
       for(i in 1:length(guessPlot$guess)+1){
         negThrees[i+1] = guessPlot$guess[i]
+        print(i)
       }
-      for(i in length(guessPlot$guess)+1:21){
+      for(i in length(guessPlot$guess)+2:21){
         negThrees[i] = -3
+        print(i)
       }
       
    plot(x = seq(0,20), y = negThrees[1:21], ylim=c(-2,2))
