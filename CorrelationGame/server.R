@@ -63,23 +63,13 @@ valuePlot2 <- reactiveValues(
     rho  <- vals$rValue
 
     # Generate random shots
-    shots <- rellipticalCopula(n=as.numeric(nr_obs2),rho=rho)
-      
-    secondData <- mvrnorm(n=as.numeric(nr_obs2),mu=c(mu1,mu2),Sigma=matrix(c(sig1,rho,rho,sig2),2))
+    shots <- mvrnorm(n=as.numeric(nr_obs),mu=c(mu1,mu2),Sigma=matrix(c(sig1,rho,rho,sig2),2))
       
     valu$answerChecked = 0
     val$messageToReturn = ""
       
     })
   
-#  valuPlot <- reactiveValues(
-#  numRight = {})
-  
-#valuePlot <- reactiveValues(
- # numGuessed = 1)
-  
-#  valuePlot2 <- reactiveValues(
-#  numGuessedRight = 0)
   
   observeEvent(input$checkAnswer, {
   
@@ -152,13 +142,10 @@ sig2 <- 1
 rho  <- vals$rValue
 
 # Generate random shots
-shots <- rellipticalCopula(n=as.numeric(nr_obs2),rho=rho)
-
-secondData <- mvrnorm(n=as.numeric(nr_obs2),mu=c(mu1,mu2),Sigma=matrix(c(sig1,rho,rho,sig2),2))
+shots <- mvrnorm(n=as.numeric(nr_obs),mu=c(mu1,mu2),Sigma=matrix(c(sig1,rho,rho,sig2),2))
 
 # Plot the shots
 plot(abs(shots)*100,xlim=c(0,100),ylim=c(0,100),xlab="x",ylab="y",col="dark blue",pch=20)
-points(abs(secondData)*100,col="dark blue",pch=20)
 
 
   })
