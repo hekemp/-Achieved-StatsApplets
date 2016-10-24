@@ -155,10 +155,14 @@ plot(shots, xlim=c(-4,4),ylim=c(-4,4), xlab="x",ylab="y",col="dark blue",pch=20)
       {plot(-3, ylim = c(-2,2))
        abline(h=0)
       }
-    else{
-  #plot(x = seq(1,length(valuPlot$numRight)), y = valuPlot$numRight)
-   plot(x = seq(1,length(guessPlot$guess)), y = guessPlot$guess, ylim=c(-2,2))
+    else if(length(guessPlot$guess <= 20){
+   plot(x = seq(1,20)), y = guessPlot$guess, ylim=c(-2,2))
    abline(h=0)}
+    else{
+      plot(x = seq(1,length(guessPlot$guess)), y = guessPlot$guess, ylim=c(-2,2))
+   abline(h=0)}
+      
+
 })
   
   output$secondResults <- renderPlot({
