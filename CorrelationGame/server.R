@@ -168,7 +168,7 @@ plot(shots, xlim=c(-4,4),ylim=c(-4,4), xlab="x",ylab="y",col="dark blue",pch=20)
         negThrees[i] = -3
       }
       
-   plot(x = seq(1,20), y = guessPlot$guess, ylim=c(-2,2))
+   plot(x = seq(1,20), y = negThrees, ylim=c(-2,2))
    abline(h=0)}
     else{
       plot(x = seq(1,length(guessPlot$guess)), y = guessPlot$guess, ylim=c(-2,2))
