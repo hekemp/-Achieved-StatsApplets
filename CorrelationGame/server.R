@@ -152,10 +152,22 @@ plot(shots, xlim=c(-4,4),ylim=c(-4,4), xlab="x",ylab="y",col="dark blue",pch=20)
   
     output$results <- renderPlot({
     if(length(guessPlot$guess) == 0)
-      {plot(-3, ylim = c(-2,2))
+      {negThrees = {}
+      for(i in 1:20){
+        negThrees[i] = -3
+      }
+      plot(x = seq(1,20), y = negThrees, ylim = c(-2,2))
        abline(h=0)
       }
     else if(length(guessPlot$guess) <= 20){
+      negThrees = {}
+      for(i in 1:length(guessPlot$guess)){
+        negThrees[i] = guessPlot$guess[i]
+      }
+      for(i in length(guessPlot$guess):2-){
+        negThrees[i] = -3
+      }
+      
    plot(x = seq(1,20), y = guessPlot$guess, ylim=c(-2,2))
    abline(h=0)}
     else{
