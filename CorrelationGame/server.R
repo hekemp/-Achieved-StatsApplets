@@ -7,6 +7,11 @@ shinyServer(function(input,output){
   
 nr_obs2 = 50
 nr_obs = 100
+
+mu1  <- 100
+mu2  <- 100
+sig1 <- 10
+sig2 <- 10
   
   rValueChoices = c(-1.0, -.9, -.8, -.7, -.6, -.5, -.2, 0, .2, .5, .6, .7, .8, .9, 1.0)
 
@@ -56,10 +61,6 @@ valuePlot2 <- reactiveValues(
     observeEvent(input$newPlot, {
     
     vals$rValue = sample(rValueChoices,1)
-    mu1  <- 0
-    mu2  <- 0
-    sig1 <- 1
-    sig2 <- 1
     rho  <- vals$rValue
 
     # Generate random shots
@@ -135,17 +136,14 @@ valuePlot2 <- reactiveValues(
   output$scatterplot <- renderPlot({
 
 # Bivariate normal distribution parameters
-mu1  <- 0
-mu2  <- 0
-sig1 <- 1
-sig2 <- 1
+    
 rho  <- vals$rValue
 
 # Generate random shots
 shots <- mvrnorm(n=as.numeric(nr_obs),mu=c(mu1,mu2),Sigma=matrix(c(sig1,rho,rho,sig2),2))
 
 # Plot the shots
-plot(shots, xlim=c(-4,4),ylim=c(-4,4), xlab="x",ylab="y",col="dark blue",pch=20)
+plot(shots, xlim=c(0,100),ylim=c(0,100), xlab="x",ylab="y",col="dark blue",pch=20)
 
 
   })
