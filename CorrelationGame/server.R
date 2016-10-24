@@ -145,7 +145,7 @@ rho  <- vals$rValue
 shots <- mvrnorm(n=as.numeric(nr_obs),mu=c(mu1,mu2),Sigma=matrix(c(sig1,rho,rho,sig2),2))
 
 # Plot the shots
-plot(abs(shots),xlab="x",ylab="y",col="dark blue",pch=20)
+plot(abs(shots), xlim=c(0,10),ylim=c(0,10), xlab="x",ylab="y",col="dark blue",pch=20)
 
 
   })
