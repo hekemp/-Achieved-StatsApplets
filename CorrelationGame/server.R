@@ -183,7 +183,7 @@ plot(shots, xlim=c(60,140),ylim=c(60,140), xlab="X",ylab="Y",col="dark blue",pch
       print(length(guessPlot$guess))
       negThrees = {}
       negThrees[1] = -3
-      for(i in 2:length(guessPlot$guess)+2){
+      for(i in 2:length(guessPlot$guess)){
         negThrees[i] = guessPlot$guess[i-1]
       }
       print(length(negThrees))
