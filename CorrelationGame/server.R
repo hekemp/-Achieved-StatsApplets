@@ -26,6 +26,8 @@ minCorrect = 0
 maxCorrect = 0
 minClose = 0
 maxClose = 0
+	
+colorError = ""
   rLocation = sample(seq(1,length(closeRange)),1)
   
 vals <- reactiveValues(
@@ -99,9 +101,11 @@ valuePlot2 <- reactiveValues(
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
 	              valu$answerChecked <- 1
 	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		      colorError = "green"
 		}
 	else if (input$rho >= -1.0 & input$rho <= -.95)
-		{if(input$rho < vals$rValue)
+		{colorError = "gold"
+		if(input$rho < vals$rValue)
 			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
         			  valu$answerChecked <- 1
          			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
@@ -113,7 +117,8 @@ valuePlot2 <- reactiveValues(
 			}
 		}
 	else
-		{if(input$rho < vals$rValue)
+		{colorError = "red"
+		if(input$rho < vals$rValue)
 			{
 			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
       			 valu$answerChecked <- 1
@@ -136,9 +141,11 @@ valuePlot2 <- reactiveValues(
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
 	              valu$answerChecked <- 1
 	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		 colorError = "green"
 		}
 	else if (input$rho >= -.96 & input$rho <= -.84)
-		{if(input$rho < vals$rValue)
+		{colorError = "gold"
+		if(input$rho < vals$rValue)
 			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
         			  valu$answerChecked <- 1
          			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
@@ -150,7 +157,8 @@ valuePlot2 <- reactiveValues(
 			}
 		}
 	else
-		{if(input$rho < vals$rValue)
+		{colorError = "red"
+		if(input$rho < vals$rValue)
 			{
 			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
       			 valu$answerChecked <- 1
@@ -173,9 +181,11 @@ valuePlot2 <- reactiveValues(
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
 	              valu$answerChecked <- 1
 	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		 	colorError = "green"
 		}
 	else if (input$rho >= -.87 & input$rho <= -.73)
-		{if(input$rho < vals$rValue)
+		{colorError = "gold"
+		if(input$rho < vals$rValue)
 			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
         			  valu$answerChecked <- 1
          			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
@@ -187,7 +197,8 @@ valuePlot2 <- reactiveValues(
 			}
 		}
 	else
-		{if(input$rho < vals$rValue)
+		{colorError = "red"
+		if(input$rho < vals$rValue)
 			{
 			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
       			 valu$answerChecked <- 1
@@ -210,9 +221,11 @@ valuePlot2 <- reactiveValues(
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
 	              valu$answerChecked <- 1
 	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		 	colorError = "green"
 		}
 	else if (input$rho >= -.78 & input$rho <= -.62)
-		{if(input$rho < vals$rValue)
+		{colorError = "gold"
+		if(input$rho < vals$rValue)
 			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
         			  valu$answerChecked <- 1
          			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
@@ -224,7 +237,8 @@ valuePlot2 <- reactiveValues(
 			}
 		}
 	else
-		{if(input$rho < vals$rValue)
+		{colorError = "red"
+		if(input$rho < vals$rValue)
 			{
 			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
       			 valu$answerChecked <- 1
@@ -247,9 +261,11 @@ valuePlot2 <- reactiveValues(
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
 	              valu$answerChecked <- 1
 	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		 	colorError = "green"
 		}
 	else if (input$rho >= -.69 & input$rho <= -.51)
-		{if(input$rho < vals$rValue)
+		{colorError = "gold"
+		if(input$rho < vals$rValue)
 			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
         			  valu$answerChecked <- 1
          			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
@@ -261,7 +277,8 @@ valuePlot2 <- reactiveValues(
 			}
 		}
 	else
-		{if(input$rho < vals$rValue)
+		{colorError = "red"
+		if(input$rho < vals$rValue)
 			{
 			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
       			 valu$answerChecked <- 1
@@ -284,9 +301,11 @@ valuePlot2 <- reactiveValues(
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
 	              valu$answerChecked <- 1
 	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		 	colorError = "green"
 		}
 	else if (input$rho >= -.6 & input$rho <= -.4)
-		{if(input$rho < vals$rValue)
+		{colorError = "gold"
+		if(input$rho < vals$rValue)
 			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
         			  valu$answerChecked <- 1
          			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
@@ -298,7 +317,8 @@ valuePlot2 <- reactiveValues(
 			}
 		}
 	else
-		{if(input$rho < vals$rValue)
+		{colorError = "red"
+		if(input$rho < vals$rValue)
 			{
 			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
       			 valu$answerChecked <- 1
@@ -321,9 +341,11 @@ valuePlot2 <- reactiveValues(
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
 	              valu$answerChecked <- 1
 	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		 	colorError = "green"
 		}
 	else if (input$rho >= -.4 & input$rho <= -.2)
-		{if(input$rho < vals$rValue)
+		{colorError = "gold"
+		if(input$rho < vals$rValue)
 			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
         			  valu$answerChecked <- 1
          			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
@@ -335,7 +357,8 @@ valuePlot2 <- reactiveValues(
 			}
 		}
 	else
-		{if(input$rho < vals$rValue)
+		{colorError = "red"
+		if(input$rho < vals$rValue)
 			{
 			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
       			 valu$answerChecked <- 1
@@ -358,9 +381,11 @@ valuePlot2 <- reactiveValues(
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
 	              valu$answerChecked <- 1
 	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		 	colorError = "green"
 		}
 	else if (input$rho >= -.2 & input$rho <= .2)
-		{if(input$rho < vals$rValue)
+		{colorError = "gold"
+		if(input$rho < vals$rValue)
 			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
         			  valu$answerChecked <- 1
          			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
@@ -372,7 +397,8 @@ valuePlot2 <- reactiveValues(
 			}
 		}
 	else
-		{if(input$rho < vals$rValue)
+		{colorError = "red"
+		if(input$rho < vals$rValue)
 			{
 			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
       			 valu$answerChecked <- 1
@@ -395,9 +421,11 @@ valuePlot2 <- reactiveValues(
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
 	              valu$answerChecked <- 1
 	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		 	colorError = "green"
 		}
 	else if (input$rho >= .2 & input$rho <= .4)
-		{if(input$rho < vals$rValue)
+		{colorError = "gold"
+		if(input$rho < vals$rValue)
 			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
         			  valu$answerChecked <- 1
          			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
@@ -409,7 +437,8 @@ valuePlot2 <- reactiveValues(
 			}
 		}
 	else
-		{if(input$rho < vals$rValue)
+		{colorError = "red"
+		if(input$rho < vals$rValue)
 			{
 			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
       			 valu$answerChecked <- 1
@@ -432,9 +461,11 @@ valuePlot2 <- reactiveValues(
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
 	              valu$answerChecked <- 1
 	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		 	colorError = "green"
 		}
 	else if (input$rho >= .4 & input$rho <= .6)
-		{if(input$rho < vals$rValue)
+		{colorError = "gold"
+		if(input$rho < vals$rValue)
 			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
         			  valu$answerChecked <- 1
          			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
@@ -446,7 +477,8 @@ valuePlot2 <- reactiveValues(
 			}
 		}
 	else
-		{if(input$rho < vals$rValue)
+		{colorError = "red"
+		if(input$rho < vals$rValue)
 			{
 			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
       			 valu$answerChecked <- 1
@@ -469,9 +501,11 @@ valuePlot2 <- reactiveValues(
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
 	              valu$answerChecked <- 1
 	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		 	colorError = "green"
 		}
 	else if (input$rho >= .51 & input$rho <= .69)
-		{if(input$rho < vals$rValue)
+		{colorError = "gold"
+		if(input$rho < vals$rValue)
 			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
         			  valu$answerChecked <- 1
          			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
@@ -483,7 +517,8 @@ valuePlot2 <- reactiveValues(
 			}
 		}
 	else
-		{if(input$rho < vals$rValue)
+		{colorError = "red"
+		if(input$rho < vals$rValue)
 			{
 			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
       			 valu$answerChecked <- 1
@@ -506,9 +541,11 @@ valuePlot2 <- reactiveValues(
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
 	              valu$answerChecked <- 1
 	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		 	colorError = "green"
 		}
 	else if (input$rho >= .62 & input$rho <= .78)
-		{if(input$rho < vals$rValue)
+		{colorError = "gold"
+		if(input$rho < vals$rValue)
 			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
         			  valu$answerChecked <- 1
          			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
@@ -520,7 +557,8 @@ valuePlot2 <- reactiveValues(
 			}
 		}
 	else
-		{if(input$rho < vals$rValue)
+		{colorError = "red"
+		if(input$rho < vals$rValue)
 			{
 			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
       			 valu$answerChecked <- 1
@@ -543,9 +581,11 @@ valuePlot2 <- reactiveValues(
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
 	              valu$answerChecked <- 1
 	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		 	colorError = "green"
 		}
 	else if (input$rho >= .73 & input$rho <= .87)
-		{if(input$rho < vals$rValue)
+		{colorError = "gold"
+		if(input$rho < vals$rValue)
 			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
         			  valu$answerChecked <- 1
          			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
@@ -557,7 +597,8 @@ valuePlot2 <- reactiveValues(
 			}
 		}
 	else
-		{if(input$rho < vals$rValue)
+		{colorError = "red"
+		if(input$rho < vals$rValue)
 			{
 			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
       			 valu$answerChecked <- 1
@@ -580,9 +621,11 @@ valuePlot2 <- reactiveValues(
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
 	              valu$answerChecked <- 1
 	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		 	colorError = "green"
 		}
 	else if (input$rho >= .84 & input$rho <= .96)
-		{if(input$rho < vals$rValue)
+		{colorError = "gold"
+		if(input$rho < vals$rValue)
 			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
         			  valu$answerChecked <- 1
          			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
@@ -594,7 +637,8 @@ valuePlot2 <- reactiveValues(
 			}
 		}
 	else
-		{if(input$rho < vals$rValue)
+		{colorError = "red"
+		if(input$rho < vals$rValue)
 			{
 			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
       			 valu$answerChecked <- 1
@@ -617,9 +661,11 @@ valuePlot2 <- reactiveValues(
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
 	              valu$answerChecked <- 1
 	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		 	colorError = "green"
 		}
 	else if (input$rho >= .95 & input$rho <= 1.0)
-		{if(input$rho < vals$rValue)
+		{colorError = "gold"
+		if(input$rho < vals$rValue)
 			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
         			  valu$answerChecked <- 1
          			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
@@ -631,7 +677,8 @@ valuePlot2 <- reactiveValues(
 			}
 		}
 	else
-		{if(input$rho < vals$rValue)
+		{colorError = "red"
+		if(input$rho < vals$rValue)
 			{
 			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
       			 valu$answerChecked <- 1
@@ -699,10 +746,16 @@ valuePlot2 <- reactiveValues(
      paste(val$messageToReturn)
  }
 
+  getColor <- function() {
+     paste(colorError, tags$span(style="color:red", "red"), sep = "")
+ }
   output$guessResult <- renderText({
     getResult()
   })
   
+  output$guessResult <- renderText({
+    getResult()
+  })
   
   output$scatterplot <- renderPlot({
 
