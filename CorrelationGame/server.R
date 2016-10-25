@@ -75,7 +75,7 @@ valuePlot2 <- reactiveValues(
   
     observeEvent(input$newPlot, {
     
-    sample(rValueChoices,1))
+    sample(rValueChoices,1)
     rho  <- vals$rValue
 
     # Generate random shots
