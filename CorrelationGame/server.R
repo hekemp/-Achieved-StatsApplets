@@ -753,8 +753,8 @@ valuePlot2 <- reactiveValues(
     getResult()
   })
   
-  output$guessResult <- renderText({
-    getResult()
+  output$colorResult <- renderText({
+    getColor()
   })
   
   output$scatterplot <- renderPlot({
