@@ -27,7 +27,7 @@ maxCorrect = 0
 minClose = 0
 maxClose = 0
 	
-colorError = ""
+colorError = "red"
   rLocation = sample(seq(1,length(closeRange)),1)
   
 vals <- reactiveValues(
