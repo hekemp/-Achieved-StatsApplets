@@ -13,7 +13,7 @@ shinyUI(pageWithSidebar(
     br(),
     sliderInput("rho", "Estimated Corrlelation:", min = -1, max = 1, value = 0.5, step=0.01),
     textOutput("guessResult"),
-    HTML(paste(tags$span(style="color:red", "Hello"), sep = "")),
+    HTML(paste(tags$span(style="colorResult", "Hello"), sep = "")),
     actionButton("checkAnswer", "Check Answer \n"),
     br(),
     actionButton("newPlot", "Get New Plot"),
