@@ -27,7 +27,6 @@ maxCorrect = 0
 minClose = 0
 maxClose = 0
   rLocation = sample(seq(1,length(closeRange)),1)
-rLocation = sample(seq(1,length(closeRange)),1)
   
 vals <- reactiveValues(
   rValue = rValueChoices[rLocation]
@@ -62,7 +61,8 @@ valuePlot2 <- reactiveValues(
   numGuessedRight = 0)
   
   observeEvent(input$newPlot, {
-       vals$rValue = sample(rValueChoices,1)
+       rLocation = sample(seq(1,length(closeRange)),1)
+       vals$rValue = rValueChoices[rLocation]
     })
   
   observeEvent(input$resetScore, {
@@ -76,7 +76,8 @@ valuePlot2 <- reactiveValues(
   
     observeEvent(input$newPlot, {
     
-    vals$rValue = sample(rValueChoices,1)
+    rLocation = sample(seq(1,length(closeRange)),1)
+    vals$rValue = rValueChoices[rLocation]
     rho  <- vals$rValue
 
     # Generate random shots
