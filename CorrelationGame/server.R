@@ -645,9 +645,10 @@ valuePlot2 <- reactiveValues(
 
 			}
 		}
-		valuePlot$numGuessed = valuePlot$numGuessed + 1
+		
 	}
-  
+  valuePlot$numGuessed = valuePlot$numGuessed + 1
+   }
   #if(valu$answerChecked <= 0){
   #  guessPlot$guess[valuePlot$numGuessed] = input$rho - vals$rValue
   #  guessPlot2$guess2[valuePlot$numGuessed] = input$rho
