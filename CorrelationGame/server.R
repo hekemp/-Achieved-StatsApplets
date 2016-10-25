@@ -31,7 +31,7 @@ maxClose = 0
 vals <- reactiveValues(
   rValue = sample(rValueChoices,1))
                          #sample(rValueChoices,1),
-)
+
   
 val <- reactiveValues(
   messageToReturn = "")
