@@ -747,7 +747,7 @@ valuePlot2 <- reactiveValues(
  }
 
   getColor <- function() {
-     HTML(paste(colorError, tags$span(style="color:red", "red"), sep = ""))
+     paste(colorError, tags$span(style="color:red", "red"), sep = "")
  }
   output$guessResult <- renderText({
     getResult()
