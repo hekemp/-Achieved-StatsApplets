@@ -93,7 +93,7 @@ valuePlot2 <- reactiveValues(
     guessPlot$guess[valuePlot$numGuessed] = input$rho - vals$rValue
     guessPlot2$guess2[valuePlot$numGuessed] = input$rho
     guessPlot3$guess3[valuePlot$numGuessed] = vals$rValue
-    if(vals$rValue = -.99)
+    if(vals$rValue == -.99)
 	{if (input$rho >= -1.0 & input$rho <= -.98)
 		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
@@ -130,7 +130,7 @@ valuePlot2 <- reactiveValues(
 
 	}
 
-    if(vals$rValue = -.9)
+    if(vals$rValue == -.9)
 	{if (input$rho >= -.93 & input$rho <= -.87)
 		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
@@ -167,7 +167,7 @@ valuePlot2 <- reactiveValues(
 
 	}
 
-    if(vals$rValue = -.8)
+    if(vals$rValue == -.8)
 	{if (input$rho >= -.83 & input$rho <= -.77)
 		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
@@ -204,7 +204,7 @@ valuePlot2 <- reactiveValues(
 
 	}
 
-    if(vals$rValue = -.7)
+    if(vals$rValue == -.7)
 	{if (input$rho >= -.74 & input$rho <= -.66)
 		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
@@ -241,7 +241,7 @@ valuePlot2 <- reactiveValues(
 
 	}
 
-    if(vals$rValue = -.6)
+    if(vals$rValue == -.6)
 	{if (input$rho >= -.64 & input$rho <= -.56)
 		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
@@ -278,7 +278,7 @@ valuePlot2 <- reactiveValues(
 
 	}
 
-    if(vals$rValue = -.5)
+    if(vals$rValue == -.5)
 	{if (input$rho >= -.55 & input$rho <= -.45)
 		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
@@ -315,7 +315,7 @@ valuePlot2 <- reactiveValues(
 
 	}
 
-    if(vals$rValue = -.3)
+    if(vals$rValue == -.3)
 	{if (input$rho >= -.35 & input$rho <= -.25)
 		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
@@ -352,7 +352,7 @@ valuePlot2 <- reactiveValues(
 
 	}
 
-    if(vals$rValue = 0)
+    if(vals$rValue == 0)
 	{if (input$rho >= -.1 & input$rho <= .1
 		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
@@ -389,7 +389,7 @@ valuePlot2 <- reactiveValues(
 
 	}
 
-    if(vals$rValue = .3)
+    if(vals$rValue == .3)
 	{if (input$rho >= .25 & input$rho <= .35)
 		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
@@ -426,7 +426,7 @@ valuePlot2 <- reactiveValues(
 
 	}
 
-    if(vals$rValue = .5)
+    if(vals$rValue == .5)
 	{if (input$rho >= .45 & input$rho <= .55)
 		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
@@ -463,7 +463,7 @@ valuePlot2 <- reactiveValues(
 
 	}
 
-    if(vals$rValue = .6)
+    if(vals$rValue == .6)
 	{if (input$rho >= .56 & input$rho <= .64)
 		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
@@ -500,7 +500,7 @@ valuePlot2 <- reactiveValues(
 
 	}
 
-    if(vals$rValue = .7)
+    if(vals$rValue == .7)
 	{if (input$rho >= .66 & input$rho <= .74)
 		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
@@ -537,7 +537,7 @@ valuePlot2 <- reactiveValues(
 
 	}
 
-   if(vals$rValue = .8)
+   if(vals$rValue == .8)
 	{if (input$rho >= .77 & input$rho <= .83)
 		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
@@ -574,7 +574,7 @@ valuePlot2 <- reactiveValues(
 
 	}
 
-    if(vals$rValue = .9)
+    if(vals$rValue == .9)
 	{if (input$rho >= .87 & input$rho <= .93)
 		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
@@ -611,7 +611,7 @@ valuePlot2 <- reactiveValues(
 
 	}
 
-     if(vals$rValue = .99)
+     if(vals$rValue == .99)
 	{if (input$rho >= .98 & input$rho <= 1.0)
 		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
