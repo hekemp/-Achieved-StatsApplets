@@ -19,7 +19,7 @@ vals <- reactiveValues(
   rValue = sample(rValueChoices,1))
   
 val <- reactiveValues(
-  messageToReturn = "")
+  messageToReturn = " ")
   
 valu <- reactiveValues(
   answerChecked = 0)
@@ -67,7 +67,7 @@ valuePlot2 <- reactiveValues(
     shots <- mvrnorm(n=as.numeric(nr_obs),mu=c(mu1,mu2),Sigma=matrix(c(sig1,rho*100,rho*100,sig2),2))
       
     valu$answerChecked = 0
-    val$messageToReturn = ""
+    val$messageToReturn = " "
       
     })
   
@@ -82,8 +82,8 @@ valuePlot2 <- reactiveValues(
     guessPlot3$guess3[valuePlot$numGuessed] = vals$rValue
    # if(abs(input$rho) - abs(vals$rValue) < .3 || abs(input$rho) - abs(vals$rValue) > -.3 )
    if(input$rho - vals$rValue <= .1 & input$rho - vals$rValue >= -.1)
-   {#val$messageToReturn <- "That's correct! R = " + paste(vals$rValue)
-     val$messageToReturn <- paste("That's correct! R = ", round(vals$rValue,3))
+   {
+     val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
      valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
      valu$answerChecked <- 1
      valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
@@ -91,26 +91,26 @@ valuePlot2 <- reactiveValues(
     if(input$rho - vals$rValue > .1 || input$rho - vals$rValue < -.1)
       {if(input$rho - vals$rValue <= 1 || input$rho - vals$rValue >= -1)
         {if(vals$rValue < input$rho)
-            {val$messageToReturn <- paste("That guess was too high. R = ", round(vals$rValue,2))
+            {val$messageToReturn <- paste("That guess was too high. r = ", round(vals$rValue,2))
              valu$answerChecked <- 1
             valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
             }
 
          if(vals$rValue > input$rho)
-          {val$messageToReturn <- paste("That guess was too low. R = ", round(vals$rValue,2))
+          {val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
           valu$answerChecked <- 1
           valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
           }
       
       if((input$rho - vals$rValue <= .3 & input$rho - vals$rValue > .1) || (input$rho - vals$rValue >= -.3 & input$rho - vals$rValue < -.1))
         {if(vals$rValue < input$rho)
-            {val$messageToReturn <- paste("That guess was a little too high. R = ", round(vals$rValue,2))
+            {val$messageToReturn <- paste("That guess was a little too high. r = ", round(vals$rValue,2))
             valu$answerChecked <- 1
             valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
             }
 
          if(vals$rValue > input$rho)
-          {val$messageToReturn <- paste("That guess was a little too low. R = ", round(vals$rValue,2))
+          {val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
           valu$answerChecked <- 1
           valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
           }
@@ -170,8 +170,6 @@ plot(shots, xlim=c(60,140),ylim=c(60,140), xlab="X",ylab="Y",col="dark blue",pch
     else if(length(guessPlot$guess) <= 20){
       negThrees = {}
       negThrees[1] = -3
-      print(1:length(guessPlot$guess))
-      print(length(guessPlot$guess)+1:21)
       for(i in 0:length(guessPlot$guess)+1){
         negThrees[i+1] = guessPlot$guess[i]
       }
@@ -182,11 +180,13 @@ plot(shots, xlim=c(60,140),ylim=c(60,140), xlab="X",ylab="Y",col="dark blue",pch
    plot(x = seq(0,20), y = negThrees[1:21], ylim=c(-2,2), xlab = "Trial", ylab = "Difference (Guess - Actual)")
    abline(h=0)}
     else{
+      print(length(guessPlot$guess))
       negThrees = {}
       negThrees[1] = -3
       for(i in 2:length(guessPlot$guess)+2){
         negThrees[i] = guessPlot$guess[i-1]
       }
+      print(length(negThrees))
       plot(x = seq(0,length(guessPlot$guess)), y = negThrees, ylim=c(-2,2), xlab = "Trial", ylab = "Difference (Guess - Actual)")
    abline(h=0)}
       
