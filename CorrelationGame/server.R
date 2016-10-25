@@ -27,11 +27,11 @@ vals2 <- reactiveValues(
 )
   
 vals <- reactiveValues(
-  rValue = rValueChoices[rLocation],
-  minCorrect = correctRange[2*(rLocation-1) + 1],
-  maxCorrect = correctRange[2*(rLocation-1) + 2],
-  minClose = closeRange[2*(rLocation-1) + 1],
-  maxClose = closeRange[2*(rLocation-1) + 2]
+  rValue = rValueChoices[vals2$rLocation],
+  minCorrect = correctRange[2*(vals2$rLocation-1) + 1],
+  maxCorrect = correctRange[2*(vals2$rLocation-1) + 2],
+  minClose = closeRange[2*(vals2$rLocation-1) + 1],
+  maxClose = closeRange[2*(vals2$rLocation-1) + 2]
   
                          #sample(rValueChoices,1),
 )
