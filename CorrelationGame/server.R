@@ -17,17 +17,17 @@ rValueChoices = c(-.99, -.9, -.8, -.7, -.6, -.5, -.3, 0.0, .3, .5, .6, .7, .8, .
 correctRange = c(-1.0,-.98, -.93, -.87, -.83, -.77, -.74, -.66, -.64,-.56, -.55, -.45, -.35, -.25, -.1, .1, .25, .35, .45, .55, .56, .64, .66, .74, .77, .83, .87, .93, .98, 1.0)
 closeRange = c(-1.0, -.95, -.96, -.84, -.87, -.73, -.78, -.62, -.69, -.51, -.6, -.4, -.4, -.2, -.2, .2, .2, .4, .4, .6, .51, .69, .62, .78, .73, .87, .84, .96, .95, 1.0)
 
+minCorrect = correctRange[2*(vals2$rLocation-1) + 1],
+maxCorrect = correctRange[2*(vals2$rLocation-1) + 2],
+minClose = closeRange[2*(vals2$rLocation-1) + 1],
+maxClose = closeRange[2*(vals2$rLocation-1) + 2]
+  
 vals2 <- reactiveValues(
   rLocation = sample(seq(1,length(closeRange)),1)
 )
   
 vals <- reactiveValues(
-  rValue = rValueChoices[vals2$rLocation],
-  minCorrect = correctRange[2*(vals2$rLocation-1) + 1],
-  maxCorrect = correctRange[2*(vals2$rLocation-1) + 2],
-  minClose = closeRange[2*(vals2$rLocation-1) + 1],
-  maxClose = closeRange[2*(vals2$rLocation-1) + 2]
-  
+  rValue = rValueChoices[vals2$rLocation]
                          #sample(rValueChoices,1),
 )
   
