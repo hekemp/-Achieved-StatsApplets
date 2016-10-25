@@ -180,14 +180,14 @@ plot(shots, xlim=c(60,140),ylim=c(60,140), xlab="X",ylab="Y",col="dark blue",pch
    plot(x = seq(0,20), y = negThrees[1:21], ylim=c(-2,2), xlab = "Trial", ylab = "Difference (Guess - Actual)")
    abline(h=0)}
     else{
-      print(length(guessPlot$guess))
+      print(length(seq(0,length(guessPlot$guess))))
       negThrees = {}
       negThrees[1] = -3
       for(i in 2:length(guessPlot$guess)+1){
         negThrees[i] = guessPlot$guess[i-1]
       }
       print(length(negThrees))
-      plot(x = seq(0,length(guessPlot$guess)), y = negThrees[1:length(guessPlot$guess)], ylim=c(-2,2), xlab = "Trial", ylab = "Difference (Guess - Actual)")
+      plot(x = seq(0,length(guessPlot$guess)), y = negThrees, ylim=c(-2,2), xlab = "Trial", ylab = "Difference (Guess - Actual)")
    abline(h=0)}
       
 
