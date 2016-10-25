@@ -19,7 +19,7 @@ vals <- reactiveValues(
   rValue = sample(rValueChoices,1))
   
 val <- reactiveValues(
-  messageToReturn = " ")
+  messageToReturn = "")
   
 valu <- reactiveValues(
   answerChecked = 0)
@@ -67,7 +67,7 @@ valuePlot2 <- reactiveValues(
     shots <- mvrnorm(n=as.numeric(nr_obs),mu=c(mu1,mu2),Sigma=matrix(c(sig1,rho*100,rho*100,sig2),2))
       
     valu$answerChecked = 0
-    val$messageToReturn = " "
+    val$messageToReturn = ""
       
     })
   
@@ -183,11 +183,11 @@ plot(shots, xlim=c(60,140),ylim=c(60,140), xlab="X",ylab="Y",col="dark blue",pch
       print(length(guessPlot$guess))
       negThrees = {}
       negThrees[1] = -3
-      for(i in 2:length(guessPlot$guess)){
+      for(i in 2:length(guessPlot$guess)+1){
         negThrees[i] = guessPlot$guess[i-1]
       }
       print(length(negThrees))
-      plot(x = seq(0,length(guessPlot$guess)), y = negThrees, ylim=c(-2,2), xlab = "Trial", ylab = "Difference (Guess - Actual)")
+      plot(x = seq(0,length(guessPlot$guess)), y = negThrees[1:length(guessPlot$guess)+1], ylim=c(-2,2), xlab = "Trial", ylab = "Difference (Guess - Actual)")
    abline(h=0)}
       
 
