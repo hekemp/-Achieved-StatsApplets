@@ -353,7 +353,7 @@ valuePlot2 <- reactiveValues(
 	}
 
     if(vals$rValue == 0)
-	{if (input$rho >= -.1 & input$rho <= .1
+	{if (input$rho >= -.1 & input$rho <= .1)
 		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
    		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
 	              valu$answerChecked <- 1
