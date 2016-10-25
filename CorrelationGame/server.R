@@ -746,15 +746,15 @@ valuePlot2 <- reactiveValues(
      paste(val$messageToReturn)
  }
 
-  getColor <- function() {
-	paste("color:" + colorError)
- }
+#  getColor <- function() {
+#	pastecolorError
+# }
   output$guessResult <- renderText({
     getResult()
   })
   
   output$colorResult <- renderText({
-    getColor()
+    colorError
   })
   
   output$scatterplot <- renderPlot({
