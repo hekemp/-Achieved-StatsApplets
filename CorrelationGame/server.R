@@ -74,6 +74,8 @@ valuePlot2 <- reactiveValues(
   
   observeEvent(input$checkAnswer, {
   
+    print(valuePlot$numGuessed)
+    print(length(guessPlot$guess))
   if(valu$answerChecked <= 0){
     guessPlot$guess[valuePlot$numGuessed] = input$rho - vals$rValue
     guessPlot2$guess2[valuePlot$numGuessed] = input$rho
@@ -176,11 +178,9 @@ plot(shots, xlim=c(60,140),ylim=c(60,140), xlab="X",ylab="Y",col="dark blue",pch
       print(length(guessPlot$guess)+1:21)
       for(i in 0:length(guessPlot$guess)+1){
         negThrees[i+1] = guessPlot$guess[i]
-        print(i)
       }
       for(i in length(guessPlot$guess)+2:21){
         negThrees[i] = -3
-        print(i)
       }
       
    plot(x = seq(0,20), y = negThrees[1:21], ylim=c(-2,2), xlab = "Trial", ylab = "Difference (Guess - Actual)")
