@@ -13,10 +13,25 @@ mu2  <- 100
 sig1 <- 100
 sig2 <- 100
   
-  rValueChoices = c(-1.0, -.9, -.8, -.7, -.6, -.5, -.2, 0, .2, .5, .6, .7, .8, .9, 1.0)
+rValueChoices = c(-.99, -.9, -.8, -.7, -.6, -.5, -.3, 0.0, .3, .5, .6, .7, .8, .9, .99)
+correctRange = c(-1.0,-.98, -.93, -.87, -.83, -.77, -.74, -.66, -.64,-.56, -.55, -.45, -.35, -.25, -.1, .1, .25, .35, .45, .55, .56, .64, .66, .74, .77, .83, .87, .93, .98, 1.0)
+closeRange = c(-1.0, -.95, -.96, -.84, -.87, -.73, -.78, -.62, -.69, -.51, -.6, -.4, -.4, -.2, -.2, .2, .2, .4, .4, .6, .51, .69, .62, .78, .73, .87, .84, .96, .95, 1.0)
+
+minCorrect = 0;
+maxCorrect = 0;
+minClose = 0;
+maxClose = 0;
 
 vals <- reactiveValues(
-  rValue = sample(rValueChoices,1))
+  rLocation = sample(seq(1,length(closeRange)),1),
+  rValue = rValueChoices[rLocation],
+  minCorrect = correctRange[2*(rLocation-1) + 1],
+  maxCorrect = correctRange[2*(rLocation-1) + 2],
+  minClose = closeRange[2*(rLocation-1) + 1],
+  maxClose = closeRange[2*(rLocation-1) + 2],
+  
+                         #sample(rValueChoices,1),
+)
   
 val <- reactiveValues(
   messageToReturn = "")
@@ -74,13 +89,11 @@ valuePlot2 <- reactiveValues(
   
   observeEvent(input$checkAnswer, {
   
-    print(valuePlot$numGuessed)
-    print(length(guessPlot$guess))
   if(valu$answerChecked <= 0){
     guessPlot$guess[valuePlot$numGuessed] = input$rho - vals$rValue
     guessPlot2$guess2[valuePlot$numGuessed] = input$rho
     guessPlot3$guess3[valuePlot$numGuessed] = vals$rValue
-   # if(abs(input$rho) - abs(vals$rValue) < .3 || abs(input$rho) - abs(vals$rValue) > -.3 )
+
    if(input$rho - vals$rValue <= .1 & input$rho - vals$rValue >= -.1)
    {
      val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
@@ -180,13 +193,11 @@ plot(shots, xlim=c(60,140),ylim=c(60,140), xlab="X",ylab="Y",col="dark blue",pch
    plot(x = seq(0,20), y = negThrees[1:21], ylim=c(-2,2), xlab = "Trial", ylab = "Difference (Guess - Actual)")
    abline(h=0)}
     else{
-      print(length(seq(0,length(guessPlot$guess))))
       negThrees = {}
       negThrees[1] = -3
       for(i in 2:length(guessPlot$guess)+1){
         negThrees[i] = guessPlot$guess[i-1]
       }
-      print(length(negThrees))
       plot(x = seq(0,length(guessPlot$guess)), y = negThrees, ylim=c(-2,2), xlab = "Trial", ylab = "Difference (Guess - Actual)")
    abline(h=0)}
       
