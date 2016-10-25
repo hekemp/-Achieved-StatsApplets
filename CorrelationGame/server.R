@@ -88,50 +88,609 @@ valuePlot2 <- reactiveValues(
   
   
   observeEvent(input$checkAnswer, {
-  
+    
   if(valu$answerChecked <= 0){
     guessPlot$guess[valuePlot$numGuessed] = input$rho - vals$rValue
     guessPlot2$guess2[valuePlot$numGuessed] = input$rho
     guessPlot3$guess3[valuePlot$numGuessed] = vals$rValue
+    if(vals$rValue = -.99)
+	{if (input$rho >= -1.0 & input$rho <= -.98)
+		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
+   		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
+	              valu$answerChecked <- 1
+	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		}
+	else if (input$rho >= -1.0 & input$rho <= -.95)
+		{if(input$rho < vals$rValue)
+			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
+        			  valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		else
+			{val$messageToReturn <- paste("That guess was a little too high. r = ", round(vals$rValue,2))
+          			  valu$answerChecked <- 1
+       			  valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		}
+	else
+		{if(input$rho < vals$rValue)
+			{
+			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
+      			 valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		 else
+			{
+			val$messageToReturn <- paste("That guess was too high. r = ", round(vals$rValue,2))
+           		            valu$answerChecked <- 1
+            		valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
 
-   if(input$rho - vals$rValue <= .1 & input$rho - vals$rValue >= -.1)
-   {
-     val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
-     valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
-     valu$answerChecked <- 1
-     valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
-   }
-    if(input$rho - vals$rValue > .1 || input$rho - vals$rValue < -.1)
-      {if(input$rho - vals$rValue <= 1 || input$rho - vals$rValue >= -1)
-        {if(vals$rValue < input$rho)
-            {val$messageToReturn <- paste("That guess was too high. r = ", round(vals$rValue,2))
-             valu$answerChecked <- 1
-            valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
-            }
+			}
+		}
 
-         if(vals$rValue > input$rho)
-          {val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
-          valu$answerChecked <- 1
-          valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
-          }
+	}
+
+    if(vals$rValue = -.9)
+	{if (input$rho >= -.93 & input$rho <= -.87)
+		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
+   		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
+	              valu$answerChecked <- 1
+	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		}
+	else if (input$rho >= -.96 & input$rho <= -.84)
+		{if(input$rho < vals$rValue)
+			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
+        			  valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		else
+			{val$messageToReturn <- paste("That guess was a little too high. r = ", round(vals$rValue,2))
+          			  valu$answerChecked <- 1
+       			  valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		}
+	else
+		{if(input$rho < vals$rValue)
+			{
+			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
+      			 valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		 else
+			{
+			val$messageToReturn <- paste("That guess was too high. r = ", round(vals$rValue,2))
+           		            valu$answerChecked <- 1
+            		valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+
+			}
+		}
+
+	}
+
+    if(vals$rValue = -.8)
+	{if (input$rho >= -.83 & input$rho <= -.77)
+		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
+   		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
+	              valu$answerChecked <- 1
+	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		}
+	else if (input$rho >= -.87 & input$rho <= -.73)
+		{if(input$rho < vals$rValue)
+			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
+        			  valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		else
+			{val$messageToReturn <- paste("That guess was a little too high. r = ", round(vals$rValue,2))
+          			  valu$answerChecked <- 1
+       			  valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		}
+	else
+		{if(input$rho < vals$rValue)
+			{
+			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
+      			 valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		 else
+			{
+			val$messageToReturn <- paste("That guess was too high. r = ", round(vals$rValue,2))
+           		            valu$answerChecked <- 1
+            		valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+
+			}
+		}
+
+	}
+
+    if(vals$rValue = -.7)
+	{if (input$rho >= -.74 & input$rho <= -.66)
+		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
+   		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
+	              valu$answerChecked <- 1
+	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		}
+	else if (input$rho >= -.78 & input$rho <= -.62)
+		{if(input$rho < vals$rValue)
+			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
+        			  valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		else
+			{val$messageToReturn <- paste("That guess was a little too high. r = ", round(vals$rValue,2))
+          			  valu$answerChecked <- 1
+       			  valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		}
+	else
+		{if(input$rho < vals$rValue)
+			{
+			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
+      			 valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		 else
+			{
+			val$messageToReturn <- paste("That guess was too high. r = ", round(vals$rValue,2))
+           		            valu$answerChecked <- 1
+            		valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+
+			}
+		}
+
+	}
+
+    if(vals$rValue = -.6)
+	{if (input$rho >= -.64 & input$rho <= -.56)
+		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
+   		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
+	              valu$answerChecked <- 1
+	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		}
+	else if (input$rho >= -.69 & input$rho <= -.51)
+		{if(input$rho < vals$rValue)
+			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
+        			  valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		else
+			{val$messageToReturn <- paste("That guess was a little too high. r = ", round(vals$rValue,2))
+          			  valu$answerChecked <- 1
+       			  valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		}
+	else
+		{if(input$rho < vals$rValue)
+			{
+			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
+      			 valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		 else
+			{
+			val$messageToReturn <- paste("That guess was too high. r = ", round(vals$rValue,2))
+           		            valu$answerChecked <- 1
+            		valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+
+			}
+		}
+
+	}
+
+    if(vals$rValue = -.5)
+	{if (input$rho >= -.55 & input$rho <= -.45)
+		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
+   		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
+	              valu$answerChecked <- 1
+	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		}
+	else if (input$rho >= -.6 & input$rho <= -.4)
+		{if(input$rho < vals$rValue)
+			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
+        			  valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		else
+			{val$messageToReturn <- paste("That guess was a little too high. r = ", round(vals$rValue,2))
+          			  valu$answerChecked <- 1
+       			  valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		}
+	else
+		{if(input$rho < vals$rValue)
+			{
+			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
+      			 valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		 else
+			{
+			val$messageToReturn <- paste("That guess was too high. r = ", round(vals$rValue,2))
+           		            valu$answerChecked <- 1
+            		valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+
+			}
+		}
+
+	}
+
+    if(vals$rValue = -.3)
+	{if (input$rho >= -.35 & input$rho <= -.25)
+		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
+   		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
+	              valu$answerChecked <- 1
+	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		}
+	else if (input$rho >= -.4 & input$rho <= -.2)
+		{if(input$rho < vals$rValue)
+			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
+        			  valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		else
+			{val$messageToReturn <- paste("That guess was a little too high. r = ", round(vals$rValue,2))
+          			  valu$answerChecked <- 1
+       			  valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		}
+	else
+		{if(input$rho < vals$rValue)
+			{
+			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
+      			 valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		 else
+			{
+			val$messageToReturn <- paste("That guess was too high. r = ", round(vals$rValue,2))
+           		            valu$answerChecked <- 1
+            		valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+
+			}
+		}
+
+	}
+
+    if(vals$rValue = 0)
+	{if (input$rho >= -.1 & input$rho <= .1
+		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
+   		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
+	              valu$answerChecked <- 1
+	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		}
+	else if (input$rho >= -.2 & input$rho <= .2)
+		{if(input$rho < vals$rValue)
+			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
+        			  valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		else
+			{val$messageToReturn <- paste("That guess was a little too high. r = ", round(vals$rValue,2))
+          			  valu$answerChecked <- 1
+       			  valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		}
+	else
+		{if(input$rho < vals$rValue)
+			{
+			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
+      			 valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		 else
+			{
+			val$messageToReturn <- paste("That guess was too high. r = ", round(vals$rValue,2))
+           		            valu$answerChecked <- 1
+            		valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+
+			}
+		}
+
+	}
+
+    if(vals$rValue = .3)
+	{if (input$rho >= .25 & input$rho <= .35)
+		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
+   		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
+	              valu$answerChecked <- 1
+	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		}
+	else if (input$rho >= .2 & input$rho <= .4)
+		{if(input$rho < vals$rValue)
+			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
+        			  valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		else
+			{val$messageToReturn <- paste("That guess was a little too high. r = ", round(vals$rValue,2))
+          			  valu$answerChecked <- 1
+       			  valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		}
+	else
+		{if(input$rho < vals$rValue)
+			{
+			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
+      			 valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		 else
+			{
+			val$messageToReturn <- paste("That guess was too high. r = ", round(vals$rValue,2))
+           		            valu$answerChecked <- 1
+            		valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+
+			}
+		}
+
+	}
+
+    if(vals$rValue = .5)
+	{if (input$rho >= .45 & input$rho <= .55)
+		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
+   		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
+	              valu$answerChecked <- 1
+	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		}
+	else if (input$rho >= .4 & input$rho <= .6)
+		{if(input$rho < vals$rValue)
+			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
+        			  valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		else
+			{val$messageToReturn <- paste("That guess was a little too high. r = ", round(vals$rValue,2))
+          			  valu$answerChecked <- 1
+       			  valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		}
+	else
+		{if(input$rho < vals$rValue)
+			{
+			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
+      			 valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		 else
+			{
+			val$messageToReturn <- paste("That guess was too high. r = ", round(vals$rValue,2))
+           		            valu$answerChecked <- 1
+            		valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+
+			}
+		}
+
+	}
+
+    if(vals$rValue = .6)
+	{if (input$rho >= .56 & input$rho <= .64)
+		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
+   		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
+	              valu$answerChecked <- 1
+	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		}
+	else if (input$rho >= .51 & input$rho <= .69)
+		{if(input$rho < vals$rValue)
+			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
+        			  valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		else
+			{val$messageToReturn <- paste("That guess was a little too high. r = ", round(vals$rValue,2))
+          			  valu$answerChecked <- 1
+       			  valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		}
+	else
+		{if(input$rho < vals$rValue)
+			{
+			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
+      			 valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		 else
+			{
+			val$messageToReturn <- paste("That guess was too high. r = ", round(vals$rValue,2))
+           		            valu$answerChecked <- 1
+            		valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+
+			}
+		}
+
+	}
+
+    if(vals$rValue = .7)
+	{if (input$rho >= .66 & input$rho <= .74)
+		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
+   		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
+	              valu$answerChecked <- 1
+	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		}
+	else if (input$rho >= .62 & input$rho <= .78)
+		{if(input$rho < vals$rValue)
+			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
+        			  valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		else
+			{val$messageToReturn <- paste("That guess was a little too high. r = ", round(vals$rValue,2))
+          			  valu$answerChecked <- 1
+       			  valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		}
+	else
+		{if(input$rho < vals$rValue)
+			{
+			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
+      			 valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		 else
+			{
+			val$messageToReturn <- paste("That guess was too high. r = ", round(vals$rValue,2))
+           		            valu$answerChecked <- 1
+            		valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+
+			}
+		}
+
+	}
+
+   if(vals$rValue = .8)
+	{if (input$rho >= .77 & input$rho <= .83)
+		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
+   		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
+	              valu$answerChecked <- 1
+	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		}
+	else if (input$rho >= .73 & input$rho <= .87)
+		{if(input$rho < vals$rValue)
+			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
+        			  valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		else
+			{val$messageToReturn <- paste("That guess was a little too high. r = ", round(vals$rValue,2))
+          			  valu$answerChecked <- 1
+       			  valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		}
+	else
+		{if(input$rho < vals$rValue)
+			{
+			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
+      			 valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		 else
+			{
+			val$messageToReturn <- paste("That guess was too high. r = ", round(vals$rValue,2))
+           		            valu$answerChecked <- 1
+            		valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+
+			}
+		}
+
+	}
+
+    if(vals$rValue = .9)
+	{if (input$rho >= .87 & input$rho <= .93)
+		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
+   		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
+	              valu$answerChecked <- 1
+	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		}
+	else if (input$rho >= .84 & input$rho <= .96)
+		{if(input$rho < vals$rValue)
+			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
+        			  valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		else
+			{val$messageToReturn <- paste("That guess was a little too high. r = ", round(vals$rValue,2))
+          			  valu$answerChecked <- 1
+       			  valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		}
+	else
+		{if(input$rho < vals$rValue)
+			{
+			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
+      			 valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		 else
+			{
+			val$messageToReturn <- paste("That guess was too high. r = ", round(vals$rValue,2))
+           		            valu$answerChecked <- 1
+            		valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+
+			}
+		}
+
+	}
+
+     if(vals$rValue = .99)
+	{if (input$rho >= .98 & input$rho <= 1.0)
+		{val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
+   		  valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
+	              valu$answerChecked <- 1
+	              valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+		}
+	else if (input$rho >= .95 & input$rho <= 1.0)
+		{if(input$rho < vals$rValue)
+			{val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
+        			  valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		else
+			{val$messageToReturn <- paste("That guess was a little too high. r = ", round(vals$rValue,2))
+          			  valu$answerChecked <- 1
+       			  valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		}
+	else
+		{if(input$rho < vals$rValue)
+			{
+			val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
+      			 valu$answerChecked <- 1
+         			 valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+			}
+		 else
+			{
+			val$messageToReturn <- paste("That guess was too high. r = ", round(vals$rValue,2))
+           		            valu$answerChecked <- 1
+            		valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+
+			}
+		}
+		valuePlot$numGuessed = valuePlot$numGuessed + 1
+	}
+  
+  #if(valu$answerChecked <= 0){
+  #  guessPlot$guess[valuePlot$numGuessed] = input$rho - vals$rValue
+  #  guessPlot2$guess2[valuePlot$numGuessed] = input$rho
+  #  guessPlot3$guess3[valuePlot$numGuessed] = vals$rValue
+  
+  # if(input$rho - vals$rValue <= .1 & input$rho - vals$rValue >= -.1)
+  # {
+  #   val$messageToReturn <- paste("That's correct! r = ", round(vals$rValue,3))
+  #   valuePlot2$numGuessedRight = valuePlot2$numGuessedRight + 1
+  #  valu$answerChecked <- 1
+  #   valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+  # }
+  #  if(input$rho - vals$rValue > .1 || input$rho - vals$rValue < -.1)
+  #    {if(input$rho - vals$rValue <= 1 || input$rho - vals$rValue >= -1)
+  #      {if(vals$rValue < input$rho)
+  #          {val$messageToReturn <- paste("That guess was too high. r = ", round(vals$rValue,2))
+  #           valu$answerChecked <- 1
+  #          valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+  #          }
+  #
+  #       if(vals$rValue > input$rho)
+  #        {val$messageToReturn <- paste("That guess was too low. r = ", round(vals$rValue,2))
+  #        valu$answerChecked <- 1
+  #        valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+  #        }
       
-      if((input$rho - vals$rValue <= .3 & input$rho - vals$rValue > .1) || (input$rho - vals$rValue >= -.3 & input$rho - vals$rValue < -.1))
-        {if(vals$rValue < input$rho)
-            {val$messageToReturn <- paste("That guess was a little too high. r = ", round(vals$rValue,2))
-            valu$answerChecked <- 1
-            valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
-            }
-
-         if(vals$rValue > input$rho)
-          {val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
-          valu$answerChecked <- 1
-          valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
-          }
-        }
-        }
-      }
-  valuePlot$numGuessed = valuePlot$numGuessed + 1
-  }
+  #    if((input$rho - vals$rValue <= .3 & input$rho - vals$rValue > .1) || (input$rho - vals$rValue >= -.3 & input$rho - vals$rValue < -.1))
+  #      {if(vals$rValue < input$rho)
+  #          {val$messageToReturn <- paste("That guess was a little too high. r = ", round(vals$rValue,2))
+  #          valu$answerChecked <- 1
+  #          valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+  #          }
+  #
+  #       if(vals$rValue > input$rho)
+  #        {val$messageToReturn <- paste("That guess was a little too low. r = ", round(vals$rValue,2))
+  #        valu$answerChecked <- 1
+  #        valuPlot$numRight[valuePlot$numGuessed]= valuePlot2$numGuessedRight
+  #        }
+  #      }
+  #      }
+  #    }
+  #valuePlot$numGuessed = valuePlot$numGuessed + 1
+  #}
   }
   )
   
